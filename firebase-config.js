@@ -3,11 +3,11 @@
 window.OTTHOS_FIREBASE_CONFIG = {
   enabled: true,
   room: "bairro-central",
-  apiKey: "AIzaSyAGr4SzZOUoNpkgcfh8D5Pv4StMkqAAX_0",
-  authDomain: "lerunnersmap.firebaseapp.com",
-  databaseURL: "https://lerunnersmap-default-rtdb.firebaseio.com",
-  projectId: "lerunnersmap",
-  storageBucket: "lerunnersmap.firebasestorage.app",
-  messagingSenderId: "913793840199",
-  appId: "1:913793840199:web:97a019373c45943ca6ed62"
+  apiKey: "AIzaSyBHoaqEDsKK4jM92iVggW6VpLuvx2-5Htg",
+  authDomain: "otthi-656c5.firebaseapp.com",
+  databaseURL: "https://otthi-656c5-default-rtdb.firebaseio.com",
+  projectId: "otthi-656c5",
+  storageBucket: "otthi-656c5.firebasestorage.app",
+  messagingSenderId: "740162131554",
+  appId: "1:740162131554:web:f7837244021737c66ee33b"
 };
