@@ -1,0 +1,326 @@
+{
+  "version": 703,
+  "generator": "OTTHI World consolidated visual expansion V703",
+  "packs": {
+    "grass": {
+      "baseColor": "./assets/world/textures/grass-basecolor.png",
+      "normal": "./assets/world/textures/grass-normal.png",
+      "roughness": "./assets/world/textures/grass-roughness.png",
+      "ao": "./assets/world/textures/grass-ao.png",
+      "height": "./assets/world/textures/grass-height.png",
+      "emissive": "./assets/world/textures/grass-emissive.png"
+    },
+    "road": {
+      "baseColor": "./assets/world/textures/road-basecolor.png",
+      "normal": "./assets/world/textures/road-normal.png",
+      "roughness": "./assets/world/textures/road-roughness.png",
+      "ao": "./assets/world/textures/road-ao.png",
+      "height": "./assets/world/textures/road-height.png",
+      "emissive": "./assets/world/textures/road-emissive.png"
+    },
+    "sidewalk": {
+      "baseColor": "./assets/world/textures/sidewalk-basecolor.png",
+      "normal": "./assets/world/textures/sidewalk-normal.png",
+      "roughness": "./assets/world/textures/sidewalk-roughness.png",
+      "ao": "./assets/world/textures/sidewalk-ao.png",
+      "height": "./assets/world/textures/sidewalk-height.png",
+      "emissive": "./assets/world/textures/sidewalk-emissive.png"
+    },
+    "water": {
+      "baseColor": "./assets/world/textures/water-basecolor.png",
+      "normal": "./assets/world/textures/water-normal.png",
+      "roughness": "./assets/world/textures/water-roughness.png",
+      "ao": "./assets/world/textures/water-ao.png",
+      "height": "./assets/world/textures/water-height.png",
+      "emissive": "./assets/world/textures/water-emissive.png"
+    },
+    "wood": {
+      "baseColor": "./assets/world/textures/wood-basecolor.png",
+      "normal": "./assets/world/textures/wood-normal.png",
+      "roughness": "./assets/world/textures/wood-roughness.png",
+      "ao": "./assets/world/textures/wood-ao.png",
+      "height": "./assets/world/textures/wood-height.png",
+      "emissive": "./assets/world/textures/wood-emissive.png"
+    },
+    "brick": {
+      "baseColor": "./assets/world/textures/brick-basecolor.png",
+      "normal": "./assets/world/textures/brick-normal.png",
+      "roughness": "./assets/world/textures/brick-roughness.png",
+      "ao": "./assets/world/textures/brick-ao.png",
+      "height": "./assets/world/textures/brick-height.png",
+      "emissive": "./assets/world/textures/brick-emissive.png"
+    },
+    "stone": {
+      "baseColor": "./assets/world/textures/stone-basecolor.png",
+      "normal": "./assets/world/textures/stone-normal.png",
+      "roughness": "./assets/world/textures/stone-roughness.png",
+      "ao": "./assets/world/textures/stone-ao.png",
+      "height": "./assets/world/textures/stone-height.png",
+      "emissive": "./assets/world/textures/stone-emissive.png"
+    },
+    "roof": {
+      "baseColor": "./assets/world/textures/roof-basecolor.png",
+      "normal": "./assets/world/textures/roof-normal.png",
+      "roughness": "./assets/world/textures/roof-roughness.png",
+      "ao": "./assets/world/textures/roof-ao.png",
+      "height": "./assets/world/textures/roof-height.png",
+      "emissive": "./assets/world/textures/roof-emissive.png"
+    },
+    "fabric": {
+      "baseColor": "./assets/world/textures/fabric-basecolor.png",
+      "normal": "./assets/world/textures/fabric-normal.png",
+      "roughness": "./assets/world/textures/fabric-roughness.png",
+      "ao": "./assets/world/textures/fabric-ao.png",
+      "height": "./assets/world/textures/fabric-height.png",
+      "emissive": "./assets/world/textures/fabric-emissive.png"
+    },
+    "school-wall": {
+      "baseColor": "./assets/world/textures/school-wall-basecolor.png",
+      "normal": "./assets/world/textures/school-wall-normal.png",
+      "roughness": "./assets/world/textures/school-wall-roughness.png",
+      "ao": "./assets/world/textures/school-wall-ao.png",
+      "height": "./assets/world/textures/school-wall-height.png",
+      "emissive": "./assets/world/textures/school-wall-emissive.png"
+    },
+    "police-wall": {
+      "baseColor": "./assets/world/textures/police-wall-basecolor.png",
+      "normal": "./assets/world/textures/police-wall-normal.png",
+      "roughness": "./assets/world/textures/police-wall-roughness.png",
+      "ao": "./assets/world/textures/police-wall-ao.png",
+      "height": "./assets/world/textures/police-wall-height.png",
+      "emissive": "./assets/world/textures/police-wall-emissive.png"
+    },
+    "gold-ore": {
+      "baseColor": "./assets/world/textures/gold-ore-basecolor.png",
+      "normal": "./assets/world/textures/gold-ore-normal.png",
+      "roughness": "./assets/world/textures/gold-ore-roughness.png",
+      "ao": "./assets/world/textures/gold-ore-ao.png",
+      "height": "./assets/world/textures/gold-ore-height.png",
+      "emissive": "./assets/world/textures/gold-ore-emissive.png"
+    },
+    "interior-floor": {
+      "baseColor": "./assets/world/textures/interior-floor-basecolor.png",
+      "normal": "./assets/world/textures/interior-floor-normal.png",
+      "roughness": "./assets/world/textures/interior-floor-roughness.png",
+      "ao": "./assets/world/textures/interior-floor-ao.png",
+      "height": "./assets/world/textures/interior-floor-height.png",
+      "emissive": "./assets/world/textures/interior-floor-emissive.png"
+    },
+    "interior-wall": {
+      "baseColor": "./assets/world/textures/interior-wall-basecolor.png",
+      "normal": "./assets/world/textures/interior-wall-normal.png",
+      "roughness": "./assets/world/textures/interior-wall-roughness.png",
+      "ao": "./assets/world/textures/interior-wall-ao.png",
+      "height": "./assets/world/textures/interior-wall-height.png",
+      "emissive": "./assets/world/textures/interior-wall-emissive.png"
+    },
+    "market-floor": {
+      "baseColor": "./assets/world/textures/market-floor-basecolor.png",
+      "normal": "./assets/world/textures/market-floor-normal.png",
+      "roughness": "./assets/world/textures/market-floor-roughness.png",
+      "ao": "./assets/world/textures/market-floor-ao.png",
+      "height": "./assets/world/textures/market-floor-height.png",
+      "emissive": "./assets/world/textures/market-floor-emissive.png"
+    },
+    "market-wall": {
+      "baseColor": "./assets/world/textures/market-wall-basecolor.png",
+      "normal": "./assets/world/textures/market-wall-normal.png",
+      "roughness": "./assets/world/textures/market-wall-roughness.png",
+      "ao": "./assets/world/textures/market-wall-ao.png",
+      "height": "./assets/world/textures/market-wall-height.png",
+      "emissive": "./assets/world/textures/market-wall-emissive.png"
+    },
+    "school-floor": {
+      "baseColor": "./assets/world/textures/school-floor-basecolor.png",
+      "normal": "./assets/world/textures/school-floor-normal.png",
+      "roughness": "./assets/world/textures/school-floor-roughness.png",
+      "ao": "./assets/world/textures/school-floor-ao.png",
+      "height": "./assets/world/textures/school-floor-height.png",
+      "emissive": "./assets/world/textures/school-floor-emissive.png"
+    },
+    "fire-wall": {
+      "baseColor": "./assets/world/textures/fire-wall-basecolor.png",
+      "normal": "./assets/world/textures/fire-wall-normal.png",
+      "roughness": "./assets/world/textures/fire-wall-roughness.png",
+      "ao": "./assets/world/textures/fire-wall-ao.png",
+      "height": "./assets/world/textures/fire-wall-height.png",
+      "emissive": "./assets/world/textures/fire-wall-emissive.png"
+    },
+    "concrete": {
+      "baseColor": "./assets/world/textures/concrete-basecolor.png",
+      "normal": "./assets/world/textures/concrete-normal.png",
+      "roughness": "./assets/world/textures/concrete-roughness.png",
+      "ao": "./assets/world/textures/concrete-ao.png",
+      "height": "./assets/world/textures/concrete-height.png",
+      "emissive": "./assets/world/textures/concrete-emissive.png"
+    },
+    "city-glass": {
+      "baseColor": "./assets/world/textures/city-glass-basecolor.png",
+      "normal": "./assets/world/textures/city-glass-normal.png",
+      "roughness": "./assets/world/textures/city-glass-roughness.png",
+      "ao": "./assets/world/textures/city-glass-ao.png",
+      "height": "./assets/world/textures/city-glass-height.png",
+      "emissive": "./assets/world/textures/city-glass-emissive.png"
+    },
+    "emergency-metal": {
+      "baseColor": "./assets/world/textures/emergency-metal-basecolor.png",
+      "normal": "./assets/world/textures/emergency-metal-normal.png",
+      "roughness": "./assets/world/textures/emergency-metal-roughness.png",
+      "ao": "./assets/world/textures/emergency-metal-ao.png",
+      "height": "./assets/world/textures/emergency-metal-height.png",
+      "emissive": "./assets/world/textures/emergency-metal-emissive.png"
+    },
+    "toy-plastic": {
+      "baseColor": "./assets/world/textures/toy-plastic-basecolor.png",
+      "normal": "./assets/world/textures/toy-plastic-normal.png",
+      "roughness": "./assets/world/textures/toy-plastic-roughness.png",
+      "ao": "./assets/world/textures/toy-plastic-ao.png",
+      "height": "./assets/world/textures/toy-plastic-height.png",
+      "emissive": "./assets/world/textures/toy-plastic-emissive.png"
+    },
+    "vehicle-tire": {
+      "baseColor": "./assets/world/textures/vehicle-tire-basecolor.png",
+      "normal": "./assets/world/textures/vehicle-tire-normal.png",
+      "roughness": "./assets/world/textures/vehicle-tire-roughness.png",
+      "ao": "./assets/world/textures/vehicle-tire-ao.png",
+      "height": "./assets/world/textures/vehicle-tire-height.png",
+      "emissive": "./assets/world/textures/vehicle-tire-emissive.png"
+    },
+    "hero-energy": {
+      "baseColor": "./assets/world/textures/hero-energy-basecolor.png",
+      "normal": "./assets/world/textures/hero-energy-normal.png",
+      "roughness": "./assets/world/textures/hero-energy-roughness.png",
+      "ao": "./assets/world/textures/hero-energy-ao.png",
+      "height": "./assets/world/textures/hero-energy-height.png",
+      "emissive": "./assets/world/textures/hero-energy-emissive.png"
+    },
+    "mushroom": {
+      "baseColor": "./assets/world/textures/mushroom-basecolor.png",
+      "normal": "./assets/world/textures/mushroom-normal.png",
+      "roughness": "./assets/world/textures/mushroom-roughness.png",
+      "ao": "./assets/world/textures/mushroom-ao.png",
+      "height": "./assets/world/textures/mushroom-height.png",
+      "emissive": "./assets/world/textures/mushroom-emissive.png"
+    },
+    "foliage": {
+      "baseColor": "./assets/world/textures/foliage-basecolor.png",
+      "normal": "./assets/world/textures/foliage-normal.png",
+      "roughness": "./assets/world/textures/foliage-roughness.png",
+      "ao": "./assets/world/textures/foliage-ao.png",
+      "height": "./assets/world/textures/foliage-height.png",
+      "emissive": "./assets/world/textures/foliage-emissive.png"
+    },
+    "dirt": {
+      "baseColor": "./assets/world/textures/dirt-basecolor.png",
+      "normal": "./assets/world/textures/dirt-normal.png",
+      "roughness": "./assets/world/textures/dirt-roughness.png",
+      "ao": "./assets/world/textures/dirt-ao.png",
+      "height": "./assets/world/textures/dirt-height.png",
+      "emissive": "./assets/world/textures/dirt-emissive.png"
+    },
+    "sand": {
+      "baseColor": "./assets/world/textures/sand-basecolor.png",
+      "normal": "./assets/world/textures/sand-normal.png",
+      "roughness": "./assets/world/textures/sand-roughness.png",
+      "ao": "./assets/world/textures/sand-ao.png",
+      "height": "./assets/world/textures/sand-height.png",
+      "emissive": "./assets/world/textures/sand-emissive.png"
+    },
+    "farmland": {
+      "baseColor": "./assets/world/textures/farmland-basecolor.png",
+      "normal": "./assets/world/textures/farmland-normal.png",
+      "roughness": "./assets/world/textures/farmland-roughness.png",
+      "ao": "./assets/world/textures/farmland-ao.png",
+      "height": "./assets/world/textures/farmland-height.png",
+      "emissive": "./assets/world/textures/farmland-emissive.png"
+    },
+    "cliff": {
+      "baseColor": "./assets/world/textures/cliff-basecolor.png",
+      "normal": "./assets/world/textures/cliff-normal.png",
+      "roughness": "./assets/world/textures/cliff-roughness.png",
+      "ao": "./assets/world/textures/cliff-ao.png",
+      "height": "./assets/world/textures/cliff-height.png",
+      "emissive": "./assets/world/textures/cliff-emissive.png"
+    },
+    "deep-water": {
+      "baseColor": "./assets/world/textures/deep-water-basecolor.png",
+      "normal": "./assets/world/textures/deep-water-normal.png",
+      "roughness": "./assets/world/textures/deep-water-roughness.png",
+      "ao": "./assets/world/textures/deep-water-ao.png",
+      "height": "./assets/world/textures/deep-water-height.png",
+      "emissive": "./assets/world/textures/deep-water-emissive.png"
+    },
+    "shore": {
+      "baseColor": "./assets/world/textures/shore-basecolor.png",
+      "normal": "./assets/world/textures/shore-normal.png",
+      "roughness": "./assets/world/textures/shore-roughness.png",
+      "ao": "./assets/world/textures/shore-ao.png",
+      "height": "./assets/world/textures/shore-height.png",
+      "emissive": "./assets/world/textures/shore-emissive.png"
+    },
+    "mud": {
+      "baseColor": "./assets/world/textures/mud-basecolor.png",
+      "normal": "./assets/world/textures/mud-normal.png",
+      "roughness": "./assets/world/textures/mud-roughness.png",
+      "ao": "./assets/world/textures/mud-ao.png",
+      "height": "./assets/world/textures/mud-height.png",
+      "emissive": "./assets/world/textures/mud-emissive.png"
+    },
+    "track-rubber": {
+      "baseColor": "./assets/world/textures/track-rubber-basecolor.png",
+      "normal": "./assets/world/textures/track-rubber-normal.png",
+      "roughness": "./assets/world/textures/track-rubber-roughness.png",
+      "ao": "./assets/world/textures/track-rubber-ao.png",
+      "height": "./assets/world/textures/track-rubber-height.png",
+      "emissive": "./assets/world/textures/track-rubber-emissive.png"
+    },
+    "sports-turf": {
+      "baseColor": "./assets/world/textures/sports-turf-basecolor.png",
+      "normal": "./assets/world/textures/sports-turf-normal.png",
+      "roughness": "./assets/world/textures/sports-turf-roughness.png",
+      "ao": "./assets/world/textures/sports-turf-ao.png",
+      "height": "./assets/world/textures/sports-turf-height.png",
+      "emissive": "./assets/world/textures/sports-turf-emissive.png"
+    },
+    "court-acrylic": {
+      "baseColor": "./assets/world/textures/court-acrylic-basecolor.png",
+      "normal": "./assets/world/textures/court-acrylic-normal.png",
+      "roughness": "./assets/world/textures/court-acrylic-roughness.png",
+      "ao": "./assets/world/textures/court-acrylic-ao.png",
+      "height": "./assets/world/textures/court-acrylic-height.png",
+      "emissive": "./assets/world/textures/court-acrylic-emissive.png"
+    },
+    "court-sand": {
+      "baseColor": "./assets/world/textures/court-sand-basecolor.png",
+      "normal": "./assets/world/textures/court-sand-normal.png",
+      "roughness": "./assets/world/textures/court-sand-roughness.png",
+      "ao": "./assets/world/textures/court-sand-ao.png",
+      "height": "./assets/world/textures/court-sand-height.png",
+      "emissive": "./assets/world/textures/court-sand-emissive.png"
+    },
+    "kart-asphalt": {
+      "baseColor": "./assets/world/textures/kart-asphalt-basecolor.png",
+      "normal": "./assets/world/textures/kart-asphalt-normal.png",
+      "roughness": "./assets/world/textures/kart-asphalt-roughness.png",
+      "ao": "./assets/world/textures/kart-asphalt-ao.png",
+      "height": "./assets/world/textures/kart-asphalt-height.png",
+      "emissive": "./assets/world/textures/kart-asphalt-emissive.png"
+    },
+    "mountain-rock": {
+      "baseColor": "./assets/world/textures/mountain-rock-basecolor.png",
+      "normal": "./assets/world/textures/mountain-rock-normal.png",
+      "roughness": "./assets/world/textures/mountain-rock-roughness.png",
+      "ao": "./assets/world/textures/mountain-rock-ao.png",
+      "height": "./assets/world/textures/mountain-rock-height.png",
+      "emissive": "./assets/world/textures/mountain-rock-emissive.png"
+    },
+    "stadium-concrete": {
+      "baseColor": "./assets/world/textures/stadium-concrete-basecolor.png",
+      "normal": "./assets/world/textures/stadium-concrete-normal.png",
+      "roughness": "./assets/world/textures/stadium-concrete-roughness.png",
+      "ao": "./assets/world/textures/stadium-concrete-ao.png",
+      "height": "./assets/world/textures/stadium-concrete-height.png",
+      "emissive": "./assets/world/textures/stadium-concrete-emissive.png"
+    }
+  }
+}
