@@ -1,0 +1,650 @@
+/* V54 visual layer only. It does not move controls, HUD, AR, model-viewer or gameplay IDs. */
+body.v54-render-premium .game.active {
+  background:#72cfff!important;
+}
+
+body.v54-render-premium .three-stage canvas {
+  image-rendering:auto!important;
+  filter:saturate(1.58) contrast(1.24) brightness(.90);
+}
+
+body.v54-render-premium .game.active .objective-card strong {
+  text-wrap:balance;
+}
+
+@media (orientation:landscape) and (max-height:740px) {
+  body.v54-render-premium .game.active .game-controls {
+    top:auto!important;
+    bottom:0!important;
+    height:210px!important;
+    align-content:end!important;
+    overflow:visible!important;
+  }
+}
+
+
+/* ===== V54.4 — Mobile/interatividade real ===== */
+body, #app { overscroll-behavior:none!important; }
+.screen.game.active, .game.active{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100dvh!important;
+  min-height:100dvh!important;
+  overflow:hidden!important;
+  touch-action:none!important;
+}
+
+/* CENÁRIOS/MUNDOS SAEM DA TELA DE JOGO: agora ficam em Configurações */
+.game.active .world-strip{
+  display:none!important;
+}
+
+/* Config e cristal funcionais no HUD */
+.game.active .hud-right-cluster{
+  position:fixed!important;
+  top:calc(7px + env(safe-area-inset-top))!important;
+  right:8px!important;
+  z-index:120!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  pointer-events:auto!important;
+}
+.game.active .hud-gems-box{
+  height:34px!important;
+  min-width:74px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:5px!important;
+  padding:0 6px!important;
+  border-radius:14px!important;
+  background:rgba(3,10,24,.72)!important;
+  border:2px solid rgba(255,255,255,.30)!important;
+}
+.game.active .hud-gem-plus,
+.game.active .hud-settings-btn{
+  width:34px!important;
+  height:34px!important;
+  min-height:34px!important;
+  border-radius:50%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  pointer-events:auto!important;
+  border:2px solid rgba(255,255,255,.75)!important;
+  box-shadow:0 5px 12px rgba(0,0,0,.34)!important;
+  font-weight:1000!important;
+}
+.game.active .hud-settings-btn{background:linear-gradient(180deg,#ffffff,#a9b7c6)!important;color:#071225!important}
+.game.active .hud-gem-plus{background:linear-gradient(180deg,#67e8f9,#0284c7)!important;color:#04111f!important}
+
+/* HUD mais limpo para criança */
+.game.active .top-hud{
+  top:calc(6px + env(safe-area-inset-top))!important;
+  left:7px!important;
+  right:96px!important;
+  height:40px!important;
+  gap:5px!important;
+}
+.game.active .hud-box{
+  height:36px!important;
+  min-height:36px!important;
+  padding:2px 5px!important;
+  border-radius:12px!important;
+}
+.game.active .hud-box small{font-size:8px!important}
+.game.active .hud-box b{font-size:15px!important}
+.game.active .objective-card{
+  top:calc(51px + env(safe-area-inset-top))!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  width:min(420px,76vw)!important;
+  min-height:32px!important;
+  max-height:42px!important;
+  padding:5px 9px!important;
+  border-radius:15px!important;
+  opacity:.70!important;
+}
+.game.active .objective-card small{display:none!important}
+.game.active .objective-card strong{
+  font-size:12px!important;
+  line-height:1.06!important;
+  max-height:24px!important;
+  overflow:hidden!important;
+}
+.game.active .objective-progress{height:3px!important;margin-top:4px!important}
+
+/* Controles: só o essencial, espaçado */
+.game.active .game-controls{
+  position:fixed!important;
+  left:0!important;
+  right:0!important;
+  bottom:0!important;
+  width:100vw!important;
+  height:0!important;
+  display:block!important;
+  padding:0!important;
+  pointer-events:none!important;
+  z-index:100!important;
+  overflow:visible!important;
+  background:none!important;
+}
+.game.active .left-zone,
+.game.active .right-zone{
+  pointer-events:auto!important;
+  z-index:110!important;
+}
+.game.active #sizeBtn,
+.game.active #normalBtn,
+.game.active [data-action="spin"],
+.game.active #pauseBtn,
+.game.active #exitBtn{
+  display:none!important;
+}
+.game.active .direction-buttons{display:none!important;}
+.game.active .joystick small{display:none!important;}
+
+@media (orientation: portrait){
+  .game.active .left-zone{
+    position:fixed!important;
+    left:10px!important;
+    bottom:calc(12px + env(safe-area-inset-bottom))!important;
+    width:auto!important;
+    transform:none!important;
+  }
+  .game.active .right-zone{
+    position:fixed!important;
+    right:10px!important;
+    bottom:calc(12px + env(safe-area-inset-bottom))!important;
+    width:164px!important;
+    height:76px!important;
+    transform:none!important;
+  }
+  .game.active .joy-ring{width:88px!important;height:88px!important;border-width:2px!important}
+  .game.active .joy-knob{width:38px!important;height:38px!important;margin:-19px 0 0 -19px!important}
+  .game.active .action-grid{
+    position:static!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,50px)!important;
+    grid-template-rows:50px!important;
+    gap:8px!important;
+    width:166px!important;
+    height:54px!important;
+    transform:none!important;
+  }
+  .game.active #jumpBtn,
+  .game.active #powerBtn,
+  .game.active [data-action="interact"]{
+    display:flex!important;
+    position:static!important;
+    width:50px!important;
+    height:50px!important;
+    min-height:50px!important;
+    border-radius:50%!important;
+    transform:none!important;
+    inset:auto!important;
+  }
+  .game.active #crouchBtn{
+    display:none!important;
+  }
+}
+
+@media (orientation: landscape){
+  .game.active .top-hud{
+    width:min(370px,34vw)!important;
+    right:auto!important;
+  }
+  .game.active .hud-right-cluster{
+    top:calc(5px + env(safe-area-inset-top))!important;
+    right:8px!important;
+  }
+  .game.active .objective-card{
+    top:calc(43px + env(safe-area-inset-top))!important;
+    width:min(390px,36vw)!important;
+    max-height:36px!important;
+    opacity:.58!important;
+  }
+  .game.active .left-zone{
+    position:fixed!important;
+    left:10px!important;
+    bottom:calc(10px + env(safe-area-inset-bottom))!important;
+    width:auto!important;
+    transform:none!important;
+  }
+  .game.active .right-zone{
+    position:fixed!important;
+    right:18px!important;
+    bottom:calc(10px + env(safe-area-inset-bottom))!important;
+    width:150px!important;
+    height:48px!important;
+    transform:none!important;
+  }
+  .game.active .joy-ring{width:70px!important;height:70px!important;border-width:2px!important}
+  .game.active .joy-knob{width:30px!important;height:30px!important;margin:-15px 0 0 -15px!important}
+  .game.active .action-grid{
+    position:static!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,44px)!important;
+    grid-template-rows:44px!important;
+    gap:9px!important;
+    width:150px!important;
+    height:46px!important;
+    transform:none!important;
+  }
+  .game.active #jumpBtn,
+  .game.active #powerBtn,
+  .game.active [data-action="interact"]{
+    display:flex!important;
+    position:static!important;
+    width:44px!important;
+    height:44px!important;
+    min-height:44px!important;
+    border-radius:50%!important;
+    transform:none!important;
+    inset:auto!important;
+  }
+  .game.active #crouchBtn{
+    display:none!important;
+  }
+}
+
+/* Modal Configurações */
+.settings-game-panel{display:grid;gap:16px}
+.settings-section{display:grid;gap:10px}
+.settings-section strong{font-size:18px;color:#0f172a}
+.settings-worlds,.settings-actions{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(118px,1fr));
+  gap:8px;
+}
+.settings-world-btn.active{
+  background:linear-gradient(180deg,#ffe66b,#d59d08)!important;
+  color:#111827!important;
+}
+
+
+/* ===== V54.4 — HOTFIX CIRÚRGICO: MUNDOS NUNCA APARECEM NO GAMEPLAY ===== */
+.game.active .game-controls > .world-strip,
+.screen.game.active .game-controls > .world-strip,
+#game.active .game-controls > .world-strip,
+#app .screen.game.active .game-controls > .world-strip{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  width:0!important;
+  height:0!important;
+  max-width:0!important;
+  max-height:0!important;
+  overflow:hidden!important;
+  position:absolute!important;
+  left:-99999px!important;
+  top:-99999px!important;
+}
+
+/* Os mundos existem somente dentro do modal de Configurações */
+.settings-game-panel .settings-worlds,
+.settings-game-panel .settings-world-btn{
+  display:grid;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+}
+.settings-game-panel .settings-world-btn{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+
+/* Um pouco mais de distância nos 3 botões essenciais */
+@media (orientation: portrait){
+  .game.active .right-zone{width:174px!important}
+  .game.active .action-grid{
+    grid-template-columns:repeat(3,50px)!important;
+    gap:12px!important;
+    width:174px!important;
+  }
+}
+@media (orientation: landscape){
+  .game.active .right-zone{right:20px!important;width:158px!important}
+  .game.active .action-grid{
+    grid-template-columns:repeat(3,44px)!important;
+    gap:13px!important;
+    width:158px!important;
+  }
+}
+
+
+/* ===== V54.4 — profundidade + mobile sem dock azul + mundos removidos ===== */
+
+/* A área 3D ocupa a tela inteira; controles ficam por cima sem reservar metade da tela */
+.game.active .three-stage,
+.screen.game.active .three-stage,
+#game.active .three-stage{
+  position:fixed!important;
+  inset:0!important;
+  left:0!important;
+  right:0!important;
+  top:0!important;
+  bottom:0!important;
+  width:100vw!important;
+  height:100dvh!important;
+  min-height:100dvh!important;
+  max-height:100dvh!important;
+  overflow:hidden!important;
+  z-index:1!important;
+}
+.game.active #three-canvas,
+.screen.game.active #three-canvas{
+  width:100vw!important;
+  height:100dvh!important;
+  min-height:100dvh!important;
+  display:block!important;
+}
+
+/* Remove de vez a barra de mundos do gameplay; a seleção está só em Configurações */
+.game.active .game-controls > .world-strip,
+.game.active .world-strip,
+.world-strip[hidden]{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  width:0!important;
+  height:0!important;
+  max-width:0!important;
+  max-height:0!important;
+  overflow:hidden!important;
+}
+
+/* Cancela fundos/docks antigos que viravam faixa azul enorme */
+.game.active .game-controls{
+  position:fixed!important;
+  inset:auto 0 0 0!important;
+  left:0!important;
+  right:0!important;
+  bottom:0!important;
+  top:auto!important;
+  height:0!important;
+  min-height:0!important;
+  max-height:0!important;
+  padding:0!important;
+  margin:0!important;
+  background:transparent!important;
+  border:0!important;
+  overflow:visible!important;
+  pointer-events:none!important;
+  z-index:110!important;
+}
+
+/* Toast não pode virar bolha/oval gigante */
+.game.active .toast{
+  position:fixed!important;
+  top:calc(88px + env(safe-area-inset-top))!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  width:auto!important;
+  min-width:0!important;
+  max-width:min(380px,76vw)!important;
+  min-height:0!important;
+  border-radius:14px!important;
+  padding:8px 12px!important;
+  font-size:13px!important;
+  line-height:1.15!important;
+  background:rgba(5,12,25,.72)!important;
+  border:1px solid rgba(255,255,255,.28)!important;
+  box-shadow:0 8px 22px rgba(0,0,0,.25)!important;
+}
+
+/* HUD compacto e com área de jogo livre */
+.game.active .top-hud{
+  left:7px!important;
+  top:calc(5px + env(safe-area-inset-top))!important;
+  right:104px!important;
+  width:auto!important;
+  height:38px!important;
+  pointer-events:none!important;
+}
+.game.active .hud-right-cluster{
+  top:calc(5px + env(safe-area-inset-top))!important;
+  right:8px!important;
+  z-index:130!important;
+}
+.game.active .objective-card{
+  top:calc(48px + env(safe-area-inset-top))!important;
+  max-height:36px!important;
+  min-height:30px!important;
+  width:min(390px,68vw)!important;
+  opacity:.62!important;
+}
+
+/* 3 botões principais espaçados */
+.game.active .action-grid{
+  pointer-events:auto!important;
+}
+.game.active #jumpBtn,
+.game.active #powerBtn,
+.game.active [data-action="interact"]{
+  display:flex!important;
+}
+.game.active #crouchBtn,
+.game.active #sizeBtn,
+.game.active #normalBtn,
+.game.active [data-action="spin"],
+.game.active #pauseBtn,
+.game.active #exitBtn{
+  display:none!important;
+}
+
+@media (orientation: portrait){
+  .game.active .left-zone{
+    position:fixed!important;
+    left:12px!important;
+    bottom:calc(14px + env(safe-area-inset-bottom))!important;
+    z-index:120!important;
+  }
+  .game.active .right-zone{
+    position:fixed!important;
+    right:12px!important;
+    bottom:calc(18px + env(safe-area-inset-bottom))!important;
+    width:186px!important;
+    height:58px!important;
+    z-index:120!important;
+  }
+  .game.active .joy-ring{width:92px!important;height:92px!important}
+  .game.active .joy-knob{width:38px!important;height:38px!important;margin:-19px 0 0 -19px!important}
+  .game.active .action-grid{
+    display:grid!important;
+    grid-template-columns:repeat(3,52px)!important;
+    grid-template-rows:52px!important;
+    gap:15px!important;
+    width:186px!important;
+    height:54px!important;
+  }
+  .game.active #jumpBtn,
+  .game.active #powerBtn,
+  .game.active [data-action="interact"]{
+    width:52px!important;
+    height:52px!important;
+    min-height:52px!important;
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    border-radius:50%!important;
+  }
+}
+
+@media (orientation: landscape){
+  .game.active .top-hud{
+    width:min(360px,32vw)!important;
+    right:auto!important;
+  }
+  .game.active .objective-card{
+    top:calc(42px + env(safe-area-inset-top))!important;
+    width:min(360px,32vw)!important;
+    opacity:.55!important;
+  }
+  .game.active .left-zone{
+    position:fixed!important;
+    left:12px!important;
+    bottom:calc(12px + env(safe-area-inset-bottom))!important;
+    z-index:120!important;
+  }
+  .game.active .right-zone{
+    position:fixed!important;
+    right:22px!important;
+    bottom:calc(14px + env(safe-area-inset-bottom))!important;
+    width:168px!important;
+    height:48px!important;
+    z-index:120!important;
+  }
+  .game.active .joy-ring{width:72px!important;height:72px!important}
+  .game.active .joy-knob{width:30px!important;height:30px!important;margin:-15px 0 0 -15px!important}
+  .game.active .action-grid{
+    display:grid!important;
+    grid-template-columns:repeat(3,46px)!important;
+    grid-template-rows:46px!important;
+    gap:15px!important;
+    width:168px!important;
+    height:48px!important;
+  }
+  .game.active #jumpBtn,
+  .game.active #powerBtn,
+  .game.active [data-action="interact"]{
+    width:46px!important;
+    height:46px!important;
+    min-height:46px!important;
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    border-radius:50%!important;
+  }
+}
+
+/* Configurações continuam com todos os mundos */
+.settings-game-panel .settings-worlds{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,minmax(118px,1fr))!important;
+  gap:8px!important;
+}
+.settings-game-panel .settings-world-btn{
+  display:flex!important;
+  min-height:46px!important;
+}
+
+
+/* ===== V54.4 — refino de jogabilidade: clareza e objetivo ===== */
+.game.active .objective-card{
+  opacity:.76!important;
+  background:rgba(4,12,22,.58)!important;
+  border:1px solid rgba(255,255,255,.20)!important;
+}
+.game.active .objective-card strong{
+  font-size:13px!important;
+  color:#fff!important;
+  text-shadow:0 2px 4px rgba(0,0,0,.85)!important;
+}
+.game.active .toast{
+  top:calc(78px + env(safe-area-inset-top))!important;
+  background:rgba(4,10,20,.68)!important;
+  color:#fff!important;
+  text-shadow:0 2px 4px rgba(0,0,0,.75)!important;
+}
+.game.active .top-hud{
+  filter:drop-shadow(0 5px 13px rgba(0,0,0,.38))!important;
+}
+
+/* Mais toque entre botões */
+@media (orientation: portrait){
+  .game.active .right-zone{width:196px!important}
+  .game.active .action-grid{
+    grid-template-columns:repeat(3,54px)!important;
+    grid-template-rows:54px!important;
+    gap:17px!important;
+    width:196px!important;
+    height:56px!important;
+  }
+  .game.active #jumpBtn,
+  .game.active #powerBtn,
+  .game.active [data-action="interact"]{
+    width:54px!important;height:54px!important;min-height:54px!important;
+  }
+}
+@media (orientation: landscape){
+  .game.active .right-zone{width:178px!important;right:24px!important}
+  .game.active .action-grid{
+    grid-template-columns:repeat(3,48px)!important;
+    grid-template-rows:48px!important;
+    gap:17px!important;
+    width:178px!important;
+    height:50px!important;
+  }
+  .game.active #jumpBtn,
+  .game.active #powerBtn,
+  .game.active [data-action="interact"]{
+    width:48px!important;height:48px!important;min-height:48px!important;
+  }
+}
+
+
+/* V54.7 — sem simplificar render; só clareza dos objetos reais */
+.game.active canvas{
+  filter:saturate(1.38) contrast(1.12) brightness(1.03)!important;
+}
+.game.active .objective-card{
+  opacity:.82!important;
+  background:rgba(5,12,25,.68)!important;
+}
+.game.active .toast{
+  max-width:min(340px,68vw)!important;
+  font-size:12px!important;
+  padding:7px 10px!important;
+}
+/* Esconde só mensagem técnica, sem mexer na lógica AR */
+.game.ar-safe-mode::after{
+  display:none!important;
+  content:''!important;
+}
+
+
+/* V54.8 — alvos reais fora do levelGroup oculto */
+.game.active canvas{
+  filter:saturate(1.34) contrast(1.13) brightness(1.04)!important;
+}
+.game.active .objective-card{
+  opacity:.88!important;
+}
+
+
+/* V55 — linguagem visual estilo console sem texto no mundo */
+.game.active canvas{
+  filter:saturate(1.38) contrast(1.12) brightness(1.04)!important;
+}
+.game.active .objective-card{
+  opacity:.72!important;
+  background:rgba(5,12,25,.56)!important;
+}
+.game.active .toast{
+  max-width:min(340px,68vw)!important;
+  font-size:12px!important;
+  padding:7px 10px!important;
+}
+/* Esconde mensagens técnicas/labels antigas do overlay antigo sem tocar no HUD principal */
+.game.ar-safe-mode::after{
+  display:none!important;
+  content:''!important;
+}
+@media (orientation: portrait){
+  .game.active .right-zone{right:12px!important;bottom:calc(18px + env(safe-area-inset-bottom))!important}
+  .game.active .left-zone{left:12px!important;bottom:calc(14px + env(safe-area-inset-bottom))!important}
+}
+@media (orientation: landscape){
+  .game.active .right-zone{right:22px!important;bottom:calc(14px + env(safe-area-inset-bottom))!important}
+  .game.active .left-zone{left:12px!important;bottom:calc(12px + env(safe-area-inset-bottom))!important}
+}
+
+/* V58.0 — render rico preservado; botões corrigidos no app.js */
+.game.active canvas{filter:saturate(1.48) contrast(1.12) brightness(1.04)!important}

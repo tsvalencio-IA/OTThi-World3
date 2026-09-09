@@ -1,0 +1,1048 @@
+/* FILE: assets/render-v48/v48-render-target.css */
+/* ATHOS V48 — HUD/CONTROLES NO PADRÃO DO RENDER-ALVO */
+body.v48-target-active{overflow:hidden;background:#06101f!important;font-family:Arial,system-ui,sans-serif!important}
+body.v48-target-active .game.active{background:#74d9ff!important;overflow:hidden!important}
+body.v48-target-active .game.active #threeStage,body.v48-target-active .game.active #three-canvas{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:1!important}
+body.v48-target-active .game.active .top-hud{position:absolute!important;top:calc(8px + var(--safe-top))!important;left:10px!important;right:10px!important;display:flex!important;gap:8px!important;flex-wrap:nowrap!important;z-index:20!important;pointer-events:none!important;transform:none!important;width:auto!important;max-width:none!important}.game.active .top-hud *{box-sizing:border-box}
+body.v48-target-active .game.active .hud-box{min-width:76px!important;height:48px!important;padding:4px 8px!important;border-radius:16px!important;background:rgba(17,34,52,.72)!important;border:2px solid rgba(255,255,255,.22)!important;box-shadow:0 5px 10px rgba(0,0,0,.25),inset 0 2px 0 rgba(255,255,255,.10)!important;color:#fff!important;text-shadow:0 2px 2px #000!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;line-height:1!important}.game.active .hud-box small{font-size:11px!important;color:#e0f2fe!important}.game.active .hud-box b{font-size:24px!important;color:#fff!important}
+body.v48-target-active .game.active .hud-box:nth-child(5){display:none!important}
+body.v48-target-active .game.active .objective-card{position:absolute!important;z-index:20!important;top:calc(66px + var(--safe-top))!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:min(520px,82vw)!important;min-height:58px!important;max-height:72px!important;padding:10px 16px!important;border-radius:18px!important;background:rgba(22,45,67,.62)!important;border:2px solid rgba(255,255,255,.18)!important;box-shadow:0 7px 18px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.12)!important;color:#f8fafc!important;text-align:center!important;overflow:hidden!important}.game.active .objective-card small{display:none!important}.game.active .objective-card strong{font-size:16px!important;line-height:1.15!important;text-shadow:0 2px 2px #000!important}.game.active .objective-progress{height:4px!important;margin-top:8px!important;background:rgba(255,255,255,.20)!important;border:0!important;border-radius:10px!important;overflow:hidden!important}.game.active .objective-progress span{display:block!important;height:100%!important;background:linear-gradient(90deg,#50f38b,#55e2ff,#b665ff)!important}
+body.v48-target-active .game.active .minimap,body.v48-target-active .game.active .tutorial-box{display:none!important}
+body.v48-target-active .game.active .game-controls{position:absolute!important;inset:0!important;z-index:40!important;padding:0!important;display:block!important;background:linear-gradient(0deg,rgba(2,6,23,.28),rgba(2,6,23,0) 34%)!important;pointer-events:none!important;height:auto!important;width:auto!important}
+body.v48-target-active .game.active .world-strip{position:absolute!important;left:10px!important;right:10px!important;bottom:calc(150px + var(--safe-bottom))!important;height:32px!important;display:flex!important;gap:5px!important;overflow-x:auto!important;z-index:42!important;padding:0!important;max-width:none!important;pointer-events:auto!important;scrollbar-width:none!important}.game.active .world-strip::-webkit-scrollbar{display:none!important}
+body.v48-target-active .game.active .world-chip{height:30px!important;min-width:78px!important;max-width:96px!important;padding:2px 6px!important;border-radius:14px!important;background:rgba(255,255,255,.80)!important;color:#102033!important;border:2px solid rgba(255,255,255,.52)!important;font-size:12px!important;font-weight:900!important;box-shadow:0 4px 8px rgba(0,0,0,.25)!important;text-shadow:none!important;white-space:nowrap!important}.game.active .world-chip.active{background:linear-gradient(180deg,#ffe25e,#b68206)!important}.game.active .world-chip[data-world="real"]{background:linear-gradient(180deg,#54ff84,#11a848)!important;color:#06130b!important;min-width:86px!important}
+body.v48-target-active .game.active .left-zone{position:absolute!important;left:18px!important;bottom:calc(18px + var(--safe-bottom))!important;z-index:43!important;pointer-events:auto!important;display:block!important;min-width:0!important}.game.active .joystick{display:block!important;color:#fff!important;text-shadow:0 2px 2px #000!important}.game.active .joy-ring{width:128px!important;height:128px!important;border-radius:50%!important;background:rgba(20,28,39,.26)!important;border:3px solid rgba(255,255,255,.48)!important;box-shadow:0 9px 22px rgba(0,0,0,.25),inset 0 0 22px rgba(255,255,255,.18)!important;backdrop-filter:blur(4px)!important}.game.active .joy-knob{width:54px!important;height:54px!important;margin:-27px 0 0 -27px!important;border-radius:50%!important;background:linear-gradient(180deg,#f2f5f7,#aab5c0)!important;border:3px solid rgba(255,255,255,.78)!important;box-shadow:0 5px 14px rgba(0,0,0,.35),inset 0 2px 5px #fff!important}.game.active .joystick small{display:none!important}
+body.v48-target-active .game.active .direction-buttons{position:absolute!important;left:34px!important;bottom:-2px!important;transform:translateY(58px) scale(.62)!important;opacity:.70!important;pointer-events:auto!important}.game.active .move-btn{border-radius:9px!important}
+body.v48-target-active .game.active .right-zone{position:absolute!important;right:18px!important;bottom:calc(18px + var(--safe-bottom))!important;z-index:43!important;pointer-events:auto!important;width:206px!important;min-width:0!important;display:block!important;transform:none!important}.game.active .action-grid{position:relative!important;display:block!important;width:206px!important;height:154px!important;gap:0!important}.game.active .action-btn{position:absolute!important;border-radius:50%!important;border:3px solid rgba(255,255,255,.82)!important;color:#fff!important;text-shadow:0 2px 3px #000!important;box-shadow:0 7px 13px rgba(0,0,0,.38),inset 0 3px 6px rgba(255,255,255,.32)!important;font-size:0!important;display:flex!important;align-items:center!important;justify-content:center!important;min-height:0!important}.game.active .action-btn span{display:none!important}.game.active #powerBtn,.game.active #jumpBtn,.game.active [data-action="interact"]{width:72px!important;height:72px!important;min-height:72px!important}.game.active #powerBtn{right:0!important;top:0!important;background:radial-gradient(circle at 34% 26%,#ffd783,#ff4b2b 55%,#9e1c14)!important}.game.active #powerBtn::before{content:"🔥";font-size:34px!important}.game.active [data-action="interact"]{left:42px!important;bottom:0!important;background:radial-gradient(circle at 34% 26%,#bfefff,#148bd7 55%,#075985)!important}.game.active [data-action="interact"]::before{content:"⚔";font-size:34px!important}.game.active #jumpBtn{right:0!important;bottom:0!important;background:radial-gradient(circle at 34% 26%,#d7ffd9,#2dd46d 55%,#137d32)!important}.game.active #jumpBtn::before{content:"⬆";font-size:34px!important}.game.active #crouchBtn,.game.active #sizeBtn,.game.active #normalBtn,.game.active [data-action="spin"],.game.active #pauseBtn,.game.active #exitBtn{width:34px!important;height:34px!important;min-height:34px!important;opacity:.86!important}.game.active #crouchBtn{left:0!important;top:0!important;background:#b78408!important}.game.active #sizeBtn{left:0!important;top:40px!important;background:#16a34a!important}.game.active #normalBtn{left:0!important;top:80px!important;background:#111827!important}.game.active [data-action="spin"]{left:0!important;top:120px!important;background:#334155!important}.game.active #pauseBtn{left:42px!important;top:0!important;background:#7c3aed!important}.game.active #exitBtn{left:42px!important;top:40px!important;background:#991b1b!important}.game.active #crouchBtn::before{content:"▾";font-size:18px}.game.active #sizeBtn::before{content:"⬡";font-size:18px}.game.active #normalBtn::before{content:"N";font-size:16px}.game.active [data-action="spin"]::before{content:"↻";font-size:18px}.game.active #pauseBtn::before{content:"Ⅱ";font-size:18px}.game.active #exitBtn::before{content:"■";font-size:18px}
+@media(max-width:390px){body.v48-target-active .game.active .world-strip{bottom:calc(140px + var(--safe-bottom))!important}.game.active .joy-ring{width:112px!important;height:112px!important}.game.active .joy-knob{width:48px!important;height:48px!important;margin:-24px 0 0 -24px!important}body.v48-target-active .game.active .right-zone{right:8px!important;transform:scale(.88)!important;transform-origin:bottom right!important}body.v48-target-active .game.active .left-zone{left:10px!important}}
+@media(orientation:landscape) and (max-height:740px){body.v48-target-active .game.active .world-strip{left:160px!important;right:260px!important;bottom:8px!important}.game.active .joy-ring{width:94px!important;height:94px!important}.game.active .joy-knob{width:42px!important;height:42px!important;margin:-21px 0 0 -21px!important}body.v48-target-active .game.active .right-zone{transform:scale(.72)!important;transform-origin:bottom right!important}.game.active .objective-card{top:50px!important;width:min(420px,54vw)!important}.game.active .top-hud{right:260px!important}.game.active .hud-box{height:38px!important;min-width:66px!important}.game.active .hud-box b{font-size:18px!important}}
+
+/* ============================================================
+   ATHOS V50 — HUD VISUAL FIEL À IMAGEM DE REFERÊNCIA
+   Corações individuais, badge nível+XP, gemas, settings
+   ============================================================ */
+
+/* TOP-HUD: layout de 3 blocos horizontais */
+body.v48-target-active .game.active .top-hud{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:8px!important;
+  padding:0 10px!important;
+  top:calc(6px + var(--safe-top))!important;
+  left:0!important;
+  right:0!important;
+  height:56px!important;
+  background:transparent!important;
+}
+
+/* Oculta hud-box originais quando v48 ativo */
+body.v48-target-active .game.active .hud-box{
+  display:none!important;
+}
+
+/* === BADGE NÍVEL + XP (esquerda) === */
+body.v48-target-active .game.active .hud-level-badge{
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  background:rgba(10,20,35,.72)!important;
+  border:2px solid rgba(255,255,255,.20)!important;
+  border-radius:14px!important;
+  padding:5px 10px 5px 5px!important;
+  box-shadow:0 4px 14px rgba(0,0,0,.35)!important;
+  backdrop-filter:blur(6px)!important;
+  min-width:130px!important;
+  pointer-events:none!important;
+}
+body.v48-target-active .game.active .hud-avatar{
+  position:relative!important;
+  width:42px!important;
+  height:42px!important;
+  background:linear-gradient(145deg,#1e3a5f,#111827)!important;
+  border:3px solid #facc15!important;
+  border-radius:10px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-shrink:0!important;
+}
+body.v48-target-active .game.active .hud-avatar-face{
+  font-size:22px!important;
+  line-height:1!important;
+}
+body.v48-target-active .game.active .hud-level-num{
+  position:absolute!important;
+  bottom:-4px!important;
+  right:-4px!important;
+  background:#facc15!important;
+  color:#111827!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  border-radius:6px!important;
+  padding:1px 4px!important;
+  border:2px solid rgba(255,255,255,.6)!important;
+  line-height:1!important;
+}
+body.v48-target-active .game.active .hud-xp-block{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:4px!important;
+  min-width:80px!important;
+}
+body.v48-target-active .game.active .hud-xp-bar-wrap{
+  height:7px!important;
+  background:rgba(255,255,255,.15)!important;
+  border-radius:6px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(255,255,255,.15)!important;
+}
+body.v48-target-active .game.active .hud-xp-bar-fill{
+  height:100%!important;
+  background:linear-gradient(90deg,#22c55e,#86efac)!important;
+  border-radius:6px!important;
+  transition:width .4s ease!important;
+  box-shadow:0 0 8px rgba(34,197,94,.6)!important;
+}
+body.v48-target-active .game.active .hud-xp-label{
+  color:#93c5fd!important;
+  font-size:11px!important;
+  text-shadow:0 1px 3px #000!important;
+  line-height:1!important;
+}
+body.v48-target-active .game.active .hud-xp-label b{
+  color:#fff!important;
+  font-size:12px!important;
+}
+
+/* === CORAÇÕES INDIVIDUAIS (centro) === */
+body.v48-target-active .game.active .hud-hearts-row{
+  display:flex!important;
+  align-items:center!important;
+  gap:4px!important;
+  pointer-events:none!important;
+}
+body.v48-target-active .game.active .hud-heart{
+  font-size:22px!important;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))!important;
+  transition:transform .15s,filter .15s!important;
+  line-height:1!important;
+}
+body.v48-target-active .game.active .hud-heart-empty{
+  filter:grayscale(.8) brightness(.6) drop-shadow(0 2px 4px rgba(0,0,0,.6))!important;
+  transform:scale(.82)!important;
+}
+
+/* === GEMAS + SETTINGS (direita) === */
+body.v48-target-active .game.active .hud-right-cluster{
+  display:flex!important;
+  align-items:center!important;
+  gap:6px!important;
+  pointer-events:auto!important;
+}
+body.v48-target-active .game.active .hud-gems-box{
+  display:flex!important;
+  align-items:center!important;
+  gap:5px!important;
+  background:rgba(10,20,35,.72)!important;
+  border:2px solid rgba(255,255,255,.18)!important;
+  border-radius:14px!important;
+  padding:5px 10px!important;
+  box-shadow:0 4px 12px rgba(0,0,0,.32)!important;
+  backdrop-filter:blur(6px)!important;
+}
+body.v48-target-active .game.active .hud-gem-icon{
+  font-size:20px!important;
+  filter:drop-shadow(0 2px 6px rgba(168,85,247,.7))!important;
+  line-height:1!important;
+}
+body.v48-target-active .game.active .hud-gem-count{
+  color:#fff!important;
+  font-size:20px!important;
+  font-weight:900!important;
+  text-shadow:0 2px 4px #000!important;
+  line-height:1!important;
+  min-width:30px!important;
+}
+body.v48-target-active .game.active .hud-gem-plus{
+  width:26px!important;
+  height:26px!important;
+  background:#22c55e!important;
+  border:2px solid rgba(255,255,255,.5)!important;
+  border-radius:8px!important;
+  color:#fff!important;
+  font-size:18px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-shadow:0 3px 8px rgba(0,0,0,.35)!important;
+  cursor:pointer!important;
+  padding:0!important;
+}
+body.v48-target-active .game.active .hud-settings-btn{
+  width:40px!important;
+  height:40px!important;
+  background:rgba(30,41,59,.82)!important;
+  border:2px solid rgba(255,255,255,.22)!important;
+  border-radius:12px!important;
+  color:#fff!important;
+  font-size:22px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-shadow:0 4px 10px rgba(0,0,0,.32)!important;
+  cursor:pointer!important;
+  backdrop-filter:blur(4px)!important;
+  padding:0!important;
+}
+
+/* === BADGE DE MISSÃO MELHORADO === */
+body.v48-target-active .game.active .objective-card{
+  top:calc(68px + var(--safe-top))!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  width:min(480px,80vw)!important;
+  background:rgba(15,28,48,.72)!important;
+  border:2px solid rgba(255,255,255,.18)!important;
+  border-radius:16px!important;
+  padding:10px 16px!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  box-shadow:0 6px 18px rgba(0,0,0,.32)!important;
+  backdrop-filter:blur(8px)!important;
+}
+body.v48-target-active .game.active .objective-card::before{
+  content:"🔷"!important;
+  font-size:20px!important;
+  flex-shrink:0!important;
+  filter:drop-shadow(0 0 8px rgba(99,179,237,.8))!important;
+}
+body.v48-target-active .game.active .objective-card small{
+  display:none!important;
+}
+body.v48-target-active .game.active .objective-card strong{
+  font-size:14px!important;
+  color:#f0f9ff!important;
+  text-shadow:0 1px 3px #000!important;
+  line-height:1.25!important;
+}
+body.v48-target-active .game.active .objective-progress{
+  display:none!important;
+}
+
+/* Ajuste mobile pequeno */
+@media(max-width:390px){
+  body.v48-target-active .game.active .hud-level-badge{min-width:110px!important;padding:4px 7px 4px 4px!important}
+  body.v48-target-active .game.active .hud-avatar{width:36px!important;height:36px!important}
+  body.v48-target-active .game.active .hud-avatar-face{font-size:18px!important}
+  body.v48-target-active .game.active .hud-heart{font-size:18px!important}
+  body.v48-target-active .game.active .hud-gem-count{font-size:17px!important}
+  body.v48-target-active .game.active .hud-xp-block{min-width:65px!important}
+}
+
+
+/* ===== V53.1 — HOTFIX RESPONSIVIDADE REAL: nada fora da tela ===== */
+/* Regra: HUD no topo, objetivo curto, mundo no rodapé, joystick embaixo esquerda, ações embaixo direita. */
+body.v48-target-active{
+  margin:0!important;
+  overflow:hidden!important;
+  overscroll-behavior:none!important;
+}
+body.v48-target-active .screen.game.active,
+body.v48-target-active .game.active{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100dvh!important;
+  min-height:100dvh!important;
+  max-height:100dvh!important;
+  overflow:hidden!important;
+  transform:none!important;
+}
+
+/* Impede o bloco .game-controls inset:0 antigo de empurrar itens para topo/fora da tela */
+body.v48-target-active .game.active .game-controls{
+  position:fixed!important;
+  inset:auto 0 0 0!important;
+  left:0!important;
+  right:0!important;
+  bottom:0!important;
+  width:100vw!important;
+  height:auto!important;
+  display:grid!important;
+  z-index:90!important;
+  pointer-events:none!important;
+  padding:0!important;
+  background:linear-gradient(180deg,rgba(2,6,23,0),rgba(2,6,23,.36) 40%,rgba(2,6,23,.68))!important;
+}
+
+/* HUD sempre dentro da viewport */
+body.v48-target-active .game.active .top-hud{
+  position:fixed!important;
+  top:calc(6px + env(safe-area-inset-top))!important;
+  left:8px!important;
+  right:8px!important;
+  width:auto!important;
+  max-width:none!important;
+  height:46px!important;
+  z-index:80!important;
+  display:flex!important;
+  gap:6px!important;
+  pointer-events:none!important;
+}
+body.v48-target-active .game.active .hud-box{
+  flex:1 1 0!important;
+  min-width:0!important;
+  height:42px!important;
+  padding:3px 5px!important;
+  border-radius:13px!important;
+}
+body.v48-target-active .game.active .hud-box small{
+  font-size:9px!important;
+  line-height:1!important;
+}
+body.v48-target-active .game.active .hud-box b{
+  font-size:18px!important;
+  line-height:1!important;
+}
+
+/* Objetivo curto, sem textão gigante */
+body.v48-target-active .game.active .objective-card{
+  position:fixed!important;
+  top:calc(58px + env(safe-area-inset-top))!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  width:min(520px,88vw)!important;
+  min-height:42px!important;
+  max-height:58px!important;
+  padding:7px 12px!important;
+  z-index:79!important;
+  overflow:hidden!important;
+  text-align:center!important;
+  border-radius:17px!important;
+}
+body.v48-target-active .game.active .objective-card small{
+  display:none!important;
+}
+body.v48-target-active .game.active .objective-card strong{
+  display:block!important;
+  font-size:14px!important;
+  line-height:1.10!important;
+  max-height:32px!important;
+  overflow:hidden!important;
+}
+body.v48-target-active .game.active .objective-progress{
+  height:4px!important;
+  margin-top:6px!important;
+}
+
+/* RETRATO: controles embaixo, 3 colunas de ação, nada sobre HUD */
+@media (orientation: portrait){
+  body.v48-target-active .game.active .game-controls{
+    grid-template-columns:minmax(104px,1fr) 170px!important;
+    grid-template-areas:"world world" "left right"!important;
+    gap:6px!important;
+    padding:0 7px calc(7px + env(safe-area-inset-bottom)) 7px!important;
+    align-items:end!important;
+  }
+  body.v48-target-active .game.active .world-strip{
+    position:static!important;
+    grid-area:world!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:100%!important;
+    height:32px!important;
+    max-width:100%!important;
+    padding:2px!important;
+    display:flex!important;
+    gap:5px!important;
+    overflow-x:auto!important;
+    pointer-events:auto!important;
+    z-index:1!important;
+  }
+  body.v48-target-active .game.active .world-chip{
+    height:28px!important;
+    min-width:74px!important;
+    max-width:92px!important;
+    padding:2px 7px!important;
+    font-size:12px!important;
+    border-radius:13px!important;
+  }
+  body.v48-target-active .game.active .left-zone{
+    position:static!important;
+    grid-area:left!important;
+    left:auto!important;
+    bottom:auto!important;
+    display:flex!important;
+    align-items:flex-end!important;
+    gap:6px!important;
+    pointer-events:auto!important;
+    z-index:1!important;
+    min-width:0!important;
+  }
+  body.v48-target-active .game.active .right-zone{
+    position:static!important;
+    grid-area:right!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:170px!important;
+    display:flex!important;
+    justify-content:flex-end!important;
+    align-items:flex-end!important;
+    pointer-events:auto!important;
+    z-index:1!important;
+  }
+  body.v48-target-active .game.active .joy-ring{
+    width:96px!important;
+    height:96px!important;
+  }
+  body.v48-target-active .game.active .joy-knob{
+    width:42px!important;
+    height:42px!important;
+    margin:-21px 0 0 -21px!important;
+  }
+  body.v48-target-active .game.active .direction-buttons{
+    position:static!important;
+    left:auto!important;
+    bottom:auto!important;
+    transform:none!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,30px)!important;
+    grid-template-areas:"f f" "l r" "b b"!important;
+    gap:3px!important;
+    opacity:.66!important;
+    pointer-events:auto!important;
+  }
+  body.v48-target-active .game.active #moveForwardBtn{grid-area:f!important}
+  body.v48-target-active .game.active #moveLeftBtn{grid-area:l!important}
+  body.v48-target-active .game.active #moveRightBtn{grid-area:r!important}
+  body.v48-target-active .game.active #moveBackBtn{grid-area:b!important}
+  body.v48-target-active .game.active .move-btn{
+    width:30px!important;
+    height:24px!important;
+    min-height:24px!important;
+    padding:0!important;
+    font-size:10px!important;
+  }
+  body.v48-target-active .game.active .move-btn span{display:none!important}
+  body.v48-target-active .game.active .action-grid{
+    position:static!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,50px)!important;
+    grid-template-rows:repeat(3,50px)!important;
+    gap:5px!important;
+    width:auto!important;
+    height:auto!important;
+  }
+  body.v48-target-active .game.active .action-btn,
+  body.v48-target-active .game.active #powerBtn,
+  body.v48-target-active .game.active #jumpBtn,
+  body.v48-target-active .game.active [data-action="interact"]{
+    position:static!important;
+    width:50px!important;
+    height:50px!important;
+    min-height:50px!important;
+    border-radius:50%!important;
+    inset:auto!important;
+    transform:none!important;
+    font-size:0!important;
+  }
+}
+
+/* PAISAGEM: controles no rodapé, nunca no topo */
+@media (orientation: landscape){
+  body.v48-target-active .game.active .top-hud{
+    top:calc(5px + env(safe-area-inset-top))!important;
+    left:8px!important;
+    right:auto!important;
+    width:min(440px,42vw)!important;
+    height:38px!important;
+    gap:5px!important;
+  }
+  body.v48-target-active .game.active .hud-box{
+    height:34px!important;
+    padding:2px 5px!important;
+    border-radius:11px!important;
+  }
+  body.v48-target-active .game.active .hud-box small{font-size:8px!important}
+  body.v48-target-active .game.active .hud-box b{font-size:15px!important}
+  body.v48-target-active .game.active .objective-card{
+    top:calc(48px + env(safe-area-inset-top))!important;
+    width:min(460px,42vw)!important;
+    min-height:34px!important;
+    max-height:46px!important;
+    padding:5px 9px!important;
+  }
+  body.v48-target-active .game.active .objective-card strong{
+    font-size:12px!important;
+    line-height:1.05!important;
+  }
+  body.v48-target-active .game.active .game-controls{
+    grid-template-columns:122px minmax(280px,1fr) 174px!important;
+    grid-template-areas:"left world right"!important;
+    gap:8px!important;
+    align-items:end!important;
+    padding:0 8px calc(7px + env(safe-area-inset-bottom)) 8px!important;
+  }
+  body.v48-target-active .game.active .world-strip{
+    position:static!important;
+    grid-area:world!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:100%!important;
+    height:30px!important;
+    max-width:100%!important;
+    padding:1px!important;
+    pointer-events:auto!important;
+    z-index:1!important;
+  }
+  body.v48-target-active .game.active .world-chip{
+    height:27px!important;
+    min-width:78px!important;
+    max-width:100px!important;
+    padding:1px 7px!important;
+    font-size:12px!important;
+  }
+  body.v48-target-active .game.active .left-zone{
+    position:static!important;
+    grid-area:left!important;
+    left:auto!important;
+    bottom:auto!important;
+    display:flex!important;
+    align-items:flex-end!important;
+    gap:4px!important;
+    min-width:0!important;
+    pointer-events:auto!important;
+  }
+  body.v48-target-active .game.active .right-zone{
+    position:static!important;
+    grid-area:right!important;
+    right:auto!important;
+    bottom:auto!important;
+    display:flex!important;
+    align-items:flex-end!important;
+    justify-content:flex-end!important;
+    width:174px!important;
+    pointer-events:auto!important;
+  }
+  body.v48-target-active .game.active .joy-ring{
+    width:78px!important;
+    height:78px!important;
+  }
+  body.v48-target-active .game.active .joy-knob{
+    width:34px!important;
+    height:34px!important;
+    margin:-17px 0 0 -17px!important;
+  }
+  body.v48-target-active .game.active .direction-buttons{
+    position:static!important;
+    left:auto!important;
+    bottom:auto!important;
+    transform:none!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,24px)!important;
+    grid-template-areas:"f f" "l r" "b b"!important;
+    gap:3px!important;
+    opacity:.60!important;
+    pointer-events:auto!important;
+  }
+  body.v48-target-active .game.active #moveForwardBtn{grid-area:f!important}
+  body.v48-target-active .game.active #moveLeftBtn{grid-area:l!important}
+  body.v48-target-active .game.active #moveRightBtn{grid-area:r!important}
+  body.v48-target-active .game.active #moveBackBtn{grid-area:b!important}
+  body.v48-target-active .game.active .move-btn{
+    width:24px!important;
+    height:20px!important;
+    min-height:20px!important;
+    padding:0!important;
+    font-size:9px!important;
+  }
+  body.v48-target-active .game.active .move-btn span{display:none!important}
+  body.v48-target-active .game.active .action-grid{
+    position:static!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,46px)!important;
+    grid-template-rows:repeat(3,46px)!important;
+    width:auto!important;
+    height:auto!important;
+    gap:5px!important;
+  }
+  body.v48-target-active .game.active .action-btn,
+  body.v48-target-active .game.active #powerBtn,
+  body.v48-target-active .game.active #jumpBtn,
+  body.v48-target-active .game.active [data-action="interact"]{
+    position:static!important;
+    width:46px!important;
+    height:46px!important;
+    min-height:46px!important;
+    border-radius:50%!important;
+    inset:auto!important;
+    transform:none!important;
+    font-size:0!important;
+  }
+}
+
+body.v48-target-active .game.active .action-btn span{display:none!important}
+body.v48-target-active .game.active #powerBtn::before{content:"🔥";font-size:26px!important}
+body.v48-target-active .game.active #jumpBtn::before{content:"⬆";font-size:26px!important}
+body.v48-target-active .game.active [data-action="interact"]::before{content:"⚔";font-size:26px!important}
+body.v48-target-active .game.active #sizeBtn::before{content:"⬡";font-size:20px!important}
+body.v48-target-active .game.active #normalBtn::before{content:"N";font-size:20px!important}
+body.v48-target-active .game.active [data-action="spin"]::before{content:"↻";font-size:22px!important}
+body.v48-target-active .game.active #pauseBtn::before{content:"Ⅱ";font-size:22px!important}
+body.v48-target-active .game.active #exitBtn::before{content:"■";font-size:20px!important}
+
+
+/* ===== V53.2 — HOTFIX FINAL MOBILE + JOGABILIDADE VISUAL ===== */
+/* Menos HUD em cima, controles realmente no rodapé, câmera não briga com layout. */
+body.v48-target-active .game.active{
+  touch-action:none!important;
+}
+body.v48-target-active .game.active .objective-card{
+  opacity:.70!important;
+}
+body.v48-target-active .game.active .top-hud{
+  opacity:.96!important;
+}
+
+/* RETRATO: mais área útil de jogo, controles menores, personagem não fica coberto */
+@media (orientation: portrait){
+  body.v48-target-active .game.active .top-hud{
+    top:calc(5px + env(safe-area-inset-top))!important;
+    left:6px!important;
+    right:6px!important;
+    height:40px!important;
+    gap:5px!important;
+  }
+  body.v48-target-active .game.active .hud-box{
+    height:36px!important;
+    min-height:36px!important;
+    border-radius:12px!important;
+    padding:2px 4px!important;
+  }
+  body.v48-target-active .game.active .hud-box small{
+    font-size:8px!important;
+  }
+  body.v48-target-active .game.active .hud-box b{
+    font-size:15px!important;
+  }
+  body.v48-target-active .game.active .objective-card{
+    top:calc(48px + env(safe-area-inset-top))!important;
+    width:min(440px,84vw)!important;
+    min-height:34px!important;
+    max-height:46px!important;
+    padding:5px 10px!important;
+    border-radius:15px!important;
+  }
+  body.v48-target-active .game.active .objective-card strong{
+    font-size:12px!important;
+    line-height:1.05!important;
+    max-height:26px!important;
+  }
+  body.v48-target-active .game.active .objective-progress{
+    height:3px!important;
+    margin-top:4px!important;
+  }
+  body.v48-target-active .game.active .game-controls{
+    grid-template-columns:minmax(92px,1fr) 146px!important;
+    grid-template-areas:"world world" "left right"!important;
+    gap:4px!important;
+    padding:0 5px calc(5px + env(safe-area-inset-bottom)) 5px!important;
+    background:linear-gradient(180deg,rgba(2,6,23,0),rgba(2,6,23,.22) 28%,rgba(2,6,23,.62))!important;
+  }
+  body.v48-target-active .game.active .world-strip{
+    height:29px!important;
+    gap:4px!important;
+    padding:1px!important;
+    margin:0!important;
+  }
+  body.v48-target-active .game.active .world-chip{
+    height:26px!important;
+    min-width:66px!important;
+    max-width:82px!important;
+    padding:1px 6px!important;
+    font-size:11px!important;
+    border-radius:12px!important;
+  }
+  body.v48-target-active .game.active .joy-ring{
+    width:82px!important;
+    height:82px!important;
+    border-width:2px!important;
+  }
+  body.v48-target-active .game.active .joy-knob{
+    width:36px!important;
+    height:36px!important;
+    margin:-18px 0 0 -18px!important;
+  }
+  body.v48-target-active .game.active .direction-buttons{
+    grid-template-columns:repeat(2,25px)!important;
+    gap:3px!important;
+    opacity:.58!important;
+  }
+  body.v48-target-active .game.active .move-btn{
+    width:25px!important;
+    height:20px!important;
+    min-height:20px!important;
+    border-radius:7px!important;
+    font-size:9px!important;
+  }
+  body.v48-target-active .game.active .action-grid{
+    grid-template-columns:repeat(3,44px)!important;
+    grid-template-rows:repeat(3,44px)!important;
+    gap:5px!important;
+  }
+  body.v48-target-active .game.active .action-btn,
+  body.v48-target-active .game.active #powerBtn,
+  body.v48-target-active .game.active #jumpBtn,
+  body.v48-target-active .game.active [data-action="interact"]{
+    width:44px!important;
+    height:44px!important;
+    min-height:44px!important;
+    border-width:2px!important;
+  }
+  body.v48-target-active .game.active #powerBtn::before,
+  body.v48-target-active .game.active #jumpBtn::before,
+  body.v48-target-active .game.active [data-action="interact"]::before{
+    font-size:22px!important;
+  }
+  body.v48-target-active .game.active #sizeBtn::before,
+  body.v48-target-active .game.active #normalBtn::before,
+  body.v48-target-active .game.active [data-action="spin"]::before,
+  body.v48-target-active .game.active #pauseBtn::before,
+  body.v48-target-active .game.active #exitBtn::before{
+    font-size:18px!important;
+  }
+}
+
+/* PAISAGEM: barra de mundos menor e ações mais baixas; nada fica no topo/direita invadindo HUD */
+@media (orientation: landscape){
+  body.v48-target-active .game.active .top-hud{
+    width:min(390px,36vw)!important;
+    height:34px!important;
+    left:8px!important;
+    top:calc(4px + env(safe-area-inset-top))!important;
+  }
+  body.v48-target-active .game.active .hud-box{
+    height:31px!important;
+    min-height:31px!important;
+    padding:1px 4px!important;
+  }
+  body.v48-target-active .game.active .hud-box small{font-size:7px!important}
+  body.v48-target-active .game.active .hud-box b{font-size:13px!important}
+  body.v48-target-active .game.active .objective-card{
+    top:calc(40px + env(safe-area-inset-top))!important;
+    width:min(390px,36vw)!important;
+    min-height:30px!important;
+    max-height:38px!important;
+    padding:4px 8px!important;
+    opacity:.62!important;
+  }
+  body.v48-target-active .game.active .objective-card strong{
+    font-size:11px!important;
+    max-height:22px!important;
+  }
+  body.v48-target-active .game.active .game-controls{
+    grid-template-columns:105px minmax(250px,1fr) 154px!important;
+    grid-template-areas:"left world right"!important;
+    gap:6px!important;
+    padding:0 8px calc(5px + env(safe-area-inset-bottom)) 8px!important;
+    background:linear-gradient(180deg,rgba(2,6,23,0),rgba(2,6,23,.32))!important;
+  }
+  body.v48-target-active .game.active .world-strip{
+    height:27px!important;
+    gap:4px!important;
+    align-self:end!important;
+  }
+  body.v48-target-active .game.active .world-chip{
+    height:24px!important;
+    min-width:72px!important;
+    max-width:88px!important;
+    padding:1px 6px!important;
+    font-size:10.5px!important;
+    border-radius:12px!important;
+  }
+  body.v48-target-active .game.active .joy-ring{
+    width:66px!important;
+    height:66px!important;
+    border-width:2px!important;
+  }
+  body.v48-target-active .game.active .joy-knob{
+    width:28px!important;
+    height:28px!important;
+    margin:-14px 0 0 -14px!important;
+  }
+  body.v48-target-active .game.active .direction-buttons{
+    grid-template-columns:repeat(2,21px)!important;
+    gap:2px!important;
+    opacity:.50!important;
+  }
+  body.v48-target-active .game.active .move-btn{
+    width:21px!important;
+    height:18px!important;
+    min-height:18px!important;
+    font-size:8px!important;
+    border-radius:6px!important;
+  }
+  body.v48-target-active .game.active .action-grid{
+    grid-template-columns:repeat(3,40px)!important;
+    grid-template-rows:repeat(3,40px)!important;
+    gap:4px!important;
+  }
+  body.v48-target-active .game.active .action-btn,
+  body.v48-target-active .game.active #powerBtn,
+  body.v48-target-active .game.active #jumpBtn,
+  body.v48-target-active .game.active [data-action="interact"]{
+    width:40px!important;
+    height:40px!important;
+    min-height:40px!important;
+    border-width:2px!important;
+  }
+  body.v48-target-active .game.active #powerBtn::before,
+  body.v48-target-active .game.active #jumpBtn::before,
+  body.v48-target-active .game.active [data-action="interact"]::before{font-size:20px!important}
+  body.v48-target-active .game.active #sizeBtn::before,
+  body.v48-target-active .game.active #normalBtn::before,
+  body.v48-target-active .game.active [data-action="spin"]::before,
+  body.v48-target-active .game.active #pauseBtn::before,
+  body.v48-target-active .game.active #exitBtn::before{font-size:16px!important}
+}
+
+
+/* ===== V53.3 — CORREÇÃO CIRÚRGICA: BOTÕES 100% DENTRO DA TELA ===== */
+/* Motivo: no teste V53.2 o action-grid ficou right:-12 em paisagem.
+   Aqui os controles deixam de depender do grid do .game-controls e passam a ser fixados por zona. */
+
+body.v48-target-active .game.active .game-controls{
+  position:fixed!important;
+  left:0!important;
+  right:0!important;
+  bottom:0!important;
+  width:100vw!important;
+  height:0!important;
+  display:block!important;
+  padding:0!important;
+  margin:0!important;
+  pointer-events:none!important;
+  z-index:100!important;
+  overflow:visible!important;
+  background:none!important;
+}
+
+/* Zonas fixas, com pointer só nos controles */
+body.v48-target-active .game.active .left-zone,
+body.v48-target-active .game.active .right-zone,
+body.v48-target-active .game.active .world-strip{
+  pointer-events:auto!important;
+  z-index:101!important;
+}
+
+/* MOBILE EM PÉ */
+@media (orientation: portrait){
+  body.v48-target-active .game.active .left-zone{
+    position:fixed!important;
+    left:8px!important;
+    bottom:calc(8px + env(safe-area-inset-bottom))!important;
+    display:flex!important;
+    align-items:flex-end!important;
+    gap:5px!important;
+    width:auto!important;
+    height:auto!important;
+    transform:none!important;
+  }
+  body.v48-target-active .game.active .right-zone{
+    position:fixed!important;
+    right:8px!important;
+    bottom:calc(8px + env(safe-area-inset-bottom))!important;
+    display:block!important;
+    width:136px!important;
+    height:136px!important;
+    transform:none!important;
+  }
+  body.v48-target-active .game.active .world-strip{
+    position:fixed!important;
+    left:8px!important;
+    right:8px!important;
+    bottom:calc(150px + env(safe-area-inset-bottom))!important;
+    width:auto!important;
+    max-width:none!important;
+    height:28px!important;
+    display:flex!important;
+    gap:4px!important;
+    overflow-x:auto!important;
+    padding:1px!important;
+    margin:0!important;
+    transform:none!important;
+  }
+  body.v48-target-active .game.active .joy-ring{
+    width:78px!important;
+    height:78px!important;
+  }
+  body.v48-target-active .game.active .joy-knob{
+    width:34px!important;
+    height:34px!important;
+    margin:-17px 0 0 -17px!important;
+  }
+  body.v48-target-active .game.active .direction-buttons{
+    position:static!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,23px)!important;
+    grid-template-areas:"f f" "l r" "b b"!important;
+    gap:3px!important;
+    opacity:.58!important;
+    transform:none!important;
+  }
+  body.v48-target-active .game.active .move-btn{
+    width:23px!important;
+    height:19px!important;
+    min-height:19px!important;
+    padding:0!important;
+    font-size:8px!important;
+    border-radius:6px!important;
+  }
+  body.v48-target-active .game.active .action-grid{
+    position:static!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,42px)!important;
+    grid-template-rows:repeat(3,42px)!important;
+    gap:5px!important;
+    width:136px!important;
+    height:136px!important;
+    transform:none!important;
+    inset:auto!important;
+  }
+  body.v48-target-active .game.active .action-btn,
+  body.v48-target-active .game.active #powerBtn,
+  body.v48-target-active .game.active #jumpBtn,
+  body.v48-target-active .game.active [data-action="interact"]{
+    position:static!important;
+    width:42px!important;
+    height:42px!important;
+    min-height:42px!important;
+    border-radius:50%!important;
+    transform:none!important;
+    inset:auto!important;
+  }
+  body.v48-target-active .game.active .world-chip{
+    height:25px!important;
+    min-width:64px!important;
+    max-width:82px!important;
+    font-size:10.5px!important;
+    padding:1px 5px!important;
+  }
+}
+
+/* MOBILE DEITADO / PAISAGEM */
+@media (orientation: landscape){
+  body.v48-target-active .game.active .left-zone{
+    position:fixed!important;
+    left:8px!important;
+    bottom:calc(8px + env(safe-area-inset-bottom))!important;
+    display:flex!important;
+    align-items:flex-end!important;
+    gap:4px!important;
+    width:auto!important;
+    height:auto!important;
+    transform:none!important;
+  }
+  body.v48-target-active .game.active .right-zone{
+    position:fixed!important;
+    right:28px!important;
+    bottom:calc(8px + env(safe-area-inset-bottom))!important;
+    display:block!important;
+    width:116px!important;
+    height:116px!important;
+    transform:none!important;
+  }
+  body.v48-target-active .game.active .world-strip{
+    position:fixed!important;
+    left:132px!important;
+    right:168px!important;
+    bottom:calc(8px + env(safe-area-inset-bottom))!important;
+    width:auto!important;
+    max-width:none!important;
+    height:26px!important;
+    display:flex!important;
+    gap:4px!important;
+    overflow-x:auto!important;
+    padding:1px!important;
+    margin:0!important;
+    transform:none!important;
+  }
+  body.v48-target-active .game.active .joy-ring{
+    width:64px!important;
+    height:64px!important;
+  }
+  body.v48-target-active .game.active .joy-knob{
+    width:28px!important;
+    height:28px!important;
+    margin:-14px 0 0 -14px!important;
+  }
+  body.v48-target-active .game.active .direction-buttons{
+    position:static!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,20px)!important;
+    grid-template-areas:"f f" "l r" "b b"!important;
+    gap:2px!important;
+    opacity:.50!important;
+    transform:none!important;
+  }
+  body.v48-target-active .game.active .move-btn{
+    width:20px!important;
+    height:17px!important;
+    min-height:17px!important;
+    padding:0!important;
+    font-size:8px!important;
+    border-radius:6px!important;
+  }
+  body.v48-target-active .game.active .action-grid{
+    position:static!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,36px)!important;
+    grid-template-rows:repeat(3,36px)!important;
+    gap:4px!important;
+    width:116px!important;
+    height:116px!important;
+    transform:none!important;
+    inset:auto!important;
+  }
+  body.v48-target-active .game.active .action-btn,
+  body.v48-target-active .game.active #powerBtn,
+  body.v48-target-active .game.active #jumpBtn,
+  body.v48-target-active .game.active [data-action="interact"]{
+    position:static!important;
+    width:36px!important;
+    height:36px!important;
+    min-height:36px!important;
+    border-radius:50%!important;
+    transform:none!important;
+    inset:auto!important;
+  }
+  body.v48-target-active .game.active .world-chip{
+    height:23px!important;
+    min-width:66px!important;
+    max-width:82px!important;
+    font-size:10px!important;
+    padding:1px 5px!important;
+  }
+}
+
+/* Ícones recalibrados */
+body.v48-target-active .game.active #powerBtn::before,
+body.v48-target-active .game.active #jumpBtn::before,
+body.v48-target-active .game.active [data-action="interact"]::before{
+  font-size:20px!important;
+}
+body.v48-target-active .game.active #sizeBtn::before,
+body.v48-target-active .game.active #normalBtn::before,
+body.v48-target-active .game.active [data-action="spin"]::before,
+body.v48-target-active .game.active #pauseBtn::before,
+body.v48-target-active .game.active #exitBtn::before{
+  font-size:16px!important;
+}
