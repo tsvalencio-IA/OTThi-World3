@@ -1,0 +1,65 @@
+name: Build OTTHI World R16.8.0
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Gerar bundles e inventarios
+        run: |
+          python tools/build_project.py
+          python tools/audit_source.py
+          python tools/deep_inventory.py
+          python tools/verify_equivalence.py
+          node tools/test_v643_mobility.js
+          python tools/test_v643_world_systems.py
+          python tools/test_v644_neighborhoods.py
+          python tools/test_v646_professional_services.py
+          python tools/test_v6462_commercial_polish.py
+          python tools/test_v6463_coop_responsive.py
+          node tools/test_v646_runtime.js
+          node tools/test_v6466_permissions_buttons.js
+          python tools/test_v647_multiplayer_missions.py
+          python tools/test_v646_release.py
+          python tools/test_v700_otthi_world.py
+          python tools/test_v701_gm_panel.py
+          python tools/test_v702_world_evolution.py
+          python tools/test_v703_recovery.py
+          python tools/test_v7031_startup_order.py
+          python tools/test_v704_world_reconstruction.py
+          node tools/test_v704_world_materialization.js
+          node tools/test_v704_vehicle_runtime.js
+          python tools/audit_world_v704.py
+          python tools/test_v7057_r4_world_integrity.py
+          python tools/test_v7057_r5_vehicle_actions.py
+          python tools/test_v7057_r6_gameplay_integrity.py
+          python tools/test_v7057_r7_player_garage.py
+          node tools/test_v7057_r7_garage_runtime.js
+          node tools/test_v7057_r8_police_roadside_runtime.js
+          python tools/test_v7057_r10_visual_fidelity.py
+          python tools/test_v7057_r11_focus.py
+          python tools/test_r16711_shared_world.py
+          python tools/test_r16712_live_vehicle_lanes_multiseat.py
+          python tools/test_r13_gameplay_ux_regression.py
+          python tools/test_r14_global_ui_apk_update.py
+          node tools/test_r14_sports_controls_runtime.js
+          python tools/test_r1680_multiplayer_core_v2.py
+          python tools/validate_project.py
+      - name: Validar JavaScript
+        run: node --check app.js
+      - name: Confirmar bundles versionados
+        run: git diff --exit-code -- app.js style.css src/module-order.json release-manifest.json index.html sw.js

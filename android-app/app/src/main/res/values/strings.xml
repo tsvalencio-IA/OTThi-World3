@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OTTHI World</string>
+    <string name="app_url">__APP_URL__</string>
+    <string name="loading_message">Abrindo OTTHI World…</string>
+    <string name="offline_message">Não foi possível abrir o jogo. Confira a internet e tente novamente.</string>
+    <string name="update_available_title">Atualização disponível</string>
+    <string name="update_available_message">Uma versão nova do OTTHI World está disponível: %1$s.</string>
+    <string name="update_now">ATUALIZAR AGORA</string>
+    <string name="update_later">DEPOIS</string>
+    <string name="update_open_error">Não foi possível abrir o download da atualização.</string>
+</resources>
