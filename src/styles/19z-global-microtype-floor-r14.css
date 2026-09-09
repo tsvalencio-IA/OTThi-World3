@@ -1,0 +1,238 @@
+/** OTTHI World R14 — piso global de microtipografia gerado da auditoria completa. */
+/* @otthi-style-body */
+/* Toda declaração px abaixo de 11px recebe piso de 11px no MESMO contexto original. */
+.profile-strip small{font-size:11px!important} /* era 9px */
+.xp-block small{font-size:11px!important} /* era 10px */
+.mission-card small{font-size:11px!important} /* era 10px */
+.quick-bar span{font-size:11px!important} /* era 9px */
+.context-prompt small{font-size:11px!important} /* era 10px */
+.round span{font-size:11px!important} /* era 9px */
+@media (max-width:650px){.quick-bar span{font-size:11px!important} /* era 8px */}
+@media (orientation:landscape) and (max-height:560px){.mission-card p{font-size:11px!important} /* era 10px */}
+@media (orientation:landscape) and (max-height:560px){.build-badge,.vehicle-badge{font-size:11px!important} /* era 10px */}
+.quick-toggle span{font-size:11px!important} /* era 9px */
+.mission-card.expanded small{font-size:11px!important} /* era 10px */
+.skill-btn span{font-size:11px!important} /* era 7px */
+.map-region{font-size:11px!important} /* era 10px */
+.map-marker span{font-size:11px!important} /* era 8px */
+.player-dot b{font-size:11px!important} /* era 7px */
+.map-legend span{font-size:11px!important} /* era 10px */
+@media (orientation:landscape) and (max-height:700px){.skill-btn span{font-size:11px!important} /* era 6.5px */}
+@media (orientation:portrait){.skill-btn span{font-size:11px!important} /* era 6px */}
+@media (orientation:portrait){.map-marker span{font-size:11px!important} /* era 7px */}
+.map-marker small{font-size:11px!important} /* era 7px */
+.map-destination span{font-size:11px!important} /* era 9px */
+.mini-nav-copy b{font-size:11px!important} /* era 10px */
+.mini-nav-copy small{font-size:11px!important} /* era 7px */
+body.ui-compact .mission-card p{font-size:11px!important} /* era 9px */
+body.ui-short .context-prompt span{font-size:11px!important} /* era 8px */
+.multiplayer-badge{font-size:11px!important} /* era 9px */
+@media (orientation:landscape) and (max-height:520px){.multiplayer-badge{font-size:11px!important} /* era 8px */}
+.map-marker.clean:hover span,.map-marker.clean:focus span{font-size:11px!important} /* era 10px */
+.profile-name-card small{font-size:11px!important} /* era 8px */
+.profile-name-card i{font-size:11px!important} /* era 10px */
+.hud-player-name{font-size:11px!important} /* era 9px */
+.skills-toggle span{font-size:11px!important} /* era 7px */
+body.ui-portrait .mini-avatar span{font-size:11px!important} /* era 10px */
+body.ui-portrait .multiplayer-badge{font-size:11px!important} /* era 8px */
+body.ui-portrait .mission-card p{font-size:11px!important} /* era 8px */
+body.ui-portrait .mini-nav-copy b{font-size:11px!important} /* era 8px */
+body.ui-portrait .quick-toggle span{font-size:11px!important} /* era 7px */
+body.ui-portrait .context-prompt b{font-size:11px!important} /* era 10px */
+body.ui-portrait .context-prompt small{font-size:11px!important} /* era 7px */
+body.ui-landscape .multiplayer-badge{font-size:11px!important} /* era 7px */
+body.ui-landscape .mission-card strong{font-size:11px!important} /* era 10px */
+body.ui-landscape .quick-toggle span{font-size:11px!important} /* era 7px */
+body.ui-tiny .quick-bar button span{font-size:11px!important} /* era 6px */
+.learning-top small{font-size:11px!important} /* era 9px */
+.learning-unit>header small{font-size:11px!important} /* era 10px */
+.learning-node small{font-size:11px!important} /* era 9px */
+.edu-tabs button{font-size:11px!important} /* era 10px */
+.edu-subject>header small{font-size:11px!important} /* era 10px */
+.edu-node small{font-size:11px!important} /* era 9px */
+.challenge-card span{font-size:11px!important} /* era 10px */
+.challenge-card button{font-size:11px!important} /* era 10px */
+.challenge-picker button small{font-size:11px!important} /* era 10px */
+.menu-tile.academy-tile small{font-size:11px!important} /* era 8px */
+.academy-banner span{font-size:11px!important} /* era 10px */
+.academy-start small{font-size:11px!important} /* era 8px */
+.challenge-prompt-copy small{font-size:11px!important} /* era 8px */
+.challenge-prompt-copy span{font-size:11px!important} /* era 10px */
+.duel-history-card small{font-size:11px!important} /* era 10px */
+.chat-history-actions button{font-size:11px!important} /* era 10px */
+@media (pointer:coarse), (max-width:900px){.eyebrow{font-size:11px!important} /* era 8px */}
+@media (pointer:coarse), (max-width:900px){.badge{font-size:11px!important} /* era 9px */}
+@media (pointer:coarse), (max-width:900px){.viewer-placeholder span{font-size:11px!important} /* era 10px */}
+@media (pointer:coarse), (max-width:900px){.profile-strip small{font-size:11px!important} /* era 7px */}
+@media (pointer:coarse), (max-width:900px){.menu-tile span{font-size:11px!important} /* era 10px */}
+@media (pointer:coarse), (max-width:900px){.menu-tile.academy-tile small{font-size:11px!important} /* era 7px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){.mini-avatar span{font-size:11px!important} /* era 10px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){.hud-player-name{font-size:11px!important} /* era 9px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){body.ui-portrait .multiplayer-badge{font-size:11px!important} /* era 7px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){.mission-card.expanded p{font-size:11px!important} /* era 10px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){.mini-nav-copy b{font-size:11px!important} /* era 8px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){.mini-nav-copy small{font-size:11px!important} /* era 6px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){.quick-toggle span{font-size:11px!important} /* era 7px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){.round span{font-size:11px!important} /* era 7px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){.skills-toggle span{font-size:11px!important} /* era 6px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){.quick-bar span{font-size:11px!important} /* era 7px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){.secondary-actions .skill-btn span{font-size:11px!important} /* era 6px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){.context-prompt b{font-size:11px!important} /* era 10px */}
+@media (pointer:coarse) and (orientation:portrait), (max-width:700px) and (orientation:portrait){.context-prompt small{font-size:11px!important} /* era 7px */}
+@media (pointer:coarse) and (orientation:landscape), (max-height:760px) and (orientation:landscape){.menu-tile span{font-size:11px!important} /* era 8px */}
+@media (pointer:coarse) and (orientation:landscape), (max-height:760px) and (orientation:landscape){.hud-player-name{font-size:11px!important} /* era 8px */}
+@media (pointer:coarse) and (orientation:landscape), (max-height:760px) and (orientation:landscape){body.ui-landscape .multiplayer-badge{font-size:11px!important} /* era 7px */}
+@media (pointer:coarse) and (orientation:landscape), (max-height:760px) and (orientation:landscape){.mission-card strong{font-size:11px!important} /* era 10px */}
+@media (pointer:coarse) and (orientation:landscape), (max-height:760px) and (orientation:landscape){.mission-card.expanded p{font-size:11px!important} /* era 9px */}
+@media (pointer:coarse) and (orientation:landscape), (max-height:760px) and (orientation:landscape){.mini-nav-copy b{font-size:11px!important} /* era 8px */}
+@media (pointer:coarse) and (orientation:landscape), (max-height:760px) and (orientation:landscape){.mini-nav-copy small{font-size:11px!important} /* era 6px */}
+@media (pointer:coarse) and (orientation:landscape), (max-height:760px) and (orientation:landscape){.quick-toggle span{font-size:11px!important} /* era 6px */}
+@media (pointer:coarse) and (orientation:landscape), (max-height:760px) and (orientation:landscape){.quick-bar span{font-size:11px!important} /* era 6px */}
+@media (pointer:coarse) and (orientation:landscape), (max-height:760px) and (orientation:landscape){.context-prompt b{font-size:11px!important} /* era 9px */}
+@media (pointer:coarse) and (orientation:landscape), (max-height:760px) and (orientation:landscape){.context-prompt small{font-size:11px!important} /* era 6px */}
+.map-layout.v624 .map-marker.clean.active span{font-size:11px!important} /* era 8px */
+.map-destination-group h4{font-size:11px!important} /* era 9px */
+.gps-current small{font-size:11px!important} /* era 8px */
+.gps-current span{font-size:11px!important} /* era 9px */
+.gps-current .btn{font-size:11px!important} /* era 9px */
+@media (orientation:portrait){.map-region{font-size:11px!important} /* era 8px */}
+.map-layout.v626 .map-destination span{font-size:11px!important} /* era 8px */
+.map-layout.v626 .map-marker.clean span{font-size:11px!important} /* era 9px */
+.map-layout.v626 .map-selection span{font-size:11px!important} /* era 9px */
+.map-layout.v626 .map-selection .btn{font-size:11px!important} /* era 9px */
+.boat-activity-panel button span{font-size:11px!important} /* era 9px */
+.transit-heading span{font-size:11px!important} /* era 10px */
+.metro-destination-group h4{font-size:11px!important} /* era 9px */
+.metro-destination span{font-size:11px!important} /* era 8px */
+.bus-live-list span,.transit-directory span{font-size:11px!important} /* era 9px */
+.transport-summary span{font-size:11px!important} /* era 8px */
+.transit-activity-panel>div span{font-size:11px!important} /* era 8px */
+.transit-activity-panel button span{font-size:11px!important} /* era 8px */
+.adventure-card small{font-size:11px!important} /* era 9px */
+.adventure-card em{font-size:11px!important} /* era 9px */
+.menu-tile.account-tile small{font-size:11px!important} /* era 7px */
+.field span{font-size:11px!important} /* era 10px */
+.account-card small{font-size:11px!important} /* era 10px */
+.parent-area-heading small{font-size:11px!important} /* era 10px */
+.tool-card small{font-size:11px!important} /* era 9px */
+.tool-card em{font-size:11px!important} /* era 8px */
+.build-catalog .choice strong{font-size:11px!important} /* era 10px */
+.safety-panel small{font-size:11px!important} /* era 9px */
+.safety-lesson>small{font-size:11px!important} /* era 9px */
+.map-selection-title span{font-size:11px!important} /* era 8px */
+.map-selection.detailed p{font-size:11px!important} /* era 10px */
+.map-selection.detailed footer>span{font-size:11px!important} /* era 9px */
+.map-action-chips i{font-size:11px!important} /* era 8px */
+@media (orientation:portrait){.map-selection.detailed p{font-size:11px!important} /* era 9px */}
+.bus-arrival-card small{font-size:11px!important} /* era 9px */
+.bus-arrival-card p{font-size:11px!important} /* era 10px */
+.bus-destination-preview b{font-size:11px!important} /* era 10px */
+.bus-destination-preview span{font-size:11px!important} /* era 9px */
+.job-progress span{font-size:11px!important} /* era 9px */
+.app-install-tile small{font-size:11px!important} /* era 8px */
+@media (max-width:420px){.app-install-tile strong{font-size:11px!important} /* era 10px */}
+@media (max-width:420px){.app-install-tile small{font-size:11px!important} /* era 7px */}
+.objective-chapter header span{font-size:11px!important} /* era 9px */
+.objective-chapter p{font-size:11px!important} /* era 9px */
+.objective-pin{font-size:11px!important} /* era 9px */
+.active-objective small{font-size:11px!important} /* era 9px */
+.skill-mastery b{font-size:11px!important} /* era 9px */
+.skill-mastery span{font-size:11px!important} /* era 8px */
+.avatar-section small{font-size:11px!important} /* era 9px */
+body.mode-vehicle #runBtn span::after{font-size:11px!important} /* era 8px */
+@media (max-width:390px){.objective-chapter p{font-size:11px!important} /* era 8.5px */}
+@media (max-width:390px){.vehicle-badge,.build-badge{font-size:11px!important} /* era 9px */}
+@media (orientation:landscape) and (max-height:520px){.objective-chapter p{font-size:11px!important} /* era 8px */}
+@media (orientation:landscape){body.ui-landscape .mission-card p{font-size:11px!important} /* era 8px */}
+@media (orientation:portrait) and (max-width:380px){.round span{font-size:11px!important} /* era 6px */}
+.build-control-copy small{font-size:11px!important} /* era 10px */
+.build-control-actions button>span{font-size:11px!important} /* era 9px */
+@media (orientation:portrait) and (max-width:380px){.build-control-copy span{font-size:11px!important} /* era 9px */}
+@media (orientation:portrait) and (max-width:380px){.build-control-copy small{font-size:11px!important} /* era 9px */}
+@media (orientation:landscape) and (max-height:430px){body.ui-landscape .build-control-copy small{font-size:11px!important} /* era 8px */}
+@media (orientation:landscape) and (max-height:430px){.build-control-actions button>span{font-size:11px!important} /* era 8px */}
+@media (orientation:landscape) and (max-height:430px){.choice span{font-size:11px!important} /* era 9px */}
+@media (orientation:landscape) and (max-height:520px){.lobby footer{font-size:11px!important} /* era 9px */}
+.learning-summary small,.room-current small{font-size:11px!important} /* era 9px */
+.learning-subjects button small,.room-grid button small{font-size:11px!important} /* era 10px */
+#otthiPerformanceBadge{font-size:11px!important} /* era 10px */
+.room-explanation span{font-size:11px!important} /* era 10px */
+.map-neighborhood-region b,.map-neighborhood-region em{font-size:11px!important} /* era 9px */
+@media (orientation:landscape) and (max-height:520px){.room-choice small{font-size:11px!important} /* era 8px */}
+@media (orientation:landscape) and (max-height:520px){.map-neighborhood-region b{font-size:11px!important} /* era 10px */}
+@media (orientation:landscape) and (max-height:520px){.map-neighborhood-region em{font-size:11px!important} /* era 7px */}
+.mission-card::after{font-size:11px!important} /* era 7px */
+.mission-briefing-head small{font-size:11px!important} /* era 8px */
+.mission-briefing-head p{font-size:11px!important} /* era 10px */
+.mission-assigned-vehicle b{font-size:11px!important} /* era 8px */
+.mission-assigned-vehicle span{font-size:11px!important} /* era 10px */
+.mission-step-list li{font-size:11px!important} /* era 10px */
+.mission-current-instruction{font-size:11px!important} /* era 10px */
+.room-furniture-heading p{font-size:11px!important} /* era 10px */
+.furniture-list article small{font-size:11px!important} /* era 8px */
+.furniture-placement-preview small{font-size:11px!important} /* era 9px */
+@media (orientation:landscape) and (max-height:520px){.mission-step-list li{font-size:11px!important} /* era 8px */}
+@media (max-width:360px){.mission-step-list li{font-size:11px!important} /* era 9px */}
+.map-layout.v626.responsive-map .map-action-chips i{font-size:11px!important} /* era 8px */
+.map-marker.clean>span{font-size:11px!important} /* era 8px */
+.map-cluster-options button b{font-size:11px!important} /* era 9px */
+.map-cluster-options button span{font-size:11px!important} /* era 8px */
+.coop-center-intro p,.coop-job-banner small{font-size:11px!important} /* era 9px */
+.coop-template header small{font-size:11px!important} /* era 8px */
+.coop-template p{font-size:11px!important} /* era 9px */
+.coop-template-roles i{font-size:11px!important} /* era 7px */
+.coop-open-lobby small{font-size:11px!important} /* era 8px */
+.coop-lobby small,.coop-briefing small{font-size:11px!important} /* era 8px */
+.coop-lobby p,.coop-briefing p{font-size:11px!important} /* era 9px */
+.coop-lobby-members small{font-size:11px!important} /* era 8px */
+.coop-team-strip b{font-size:11px!important} /* era 9px */
+.coop-team-strip span{font-size:11px!important} /* era 8px */
+.coop-role-now b,.coop-vehicle-now b,.coop-individual-counter b{font-size:11px!important} /* era 8px */
+.coop-role-now span,.coop-vehicle-now span,.coop-individual-counter span{font-size:11px!important} /* era 10px */
+.coop-race-standings>b{font-size:11px!important} /* era 8px */
+.coop-race-standings i{font-size:11px!important} /* era 9px */
+.coop-race-standings strong{font-size:11px!important} /* era 9px */
+.coop-race-standings em{font-size:11px!important} /* era 8px */
+.otthi-world-tile::after{font-size:11px!important} /* era 9px */
+.gm-blocked-badge{font-size:11px!important} /* era 9px */
+body.ui-landscape.otthi-v702-world .hud-player-name{font-size:11px!important} /* era 10px */
+body.ui-landscape.otthi-v702-world .primary-actions .round span{font-size:11px!important} /* era 7px */
+.sports-hub-grid button>span{font-size:11px!important} /* era 10px */
+.coop-target-now b,.mission-current-instruction b{font-size:11px!important} /* era 9px */
+.ui-landscape.otthi-v705-world .hud-player-name{font-size:11px!important} /* era 9px */
+.ui-landscape.otthi-v705-world .mini-nav-copy b{font-size:11px!important} /* era 8px */
+.ui-landscape.otthi-v705-world .quick-toggle span{font-size:11px!important} /* era 7px */
+.ui-landscape.otthi-v705-world .quick-bar button span{font-size:11px!important} /* era 6px */
+body.ui-landscape.otthi-v705-world .primary-actions .round span{font-size:11px!important} /* era 6px */
+.ui-landscape.otthi-v705-world .skills-toggle span{font-size:11px!important} /* era 6px */
+.ui-landscape.otthi-v705-world .race-badge b{font-size:11px!important} /* era 10px */
+.ui-landscape.otthi-v705-world .race-badge span{font-size:11px!important} /* era 8px */
+.michelle-profile p{font-size:11px!important} /* era 10px */
+.michelle-tab b{font-size:11px!important} /* era 9px */
+.michelle-report-heading small{font-size:11px!important} /* era 8px */
+.michelle-live-report p{font-size:11px!important} /* era 10px */
+.michelle-metrics span{font-size:11px!important} /* era 8px */
+.michelle-chip{font-size:11px!important} /* era 8px */
+.michelle-answer-title>b{font-size:11px!important} /* era 9px */
+.michelle-answer{font-size:11px!important} /* era 10px */
+.michelle-speak{font-size:11px!important} /* era 8px */
+.michelle-question-row input{font-size:11px!important} /* era 10px */
+.michelle-question-row .btn{font-size:11px!important} /* era 10px */
+.michelle-news-heading span{font-size:11px!important} /* era 8px */
+.michelle-news-modes button{font-size:11px!important} /* era 8px */
+.michelle-news b{font-size:11px!important} /* era 9px */
+.michelle-news p{font-size:11px!important} /* era 8px */
+.michelle-news small{font-size:11px!important} /* era 7px */
+.michelle-empty{font-size:11px!important} /* era 9px */
+.michelle-mission-actions .btn{font-size:11px!important} /* era 9px */
+.michelle-progress{font-size:11px!important} /* era 8px */
+@media (max-width:420px){.michelle-chip{font-size:11px!important} /* era 9px */}
+@media (max-width:420px){.michelle-live-report p{font-size:11px!important} /* era 9px */}
+@media (max-width:420px){.michelle-mission-actions .btn{font-size:11px!important} /* era 8px */}
+.vehicle-context-action span{font-size:11px!important} /* era 9px */
+body.mode-vehicle #runBtn span{font-size:11px!important} /* era 7px */
+body.ui-landscape.otthi-v705-world .vehicle-context-action span{font-size:11px!important} /* era 6px */
+.map-layout.v626 .map-zoom-controls [data-map-zoom-reset]{font-size:11px!important} /* era 9px */
+.map-layout.v626 .map-zoom-controls .map-home-control{font-size:11px!important} /* era 9px */
+@media (max-width:620px) and (orientation:portrait){.map-layout.v626 .map-zoom-controls .map-home-control{font-size:11px!important} /* era 8px */}
+@media (max-width:700px){.race-badge .sport-exit-btn{font-size:11px!important} /* era 9px */}

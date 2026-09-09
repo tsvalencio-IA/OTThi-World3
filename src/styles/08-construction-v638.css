@@ -1,0 +1,93 @@
+/**
+ * OTTHI World Edu V642 — módulo CSS
+ * Arquivo: 08-construction-v638.css
+ * Escopo: Construção persistente e controles contextuais
+ * Linhas de origem V642: 826-911
+ */
+/* @otthi-style-body */
+/* ==================================================================
+   OTTHI V638 — CONSTRUÇÃO PERSISTENTE E JOGABILIDADE REAL
+   ================================================================== */
+.build-control-panel{
+  position:fixed;
+  z-index:1320;
+  left:50%;
+  bottom:calc(var(--control-zone,150px) + var(--safe-bottom) + 8px);
+  transform:translateX(-50%);
+  width:min(560px,calc(var(--vvw,100vw) - var(--safe-left) - var(--safe-right) - 20px));
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:10px;
+  padding:9px 10px;
+  border:2px solid rgba(112,231,255,.68);
+  border-radius:18px;
+  background:linear-gradient(180deg,rgba(7,24,43,.97),rgba(8,17,31,.97));
+  box-shadow:0 12px 34px rgba(0,0,0,.46);
+  color:#fff;
+  pointer-events:auto;
+  backdrop-filter:blur(10px);
+}
+.build-control-panel[hidden]{display:none!important}
+.build-control-copy{min-width:0;display:flex;flex-direction:column;gap:2px}
+.build-control-copy b,.build-control-copy span,.build-control-copy small{display:block;overflow:hidden;text-overflow:ellipsis}
+.build-control-copy b{font-size:14px;white-space:nowrap}
+.build-control-copy span{font-size:11px;color:#d6e8f6;white-space:nowrap}
+.build-control-copy small{font-size:10px;line-height:1.2;white-space:normal}
+.build-control-copy small.good{color:#8dff9e}.build-control-copy small.bad{color:#ffb0ba}
+.build-control-actions{display:flex;align-items:center;gap:6px}
+.build-control-actions button{
+  min-width:64px;
+  min-height:48px;
+  padding:5px 8px;
+  border:2px solid rgba(255,255,255,.2);
+  border-radius:13px;
+  background:linear-gradient(180deg,#365675,#182d47);
+  box-shadow:0 4px 0 rgba(0,0,0,.34);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:1px;
+  font-weight:900;
+}
+.build-control-actions button>span{font-size:9px}.build-control-actions button.confirm{background:linear-gradient(180deg,#5ce547,#259c1c)}.build-control-actions button.cancel{background:linear-gradient(180deg,#ea5c65,#a92a35)}
+.build-control-actions button:disabled{opacity:.42;filter:grayscale(.45);box-shadow:none}
+body.mode-building .build-badge{display:none!important}
+body.mode-building .quick-bar,body.mode-building .secondary-actions,body.mode-building .skills-toggle{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+body.mode-building .context-prompt{bottom:calc(var(--control-zone,150px) + var(--safe-bottom) + 76px)!important}
+body.mode-building .primary-actions .special,body.mode-building .primary-actions .jump,body.mode-building .primary-actions .run{opacity:.28!important;pointer-events:none!important}
+body.mode-building .primary-actions .action{opacity:1!important;pointer-events:auto!important}
+
+@media (orientation:portrait){
+  body.ui-portrait .build-control-panel{
+    bottom:calc(var(--control-zone,150px) + var(--safe-bottom) + 8px);
+    width:calc(var(--vvw,100vw) - var(--safe-left) - var(--safe-right) - 14px);
+  }
+}
+@media (orientation:portrait) and (max-width:380px){
+  body.ui-portrait .build-control-panel{grid-template-columns:minmax(0,1fr) auto;gap:5px;padding:7px}
+  body.ui-portrait .build-control-actions{gap:4px}
+  body.ui-portrait .build-control-actions button{min-width:52px;min-height:43px;padding:4px}
+  body.ui-portrait .build-control-copy b{font-size:12px}.build-control-copy span{font-size:9px}.build-control-copy small{font-size:9px}
+}
+@media (orientation:portrait) and (max-height:680px){
+  body.ui-portrait .build-control-panel{bottom:calc(132px + var(--safe-bottom));}
+}
+@media (orientation:landscape){
+  body.ui-landscape .build-control-panel{
+    top:calc(58px + var(--safe-top));
+    bottom:auto;
+    width:min(48vw,470px);
+    min-width:330px;
+    padding:7px 8px;
+  }
+  body.ui-landscape .build-control-actions button{min-width:58px;min-height:42px}
+  body.ui-landscape.mode-building .context-prompt{bottom:calc(8px + var(--safe-bottom))!important;left:50%!important;max-width:32vw!important}
+}
+@media (orientation:landscape) and (max-height:430px){
+  body.ui-landscape .build-control-panel{top:calc(4px + var(--safe-top));width:min(50vw,430px);min-width:310px;max-height:60px}
+  body.ui-landscape .build-control-copy small{font-size:8px}.build-control-actions button{min-width:50px;min-height:38px;padding:3px}.build-control-actions button>span{font-size:8px}
+}
+
+

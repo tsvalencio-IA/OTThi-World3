@@ -1,0 +1,139 @@
+/**
+ * OTTHI World Edu V643.1 — hotfix de tela cheia e zonas de controle
+ * Escopo: WebGL 100% da tela, retrato e paisagem sem sobreposição
+ */
+/* @otthi-style-body */
+/* O palco e o canvas devem sempre usar todo o espaço real do aplicativo. */
+html,body,.app,.screen,.game,.stage{
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+}
+.game,.stage{inset:0!important;overflow:hidden!important}
+.stage canvas{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:100%!important;
+  min-height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+}
+
+/* Retrato: mantém mapa, missão e controles em zonas separadas. */
+@media (orientation:portrait){
+  body.ui-portrait .game-hud,body.otthi-portrait .game-hud{
+    left:calc(6px + var(--safe-left))!important;
+    right:calc(6px + var(--safe-right))!important;
+    width:auto!important;
+  }
+  body.ui-portrait .mission-card:not(.expanded),body.otthi-portrait .mission-card:not(.expanded){
+    top:calc(64px + var(--safe-top))!important;
+    left:calc(7px + var(--safe-left))!important;
+    right:auto!important;
+    width:calc(100% - var(--safe-left) - var(--safe-right) - min(40vw,150px) - 22px)!important;
+    max-width:none!important;
+  }
+  body.ui-portrait .mini-nav,body.otthi-portrait .mini-nav{
+    top:calc(64px + var(--safe-top))!important;
+    right:calc(7px + var(--safe-right))!important;
+    left:auto!important;
+    width:min(40vw,150px)!important;
+    height:86px!important;
+  }
+  body.ui-portrait .quick-toggle,body.otthi-portrait .quick-toggle{
+    top:calc(156px + var(--safe-top))!important;
+    right:calc(7px + var(--safe-right))!important;
+  }
+  body.ui-portrait .camera-controls,body.otthi-portrait .camera-controls{
+    top:calc(204px + var(--safe-top))!important;
+    right:calc(7px + var(--safe-right))!important;
+    bottom:auto!important;
+    flex-direction:column!important;
+  }
+  body.ui-portrait .joystick,body.otthi-portrait .joystick{
+    left:calc(8px + var(--safe-left))!important;
+    bottom:calc(8px + var(--safe-bottom))!important;
+  }
+  body.ui-portrait .primary-actions,body.otthi-portrait .primary-actions{
+    right:calc(8px + var(--safe-right))!important;
+    bottom:calc(8px + var(--safe-bottom))!important;
+  }
+}
+
+/* Paisagem baixa de celular: mapa no topo, Vida abaixo e câmera ao lado,
+   sem disputar espaço com os quatro botões de ação. */
+@media (orientation:landscape){
+  body.ui-landscape .game-hud,body.otthi-landscape .game-hud{
+    left:calc(5px + var(--safe-left))!important;
+    right:calc(5px + var(--safe-right))!important;
+    width:auto!important;
+  }
+  body.ui-landscape .mission-card:not(.expanded),body.otthi-landscape .mission-card:not(.expanded){
+    top:calc(52px + var(--safe-top))!important;
+    left:calc(7px + var(--safe-left))!important;
+    right:auto!important;
+    width:min(39vw,315px)!important;
+    max-height:50px!important;
+  }
+  body.ui-landscape .mini-nav,body.otthi-landscape .mini-nav{
+    top:calc(52px + var(--safe-top))!important;
+    right:calc(7px + var(--safe-right))!important;
+    left:auto!important;
+    width:min(23vw,154px)!important;
+    height:68px!important;
+  }
+  body.ui-landscape .quick-toggle,body.otthi-landscape .quick-toggle{
+    top:calc(126px + var(--safe-top))!important;
+    right:calc(7px + var(--safe-right))!important;
+    width:39px!important;
+    height:37px!important;
+  }
+  body.ui-landscape .camera-controls,body.otthi-landscape .camera-controls{
+    top:calc(126px + var(--safe-top))!important;
+    right:calc(92px + var(--safe-right))!important;
+    bottom:auto!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:4px!important;
+  }
+  body.ui-landscape .camera-controls button,body.otthi-landscape .camera-controls button{
+    width:31px!important;
+    height:31px!important;
+    min-width:31px!important;
+    min-height:31px!important;
+  }
+  body.ui-landscape .quick-bar,body.otthi-landscape .quick-bar{
+    top:calc(126px + var(--safe-top))!important;
+    right:calc(52px + var(--safe-right))!important;
+  }
+  body.ui-landscape .joystick,body.otthi-landscape .joystick{
+    left:calc(8px + var(--safe-left))!important;
+    bottom:calc(7px + var(--safe-bottom))!important;
+  }
+  body.ui-landscape .primary-actions,body.otthi-landscape .primary-actions{
+    right:calc(8px + var(--safe-right))!important;
+    bottom:calc(7px + var(--safe-bottom))!important;
+  }
+}
+
+@media (orientation:landscape) and (max-height:390px){
+  body.ui-landscape .mini-nav,body.otthi-landscape .mini-nav{height:64px!important;width:min(21vw,142px)!important}
+  body.ui-landscape .quick-toggle,body.otthi-landscape .quick-toggle{top:calc(122px + var(--safe-top))!important}
+  body.ui-landscape .camera-controls,body.otthi-landscape .camera-controls{top:calc(122px + var(--safe-top))!important;right:calc(88px + var(--safe-right))!important}
+  body.ui-landscape .camera-controls button,body.otthi-landscape .camera-controls button{width:29px!important;height:29px!important;min-width:29px!important;min-height:29px!important;font-size:14px!important}
+}
+
+/* Quando o menu rápido estiver aberto, esconde os controles de câmera como já
+   previsto pelo jogo, evitando qualquer colisão visual. */
+body.ui-landscape.quick-open .camera-controls,
+body.ui-landscape.skills-open .camera-controls,
+body.otthi-landscape.quick-open .camera-controls,
+body.otthi-landscape.skills-open .camera-controls{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}

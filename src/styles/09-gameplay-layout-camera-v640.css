@@ -1,0 +1,91 @@
+/**
+ * OTTHI World Edu V642 — módulo CSS
+ * Arquivo: 09-gameplay-layout-camera-v640.css
+ * Escopo: Modais, câmera de pesca e painéis contextuais
+ * Linhas de origem V642: 912-995
+ */
+/* @otthi-style-body */
+/* ==================================================================
+   OTTHI V640 — LAYOUT ESTÁVEL E CÂMERA CONTEXTUAL
+   Camada final: neutraliza regras conflitantes das versões anteriores.
+   ================================================================== */
+html,body,.app,.screen,.game{width:100%!important;height:100%!important;min-width:0!important;min-height:100dvh!important;max-width:100%!important;max-height:none!important}
+body{overflow:hidden!important}
+.stage{position:absolute!important;inset:0!important;width:100%!important;height:100%!important}
+.stage canvas{display:block!important;width:100%!important;height:100%!important;touch-action:none!important}
+
+/* Modais: nunca usam deslocamento duplicado do visualViewport. */
+.modal{
+  position:fixed!important;inset:0!important;top:0!important;left:0!important;right:0!important;bottom:0!important;
+  width:100%!important;height:100dvh!important;max-width:100%!important;max-height:100dvh!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  padding:max(6px,var(--safe-top)) max(6px,var(--safe-right)) max(6px,var(--safe-bottom)) max(6px,var(--safe-left))!important;
+  overflow:hidden!important;
+}
+.modal[hidden]{display:none!important}
+.modal-card{
+  display:flex!important;flex-direction:column!important;min-width:0!important;min-height:0!important;
+  width:min(760px,100%)!important;max-width:100%!important;height:auto!important;
+  max-height:calc(100dvh - max(12px,var(--safe-top)) - max(12px,var(--safe-bottom)))!important;
+  overflow:hidden!important;
+}
+.modal-card>header{flex:0 0 auto!important;min-width:0!important}
+.modal-card>header h2{min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;font-size:clamp(16px,4vw,24px)!important}
+.modal-body{
+  flex:1 1 auto!important;min-width:0!important;min-height:0!important;width:100%!important;height:auto!important;
+  max-height:none!important;overflow-x:hidden!important;overflow-y:auto!important;
+  overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch!important;
+}
+.modal-body>*{max-width:100%!important;min-width:0!important;overflow-wrap:anywhere}
+.modal-body img,.modal-body video,.modal-body canvas,.modal-body svg{max-width:100%!important;height:auto}
+.modal-actions{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr))!important;width:100%!important}
+.modal-actions .btn{min-width:0!important;width:100%!important}
+.choice-grid,.inventory-grid,.workshop-grid,.build-catalog{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))!important;min-width:0!important}
+.choice,.inventory-item,.settings-row,.field,input,select,textarea{min-width:0!important;max-width:100%!important}
+.field input,.field select,.field textarea{width:100%!important}
+
+/* O mapa também deve rolar e caber; regras antigas fixavam altura maior que a tela. */
+.modal.map-modal .modal-card{width:min(1100px,100%)!important;height:auto!important;max-height:calc(100dvh - 8px)!important}
+.modal.map-modal .modal-body{height:auto!important;max-height:none!important;overflow:auto!important;padding:8px!important}
+.modal.map-modal .map-layout{min-width:0!important;max-width:100%!important}
+.modal.map-modal .world-map,.modal.map-modal .clean-map{max-width:100%!important;min-height:260px!important}
+
+/* Pesca: o cenário continua recebendo arraste para a câmera. */
+body.mode-fishing .stage{pointer-events:auto!important;touch-action:none!important}
+body.mode-fishing .stage canvas{pointer-events:auto!important;touch-action:none!important}
+body.mode-fishing .modal.fishing-modal{pointer-events:none!important}
+body.mode-fishing .modal.fishing-modal .modal-card{pointer-events:auto!important}
+
+/* Painéis contextuais sempre ficam dentro da área útil. */
+.build-control-panel,.boat-activity-panel,.transit-activity-panel,.challenge-prompt{
+  max-width:calc(100vw - var(--safe-left) - var(--safe-right) - 12px)!important;
+  box-sizing:border-box!important;
+}
+.build-control-panel{min-width:0!important;width:min(560px,calc(100vw - var(--safe-left) - var(--safe-right) - 12px))!important}
+.quick-bar{max-height:calc(100dvh - var(--safe-top) - var(--safe-bottom) - var(--control-zone) - 70px)!important;overflow-y:auto!important;overflow-x:hidden!important}
+.secondary-actions{max-height:calc(100dvh - var(--safe-top) - var(--safe-bottom) - 20px)!important}
+
+@media (max-width:520px){
+  .modal{align-items:flex-end!important;padding:6px max(6px,var(--safe-right)) max(6px,var(--safe-bottom)) max(6px,var(--safe-left))!important}
+  .modal-card{width:100%!important;max-height:calc(100dvh - max(8px,var(--safe-top)) - max(8px,var(--safe-bottom)))!important;border-radius:20px 20px 14px 14px!important}
+  .modal-card>header{padding:10px 12px!important}.modal-body{padding:12px!important}
+  .choice-grid,.inventory-grid,.workshop-grid,.build-catalog{grid-template-columns:1fr!important}
+  .modal.map-modal{align-items:center!important}.modal.map-modal .modal-card{border-radius:16px!important}
+}
+
+@media (orientation:landscape){
+  .modal{align-items:center!important;padding:4px max(5px,var(--safe-right)) 4px max(5px,var(--safe-left))!important}
+  .modal-card{width:min(860px,100%)!important;max-height:calc(100dvh - 8px)!important;border-radius:16px!important}
+  .modal-card>header{padding:8px 12px!important}.modal-card>header button{width:36px!important;height:36px!important}
+  .modal-body{padding:9px 12px!important}
+  .choice-grid,.inventory-grid,.workshop-grid,.build-catalog{grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr))!important}
+  body.ui-landscape .build-control-panel{top:max(4px,var(--safe-top))!important;left:50%!important;transform:translateX(-50%)!important;width:min(520px,58vw)!important;min-width:0!important;max-height:calc(100dvh - 8px)!important}
+}
+
+@media (orientation:landscape) and (max-height:430px){
+  .modal-card>header{padding:5px 9px!important}.modal-card>header h2{font-size:15px!important}.modal-body{padding:6px 9px!important}
+  .choice{padding:8px!important}.choice span{font-size:9px!important}.modal-actions{gap:6px!important;margin-top:8px!important}
+  body.ui-landscape .build-control-panel{width:min(560px,64vw)!important;max-height:64px!important}
+}
+
+

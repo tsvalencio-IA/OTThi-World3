@@ -1,0 +1,78 @@
+/**
+ * OTTHI World Edu V642 — módulo CSS
+ * Arquivo: 06-install-build-v633-v636.css
+ * Escopo: Instalador, construção e camadas intermediárias
+ * Linhas de origem V642: 658-728
+ */
+/* @otthi-style-body */
+/* ==============================================================
+   OTTHOS LIFE WORLD V634 — JOGABILIDADE, TRÂNSITO E PROFISSÕES
+   ============================================================== */
+.bus-arrival-card{display:grid;grid-template-columns:56px minmax(0,1fr);align-items:center;gap:11px;padding:12px;border-radius:16px;background:linear-gradient(145deg,#134a68,#102c44);border:1px solid rgba(108,229,255,.52)}
+.bus-arrival-card>span{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:#f0cc36;color:#182433;font-size:30px}.bus-arrival-card section{min-width:0}.bus-arrival-card small{display:inline-block;padding:3px 7px;border-radius:999px;background:#e4c128;color:#182433;font-size:9px;font-weight:1000}.bus-arrival-card h3{margin:5px 0 2px;font-size:16px}.bus-arrival-card p{margin:0;color:#cce4ee;font-size:10px}.bus-destination-preview{display:grid;gap:4px;margin:9px 0;padding:10px;border-radius:12px;background:rgba(6,25,40,.76);border:1px solid rgba(255,255,255,.12)}.bus-destination-preview b{font-size:10px;color:#75e7ff}.bus-destination-preview span{font-size:9px;line-height:1.45;color:#d6e8f0}.bus-line-choice{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:9px}.bus-line-choice .choice{min-height:68px}.bus-line-choice .choice span{white-space:normal!important;line-height:1.3}
+.job-progress{display:grid;gap:4px;width:100%;padding:10px;border-radius:12px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);text-align:left}.job-progress b{font-size:11px;color:#ffe77a}.job-progress span{font-size:9px;line-height:1.4;color:#d7e8ef}.choice.warning{border-color:rgba(255,210,80,.65)!important;background:linear-gradient(145deg,#66521a,#3e351a)!important}
+body[data-render-tier="balanced"] canvas{image-rendering:auto}.modal-body .fire-station-card .modal-actions{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.modal-body .fire-station-card .modal-actions .btn{margin:0;min-height:44px}
+@media(max-width:460px){.bus-line-choice{grid-template-columns:1fr}.bus-arrival-card{grid-template-columns:46px minmax(0,1fr);padding:9px}.bus-arrival-card>span{width:44px;height:44px;font-size:25px}.modal-body .fire-station-card .modal-actions{grid-template-columns:1fr}}
+@media(orientation:landscape) and (max-height:520px){.bus-arrival-card{padding:7px}.bus-arrival-card>span{width:40px;height:40px;font-size:22px}.bus-destination-preview{margin:5px 0;padding:6px}.bus-line-choice{grid-template-columns:repeat(3,minmax(0,1fr));max-height:36vh;overflow:auto}.job-progress{padding:7px}}
+.roleplay-card .job-progress{height:10px;padding:0;overflow:hidden;display:block;background:rgba(0,0,0,.28)}.roleplay-card .job-progress i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#37d879,#6cecff);transition:width .25s ease}.fire-station-card .job-progress{height:auto;padding:10px;display:grid;overflow:visible;background:rgba(255,255,255,.09)}
+
+/* V634 — instalador sempre acessível com ícone oficial */
+.app-install-tile{display:grid!important;grid-template-columns:48px minmax(0,1fr)!important;align-items:center!important;justify-items:stretch!important;gap:9px!important;padding:9px 11px!important;text-align:left!important}.app-install-tile img{width:44px;height:44px;border-radius:12px;object-fit:cover;box-shadow:0 3px 10px rgba(0,0,0,.28)}.app-install-tile>span{display:grid;gap:2px;min-width:0}.app-install-tile strong{font-size:12px;line-height:1.05}.app-install-tile small{font-size:8px;line-height:1.2;color:#e7ffe2}.app-install-tile.install-ready{box-shadow:0 6px 0 rgba(0,0,0,.3),0 0 0 2px rgba(157,255,128,.22)}@media(max-width:420px){.app-install-tile{grid-template-columns:38px minmax(0,1fr)!important;padding:7px 8px!important}.app-install-tile img{width:36px;height:36px;border-radius:10px}.app-install-tile strong{font-size:10px}.app-install-tile small{font-size:7px}}
+
+
+/* ==============================================================
+   OTTHOS LIFE WORLD V636 — OBJETIVOS, SKILLS, VEÍCULOS E MOBILE
+   ============================================================== */
+.objective-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.objective-chapter{display:grid;align-content:start;gap:6px;padding:12px;border-radius:16px;background:linear-gradient(145deg,rgba(10,35,55,.96),rgba(13,48,68,.92));border:1px solid rgba(113,220,255,.25);min-width:0}.objective-chapter header{display:flex;align-items:center;justify-content:space-between;gap:8px}.objective-chapter header b{min-width:0;font-size:12px}.objective-chapter header span{flex:none;padding:3px 7px;border-radius:999px;background:rgba(255,255,255,.1);font-size:9px}.objective-chapter p{margin:0;padding:5px 7px;border-radius:9px;background:rgba(0,0,0,.13);color:#d5e7ef;font-size:9px;line-height:1.35}.objective-chapter p.done{color:#a8f7bd;background:rgba(35,155,91,.18)}.objective-chapter.complete{border-color:rgba(92,235,134,.58);background:linear-gradient(145deg,rgba(20,83,55,.88),rgba(10,51,55,.92))}.objective-chapter.pinned{box-shadow:0 0 0 2px #69e8ff,0 0 24px rgba(65,214,255,.22)}.objective-pin{width:100%;min-height:34px!important;margin-top:2px!important;font-size:9px!important}.active-objective{display:grid;gap:9px;padding:13px;margin-bottom:12px;border-radius:17px;background:linear-gradient(145deg,rgba(27,86,115,.97),rgba(16,48,73,.98));border:1px solid rgba(116,231,255,.48)}.active-objective small{font-size:9px;color:#88efff;font-weight:1000}.active-objective h3,.active-objective p{margin:0}.active-objective p{font-size:11px;color:#d5e9f1;line-height:1.45}.active-objective .job-progress{height:11px;padding:0;overflow:hidden}.active-objective .job-progress i{display:block;height:100%;background:linear-gradient(90deg,#35d878,#61e8ff);border-radius:999px}.panel-subtitle{font-size:13px;margin:13px 0 7px}.skill-mastery-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}.skill-mastery{display:grid;gap:3px;padding:8px;border-radius:12px;background:#0d2a42;border:1px solid rgba(117,216,255,.25);text-align:center}.skill-mastery b{font-size:9px}.skill-mastery span{font-size:8px;color:#83e8ff}.avatar-section small{font-size:9px;color:#ffe778}.avatar-option:disabled{opacity:.6;cursor:not-allowed}.roleplay-card.active-job{border-color:#6fe7ff;box-shadow:0 0 0 2px rgba(76,220,255,.15)}
+body.mode-vehicle .secondary-actions,body.mode-passenger .secondary-actions,body.mode-fishing .secondary-actions{opacity:.12!important;pointer-events:none!important;filter:grayscale(1)!important}body.mode-vehicle #jumpBtn,body.mode-passenger #jumpBtn{opacity:.2!important;pointer-events:none!important}body.mode-vehicle #runBtn span{font-size:0}body.mode-vehicle #runBtn span::after{content:'Turbo';font-size:8px}body.mode-passenger .joystick{opacity:.15!important;pointer-events:none!important}.vehicle-badge{max-width:min(72vw,420px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.skill-btn.cooldown{cursor:not-allowed}.skill-btn.cooldown::after{backdrop-filter:blur(1px)}
+@media(max-width:600px){.objective-list{grid-template-columns:1fr}.skill-mastery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.active-objective .modal-actions{grid-template-columns:1fr}.objective-chapter{padding:10px}.mission-card{pointer-events:auto!important}.modal-body{padding-bottom:max(16px,var(--safe-bottom))}}
+@media(max-width:390px){:root{--joy:min(29vw,112px);--action:min(17vw,64px);--skill:min(10.5vw,42px)}body.ui-portrait .mission-card{top:calc(101px + var(--safe-top))!important;width:calc(100vw - 18px)!important}body.ui-portrait .quick-toggle{top:calc(158px + var(--safe-top))!important}body.ui-portrait .quick-bar{top:calc(209px + var(--safe-top))!important}.skill-mastery-grid{grid-template-columns:1fr 1fr}.objective-chapter p{font-size:8.5px}.context-prompt{max-width:44vw!important}.vehicle-badge,.build-badge{max-width:78vw!important;font-size:9px!important}}
+@media(orientation:landscape) and (max-height:520px){.objective-list{grid-template-columns:repeat(3,minmax(0,1fr));max-height:46vh;overflow:auto}.skill-mastery-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.active-objective{grid-template-columns:minmax(0,1fr) auto;align-items:center;padding:8px}.active-objective .modal-actions{grid-column:2;grid-row:1/5;display:grid;grid-template-columns:1fr;min-width:150px}.active-objective p{display:none}.panel-subtitle{margin:7px 0 4px}.objective-chapter{padding:8px}.objective-chapter p{font-size:8px;padding:3px 5px}}
+
+/* ================================================================
+   OTTHOS LIFE WORLD V636 — ROTA DOS ÔNIBUS E ROTAÇÃO AUTOMÁTICA
+   ================================================================ */
+html,body,.app,.screen,.game{
+  width:var(--vvw,100vw)!important;
+  height:var(--vvh,100dvh)!important;
+  min-width:0!important;
+  min-height:0!important;
+  max-width:none!important;
+  max-height:none!important;
+}
+body{overflow:clip!important}
+.stage{inset:0!important;width:100%!important;height:100%!important;contain:layout size style}
+.stage canvas{width:100%!important;height:100%!important}
+body.ui-orientation-changing *,body.ui-orientation-changing *::before,body.ui-orientation-changing *::after{transition:none!important;animation-duration:.01ms!important}
+
+@media (orientation:portrait){
+  body.ui-portrait .game-hud{width:auto!important;max-width:none!important}
+  body.ui-portrait .mission-card{left:50%!important;right:auto!important;transform:translateX(-50%)!important}
+  body.ui-portrait .joystick{left:calc(8px + var(--safe-left))!important;bottom:calc(8px + var(--safe-bottom))!important}
+  body.ui-portrait .primary-actions{right:calc(8px + var(--safe-right))!important;bottom:calc(8px + var(--safe-bottom))!important}
+  body.ui-portrait .transit-activity-panel{right:calc(8px + var(--safe-right))!important;bottom:calc(var(--action) + 24px + var(--safe-bottom))!important;max-width:min(58vw,290px)!important}
+}
+
+@media (orientation:landscape){
+  body.ui-landscape .game-hud{top:calc(4px + var(--safe-top))!important;left:calc(6px + var(--safe-left))!important;right:calc(6px + var(--safe-right))!important}
+  body.ui-landscape .mission-card{top:calc(48px + var(--safe-top))!important;width:min(43vw,430px)!important;max-height:54px!important;padding:6px 10px!important;gap:7px!important;grid-template-columns:38px minmax(0,1fr)!important}
+  body.ui-landscape .mission-icon{width:34px!important;height:34px!important;font-size:20px!important;border-radius:11px!important}
+  body.ui-landscape .mission-card strong{font-size:11px!important}body.ui-landscape .mission-card p{font-size:8px!important;margin:0 0 3px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  body.ui-landscape .joystick{left:calc(7px + var(--safe-left))!important;bottom:calc(7px + var(--safe-bottom))!important}
+  body.ui-landscape .primary-actions{right:calc(7px + var(--safe-right))!important;bottom:calc(7px + var(--safe-bottom))!important}
+  body.ui-landscape .transit-activity-panel{right:calc((var(--action) * 2) + 24px + var(--safe-right))!important;bottom:calc(7px + var(--safe-bottom))!important;max-width:min(36vw,310px)!important}
+  body.ui-landscape .modal{align-items:center!important;padding:calc(4px + var(--safe-top)) calc(6px + var(--safe-right)) calc(4px + var(--safe-bottom)) calc(6px + var(--safe-left))!important}
+  body.ui-landscape .modal-card{max-height:calc(var(--vvh,100dvh) - 8px)!important}
+  body.ui-landscape .modal-body{max-height:calc(var(--vvh,100dvh) - 64px)!important}
+}
+
+@media (orientation:landscape) and (max-height:430px){
+  body.ui-landscape .identity-box{transform:scale(.88);transform-origin:top left}
+  body.ui-landscape .currency-box{transform:scale(.88);transform-origin:top right}
+  body.ui-landscape .needs-box{display:none!important}
+  body.ui-landscape .mission-card{top:calc(4px + var(--safe-top))!important;left:50%!important;width:min(48vw,390px)!important}
+  body.ui-landscape .transit-activity-panel{max-width:32vw!important;padding:5px!important}
+  body.ui-landscape .transit-activity-panel button{min-height:38px!important;min-width:62px!important}
+}
+
+

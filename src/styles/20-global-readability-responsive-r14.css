@@ -1,0 +1,251 @@
+/**
+ * OTTHI World — R14 qualidade visual global e responsividade.
+ * Autoridade FINAL: corrige legibilidade, contraste, escala e enquadramento sem remover sistemas.
+ */
+/* @otthi-style-body */
+
+/* ---------- Fundação visual global ---------- */
+:root{
+  --otthi-readable-xs:11px;
+  --otthi-readable-sm:12px;
+  --otthi-readable-md:14px;
+  --otthi-readable-lg:16px;
+  --otthi-touch-min:44px;
+}
+
+/* Nenhum modal pode herdar texto claro sobre controle branco do navegador. */
+.modal-card{
+  color:#f8fbff!important;
+  background:linear-gradient(180deg,#103452 0%,#071a2b 100%)!important;
+  border-color:#65dff2!important;
+  width:min(760px,calc(100vw - max(12px,var(--safe-left)) - max(12px,var(--safe-right))))!important;
+  max-width:calc(100vw - max(12px,var(--safe-left)) - max(12px,var(--safe-right)))!important;
+  max-height:calc(100dvh - max(12px,var(--safe-top)) - max(12px,var(--safe-bottom)))!important;
+}
+.modal-card>header{min-height:54px!important;gap:10px!important}
+.modal-card>header h2{font-size:clamp(18px,4.8vmin,24px)!important;line-height:1.15!important;color:#fff!important}
+.modal-card>header button{flex:0 0 auto!important;min-width:44px!important;width:44px!important;height:44px!important;color:#fff!important;background:#8f2438!important}
+.modal-body{color:#f5f9ff!important;line-height:1.45!important;overflow-x:hidden!important;overflow-y:auto!important}
+.modal-body p,.modal-body li{font-size:clamp(14px,3.4vmin,16px)!important;line-height:1.45!important;color:#eef7ff!important}
+.modal-body small{font-size:var(--otthi-readable-sm)!important;line-height:1.35!important;color:#c8dce8!important}
+.modal-body h3{font-size:clamp(16px,4vmin,20px)!important;line-height:1.2!important;color:#fff!important}
+.modal-body h4{font-size:clamp(14px,3.6vmin,18px)!important;line-height:1.25!important;color:#fff!important}
+.modal-body input,.modal-body select,.modal-body textarea{font-size:var(--otthi-readable-md)!important;line-height:1.3!important;color:#fff!important;background:#0b2739!important;border-color:#4f8095!important;min-height:44px!important}
+
+/* Todo botão dentro de modal recebe base de contraste de autor; elimina o fundo branco nativo do navegador.
+   Regras específicas existentes continuam podendo aplicar gradientes/imagens por cima desta cor-base. */
+.modal-body button{color:#fff!important;background-color:#153e5a;opacity:1}
+.modal-body button:disabled{color:#d7e2e9!important;background-color:#344957;opacity:.68}
+
+/* Fallback seguro para botões simples gerados por HTML dinâmico. */
+.modal-body .button-grid{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))!important;
+  gap:10px!important;
+  width:100%!important;
+  margin-top:14px!important;
+}
+.modal-body .button-grid>button,
+.modal-body button:not([class]),
+.modal-body button.primary:not(.btn):not(.choice){
+  min-width:0!important;
+  min-height:var(--otthi-touch-min)!important;
+  padding:11px 14px!important;
+  border:1px solid rgba(122,226,246,.45)!important;
+  border-radius:12px!important;
+  background:linear-gradient(145deg,#174c6b,#102f48)!important;
+  color:#fff!important;
+  font-size:var(--otthi-readable-md)!important;
+  font-weight:850!important;
+  line-height:1.25!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  opacity:1!important;
+  box-shadow:0 5px 14px rgba(0,0,0,.25)!important;
+  touch-action:manipulation!important;
+}
+.modal-body .button-grid>button.primary,
+.modal-body button.primary:not(.btn):not(.choice){background:linear-gradient(145deg,#08769a,#0b5478)!important;border-color:#79e9f8!important}
+.modal-body .button-grid>button:disabled,
+.modal-body button:not([class]):disabled{background:#344957!important;color:#d6e0e6!important;opacity:.7!important}
+
+/* Academia e configurações: alvos de toque não podem encolher para 30–38 px. */
+.edu-tabs button{min-height:44px!important;padding:10px 12px!important;font-size:12px!important;line-height:1.2!important}
+.settings-row .toggle{width:68px!important;min-width:68px!important;height:44px!important;min-height:44px!important;border-radius:999px!important}
+.settings-row .toggle i{width:34px!important;height:34px!important;left:5px!important;top:5px!important}
+.settings-row .toggle.on i{left:29px!important}
+
+/* Componentes de seleção e diretórios: texto sempre identificável. */
+.modal-body .choice,
+.modal-body .btn,
+.modal-body .quiz-option,
+.modal-body .transit-directory button,
+.modal-body .map-cluster-options button,
+.modal-body .room-full-message button{
+  min-height:var(--otthi-touch-min)!important;
+  color:#fff!important;
+  font-size:var(--otthi-readable-md)!important;
+  line-height:1.25!important;
+}
+.modal-body .choice b,.modal-body .choice strong,.modal-body .btn{font-size:var(--otthi-readable-md)!important}
+.modal-body .choice span,.modal-body .choice small,
+.modal-body .transit-directory span,.modal-body .transit-directory b,
+.modal-body .map-cluster-options button b,.modal-body .map-cluster-options button span,
+.modal-body .room-explanation span,
+.modal-body .job-progress span,.modal-body .job-progress b,
+.modal-body .furniture-list small,.modal-body .furniture-placement-preview small,
+.modal-body .transport-summary span,
+.modal-body .coop-lobby small,.modal-body .coop-briefing small,.modal-body .coop-lobby p,.modal-body .coop-briefing p,
+.modal-body .coop-team-strip b,.modal-body .coop-team-strip span,
+.modal-body .coop-role-now b,.modal-body .coop-role-now span,
+.modal-body .coop-vehicle-now b,.modal-body .coop-vehicle-now span,
+.modal-body .coop-individual-counter b,.modal-body .coop-individual-counter span,
+.modal-body .coop-race-standings b,.modal-body .coop-race-standings strong,.modal-body .coop-race-standings em{
+  font-size:var(--otthi-readable-sm)!important;
+  line-height:1.3!important;
+}
+
+/* Michelle: mantém conteúdo completo, porém sem microtipografia de 7–9 px. */
+.modal-card:has(.michelle-console) .michelle-profile small,
+.modal-card:has(.michelle-console) .michelle-metrics b,
+.modal-card:has(.michelle-console) .michelle-metrics span,
+.modal-card:has(.michelle-console) .michelle-tab,
+.modal-card:has(.michelle-console) .michelle-chip,
+.modal-card:has(.michelle-console) .michelle-live-report p,
+.modal-card:has(.michelle-console) .michelle-question-row input,
+.modal-card:has(.michelle-console) .michelle-question-row .btn,
+.modal-card:has(.michelle-console) .michelle-news-heading span,
+.modal-card:has(.michelle-console) .michelle-news-modes button,
+.modal-card:has(.michelle-console) .michelle-news b,
+.modal-card:has(.michelle-console) .michelle-news p,
+.modal-card:has(.michelle-console) .michelle-news small,
+.modal-card:has(.michelle-console) .michelle-empty,
+.modal-card:has(.michelle-console) .michelle-mission-actions .btn,
+.modal-card:has(.michelle-console) .michelle-progress{
+  font-size:var(--otthi-readable-sm)!important;
+  line-height:1.3!important;
+}
+.modal-card:has(.michelle-console) .michelle-news-modes button,
+.modal-card:has(.michelle-console) .michelle-mission-actions .btn{min-height:42px!important}
+
+/* Lobby: descrições visíveis nunca podem cair para microtexto. */
+.menu-tile small{font-size:12px!important;line-height:1.25!important;color:#d8efff!important;text-align:center!important}
+.profile-strip small{font-size:11px!important;line-height:1.2!important}
+.install-hint,.brand-card .eyebrow{font-size:12px!important;line-height:1.25!important}
+
+/* HUD: controles tocáveis permanecem identificáveis também no celular real. */
+.needs-summary,.quick-toggle,.camera-controls button{min-height:44px!important}
+.needs-summary,.camera-controls button{min-width:44px!important}
+[data-world-hero-energy]{font-size:12px!important;line-height:1.2!important}
+
+
+
+/* ---------- HUD e controles: legíveis sem ampliar hitbox por cima de outro botão ---------- */
+.hud-player-name,
+.mini-nav-copy b,.mini-nav-copy small,
+.quick-toggle span,.quick-bar button span,
+.primary-actions .round span,.secondary-actions .skill-btn span,.skills-toggle span,
+.mission-card small,.mission-card p,.race-badge span,.multiplayer-badge,
+.context-prompt b,.context-prompt small,.vehicle-context-action span,
+.boat-activity-panel button span,.transit-activity-panel>div span,.transit-activity-panel button span{
+  font-size:var(--otthi-readable-xs)!important;
+  line-height:1.15!important;
+}
+.mission-card strong,.transit-activity-panel>div b{font-size:var(--otthi-readable-sm)!important;line-height:1.2!important}
+.quick-bar button,.primary-actions .round,.secondary-actions .skill-btn,.skills-toggle,.quick-toggle{overflow:visible!important}
+.primary-actions .round span,.secondary-actions .skill-btn span,.quick-bar button span,.skills-toggle span,.quick-toggle span{white-space:normal!important;text-align:center!important;overflow-wrap:anywhere!important}
+
+/* Mapa: rótulos que o usuário precisa interpretar nunca ficam em 6–9 px. */
+.modal.map-modal .map-destination b,.modal.map-modal .map-destination span,
+.modal.map-modal .map-selection b,.modal.map-modal .map-selection span,.modal.map-modal .map-selection p,
+.modal.map-modal .gps-current b,.modal.map-modal .gps-current span,.modal.map-modal .gps-current small,
+.modal.map-modal .map-marker span,.modal.map-modal .map-marker small,
+.modal.map-modal .map-zoom-controls [data-map-zoom-reset],.modal.map-modal .map-zoom-controls .map-home-control,
+.modal.map-modal .mission-step-list li{
+  font-size:var(--otthi-readable-xs)!important;
+  line-height:1.2!important;
+}
+
+/* ---------- Retrato estreito ---------- */
+@media(max-width:520px){
+  .modal{align-items:center!important;padding:max(6px,var(--safe-top)) max(6px,var(--safe-right)) max(6px,var(--safe-bottom)) max(6px,var(--safe-left))!important}
+  .modal-card{width:100%!important;max-width:100%!important;border-radius:18px!important}
+  .modal-card>header{padding:10px 12px!important}
+  .modal-body{padding:12px!important}
+  .modal-body .button-grid{grid-template-columns:1fr!important}
+  .modal-body .button-grid>button{width:100%!important}
+  .choice-grid,.inventory-grid,.workshop-grid,.build-catalog{grid-template-columns:1fr!important}
+  .sports-hub-grid{grid-template-columns:1fr!important}
+  .sports-hub-grid button{min-height:70px!important;padding:11px 13px!important}
+  .sports-hub-grid button>b{font-size:var(--otthi-readable-lg)!important}
+  .sports-hub-grid button>span{font-size:var(--otthi-readable-sm)!important}
+  .modal-card:has(.michelle-console){width:100%!important;max-width:100%!important;max-height:calc(100dvh - 12px)!important}
+  .modal-card:has(.michelle-console) .modal-body{max-height:none!important;padding:10px!important}
+}
+
+/* ---------- Paisagem baixa: preserva espaço, mas nunca volta a microtexto ---------- */
+@media(orientation:landscape) and (max-height:560px){
+  .modal-card{width:min(900px,calc(100vw - 10px))!important;max-width:calc(100vw - 10px)!important;max-height:calc(100dvh - 8px)!important}
+  .modal-card>header{min-height:46px!important;padding:6px 10px!important}
+  .modal-card>header h2{font-size:16px!important}
+  .modal-card>header button{width:38px!important;height:38px!important;min-width:38px!important}
+  .modal-body{padding:8px 10px!important}
+  .modal-body p,.modal-body li{font-size:12px!important;line-height:1.35!important}
+  .modal-body small,.modal-body .choice span,.modal-body .choice small,.modal-body button{font-size:11px!important}
+  .modal-body .button-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;margin-top:8px!important}
+  .modal-body .button-grid>button{min-height:40px!important;padding:7px 10px!important;font-size:12px!important}
+  .modal-card:has(.michelle-console) .michelle-console{grid-template-columns:minmax(180px,34%) minmax(0,1fr)!important}
+  .modal-card:has(.michelle-console) .michelle-profile small,
+  .modal-card:has(.michelle-console) .michelle-metrics b,
+  .modal-card:has(.michelle-console) .michelle-metrics span,
+  .modal-card:has(.michelle-console) .michelle-tab,
+  .modal-card:has(.michelle-console) .michelle-chip,
+  .modal-card:has(.michelle-console) .michelle-live-report p,
+  .modal-card:has(.michelle-console) .michelle-news b,
+  .modal-card:has(.michelle-console) .michelle-news p,
+  .modal-card:has(.michelle-console) .michelle-news small,
+  .modal-card:has(.michelle-console) .michelle-mission-actions .btn{font-size:11px!important}
+}
+
+/* Telas extremamente baixas: rolar é preferível a cortar ou reduzir fonte. */
+@media(orientation:landscape) and (max-height:430px){
+  .modal-body{overflow-y:auto!important}
+  .modal-card{height:calc(100dvh - 4px)!important;max-height:calc(100dvh - 4px)!important}
+  .modal-body .choice,.modal-body .btn{min-height:38px!important}
+}
+
+
+/* ---------- Tia Thamis / Otton Connect ---------- */
+.thamis-console{display:grid;gap:12px}
+.thamis-banner{background:linear-gradient(135deg,rgba(232,95,167,.18),rgba(103,76,255,.12))!important;border:1px solid rgba(255,182,219,.28)!important;border-radius:16px!important;padding:12px!important}
+.thamis-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.thamis-tabs button{min-height:44px!important;border-radius:12px!important;border:1px solid rgba(125,223,242,.26)!important;background:rgba(8,26,43,.75)!important;color:#eaf6ff!important;font-size:12px!important;font-weight:800!important}
+.thamis-tabs button.active{background:linear-gradient(145deg,#7a2f74,#173f68)!important;border-color:#ffb5dd!important}
+.thamis-content,.thamis-pane,.thamis-card-grid,.thamis-progress-grid,.thamis-pillar-grid{display:grid;gap:10px}
+.thamis-card-grid,.thamis-progress-grid,.thamis-pillar-grid{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.thamis-card,.thamis-highlight{background:rgba(9,31,48,.82);border:1px solid rgba(125,223,242,.2);border-radius:16px;padding:12px}
+.thamis-card p,.thamis-highlight p{margin:6px 0 0 0!important}
+.thamis-card b,.thamis-highlight b{display:block;margin:2px 0 4px 0}
+.thamis-progress-card{box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--thamis,#65dff2) 28%, transparent)}
+.thamis-progress-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin:8px 0}
+.thamis-progress-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--thamis,#65dff2),#ffffff)}
+@media(max-width:640px){.thamis-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.thamis-card-grid,.thamis-progress-grid,.thamis-pillar-grid{grid-template-columns:1fr}}
+
+/* ---------- R16 • Otton Connect: estágios, tarefas e Tia Thamis ---------- */
+.thamis-tabs-five{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+.edu-stage-code{display:inline-flex!important;align-items:center;justify-content:center;width:max-content;min-width:38px;padding:3px 7px;margin-bottom:4px;border-radius:999px;background:rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.28);font-style:normal!important;font-size:11px!important;font-weight:950!important;letter-spacing:.5px;color:#fff!important}
+.edu-node.review{border-color:#ffd16b!important;box-shadow:0 7px 0 rgba(150,92,12,.78)!important}
+.edu-stage-meta{display:grid;gap:3px;margin:0 0 10px;padding:10px 12px;border-radius:14px;background:#0b2237!important;border:1px solid rgba(125,223,242,.28)!important;color:#eef9ff!important}
+.edu-stage-meta>b{font-size:14px!important}.edu-stage-meta>span{font-size:12px!important;line-height:1.38!important}.edu-stage-meta>small{font-size:11px!important;color:#b9d7e9!important}
+.edu-visual{font-size:clamp(20px,5vw,34px)!important;line-height:1.35!important;letter-spacing:normal!important;white-space:normal!important;overflow-wrap:anywhere!important}
+.thamis-stage-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}
+.thamis-stage-column{display:grid;gap:7px;padding:9px;border-radius:16px;background:rgba(7,24,39,.82);border:1px solid color-mix(in srgb,var(--thamis,#65dff2) 35%,transparent)}
+.thamis-stage-column>header{display:flex;align-items:center;gap:8px;padding:6px 4px 8px}.thamis-stage-column>header span{font-size:24px}.thamis-stage-column>header b{font-size:13px!important}
+.thamis-stage-row{display:grid!important;grid-template-columns:44px minmax(0,1fr)!important;align-items:center!important;gap:8px!important;min-height:58px!important;padding:8px 9px!important;border-radius:12px!important;background:#112e46!important;border:1px solid rgba(255,255,255,.16)!important;text-align:left!important;color:#eef9ff!important}
+.thamis-stage-row>strong{display:grid;place-items:center;min-height:34px;border-radius:10px;background:color-mix(in srgb,var(--thamis,#65dff2) 28%,#061421);font-size:12px!important;color:#fff!important}
+.thamis-stage-row>span{display:flex;min-width:0;flex-direction:column;gap:2px}.thamis-stage-row b{font-size:12px!important;line-height:1.25!important}.thamis-stage-row small{font-size:11px!important;color:#bad5e6!important;line-height:1.25!important}
+.thamis-stage-row.done{border-color:#67e8a1!important;background:#123c32!important}.thamis-stage-row.review{border-color:#ffd16b!important;background:#4a3515!important}.thamis-stage-row:disabled{opacity:.46!important;filter:grayscale(.65)}
+.thamis-result-note{display:grid;gap:4px;text-align:left;padding:11px 12px;border-radius:14px;background:#102d46;border:1px solid rgba(255,181,221,.34)}.thamis-result-note b{font-size:13px!important}.thamis-result-note span{font-size:12px!important;line-height:1.4!important}.thamis-result-note small{font-size:11px!important;color:#bfd9e8!important;line-height:1.35!important}
+@media(max-width:900px){.thamis-tabs-five{grid-template-columns:repeat(3,minmax(0,1fr))!important}.thamis-stage-columns{grid-template-columns:1fr}}
+@media(max-width:520px){.thamis-tabs-five{grid-template-columns:repeat(2,minmax(0,1fr))!important}.thamis-tabs-five button:last-child{grid-column:1/-1}.edu-node{width:100%!important;transform:none!important}.edu-stage-meta{padding:9px 10px}.thamis-stage-row{min-height:56px!important}}
+@media(max-height:430px) and (orientation:landscape){.thamis-stage-columns{grid-template-columns:repeat(3,minmax(230px,1fr));overflow-x:auto;align-items:start;padding-bottom:6px}.thamis-stage-column{max-height:62vh;overflow-y:auto}.thamis-tabs-five{grid-template-columns:repeat(5,minmax(105px,1fr))!important;overflow-x:auto}.edu-stage-meta{margin-bottom:7px;padding:7px 9px}.edu-question{padding:9px!important;margin-bottom:8px!important}.edu-visual{min-height:46px!important;margin:5px 0!important;padding:7px!important}}

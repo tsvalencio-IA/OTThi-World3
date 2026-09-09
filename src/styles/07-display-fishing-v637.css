@@ -1,0 +1,104 @@
+/**
+ * OTTHI World Edu V642 — módulo CSS
+ * Arquivo: 07-display-fishing-v637.css
+ * Escopo: Exibição, HUD e pesca
+ * Linhas de origem V642: 729-825
+ */
+/* @otthi-style-body */
+/* ==================================================================
+   OTTHI V637 — ESCALA VISUAL, CAMADAS E PAINEL DE PESCA
+   ================================================================== */
+:root{
+  --hud-scale:1;
+  --panel-scale:1;
+  --control-zone:150px;
+  --modal-max-height:calc(100dvh - 16px);
+  --vv-top:0px;
+  --vv-left:0px;
+}
+.game-hud,.game-hud>*,.identity-box,.identity-box>*,.xp-block,.currency-box,.mission-card,.mission-card>div,.quick-bar,.secondary-actions,.modal-card,.modal-body{min-width:0}
+.hud-player-name,.xp-block small,.currency-box strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.currency-box{max-width:min(35vw,150px)}
+.mission-card>div:last-child{min-width:0;overflow:hidden}
+.quick-bar,.secondary-actions,.boat-activity-panel,.transit-activity-panel{max-width:calc(var(--vvw,100vw) - var(--safe-left) - var(--safe-right) - 16px)!important}
+.modal{width:var(--vvw,100vw)!important;height:var(--vvh,100dvh)!important;max-width:var(--vvw,100vw)!important;max-height:var(--vvh,100dvh)!important;top:var(--vv-top,0)!important;left:var(--vv-left,0)!important;right:auto!important;bottom:auto!important;padding:calc(8px + var(--safe-top)) calc(8px + var(--safe-right)) calc(8px + var(--safe-bottom)) calc(8px + var(--safe-left))!important}
+.modal-card{width:min(760px,calc(var(--vvw,100vw) - 16px - var(--safe-left) - var(--safe-right)))!important;max-height:min(var(--modal-max-height),calc(var(--vvh,100dvh) - 16px - var(--safe-top) - var(--safe-bottom)))!important}
+.modal-body{max-height:calc(min(var(--modal-max-height),var(--vvh,100dvh)) - 66px - var(--safe-top) - var(--safe-bottom))!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+body.ui-keyboard .modal{align-items:flex-start!important}.field input,.field textarea{scroll-margin-bottom:120px}
+
+/* Durante atividades contextuais, apenas os controles realmente úteis permanecem. */
+body.mode-fishing .game-hud,body.mode-fishing .mission-card,body.mode-fishing .mini-nav,body.mode-fishing .quick-toggle,body.mode-fishing .quick-bar,body.mode-fishing .camera-controls,body.mode-fishing .joystick,body.mode-fishing .primary-actions,body.mode-fishing .secondary-actions,body.mode-fishing .skills-toggle,body.mode-fishing .context-prompt,body.mode-fishing .boat-activity-panel,body.mode-fishing .transit-activity-panel,body.mode-fishing .build-badge,body.mode-fishing .vehicle-badge,body.mode-fishing .race-badge,body.mode-fishing .safety-panel{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+body.mode-fishing .stage{pointer-events:none!important}
+
+/* A pesca fica ancorada na borda inferior e não cobre a boia nem o peixe. */
+.modal.fishing-modal{z-index:1450!important;background:linear-gradient(180deg,rgba(0,8,18,.03),rgba(0,8,18,.24))!important;backdrop-filter:none!important;pointer-events:none!important;align-items:flex-end!important;justify-content:center!important;padding:8px max(8px,var(--safe-right)) max(8px,var(--safe-bottom)) max(8px,var(--safe-left))!important}
+.modal.fishing-modal .modal-card{position:relative!important;pointer-events:auto!important;width:min(420px,calc(var(--vvw,100vw) - 16px - var(--safe-left) - var(--safe-right)))!important;height:auto!important;max-height:min(180px,calc(var(--vvh,100dvh) - 18px))!important;margin:0!important;border-radius:18px!important;background:rgba(5,22,38,.95)!important;border:1px solid rgba(112,231,255,.62)!important;box-shadow:0 12px 32px rgba(0,0,0,.44)!important;overflow:hidden!important}
+.modal.fishing-modal .modal-card>header{position:absolute!important;right:4px!important;top:3px!important;z-index:3!important;padding:0!important;min-height:0!important;border:0!important}.modal.fishing-modal .modal-card>header h2{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important}.modal.fishing-modal .modal-card>header button{width:32px!important;height:32px!important;background:rgba(255,255,255,.12)!important}
+.modal.fishing-modal .modal-body{padding:10px 42px 10px 10px!important;max-height:176px!important;overflow:auto!important}.modal.fishing-modal .activity-card{padding:0!important}.modal.fishing-modal .fishing-compact-status{min-height:25px;display:flex;align-items:center;justify-content:center;padding:0 3px;font-size:clamp(12px,3.6vw,15px);font-weight:900;color:#fff;white-space:normal;text-align:center;line-height:1.2}.modal.fishing-modal .activity-meter{margin:6px 0!important;height:8px!important}.modal.fishing-modal .btn.xl{width:100%!important;min-height:40px!important;padding:7px 11px!important;font-size:13px!important}
+
+/* Retrato: topo compacto, missão e mapa dividem a largura sem colisão. */
+@media (orientation:portrait){
+  body.ui-portrait .game-hud{height:56px!important;overflow:visible!important}
+  body.ui-portrait .identity-box{width:min(50vw,190px)!important;max-width:50vw!important}
+  body.ui-portrait .currency-box{max-width:31vw!important}
+  body.ui-portrait .mission-card:not(.expanded){top:calc(62px + var(--safe-top))!important;left:calc(7px + var(--safe-left))!important;width:calc(var(--vvw,100vw) - var(--safe-left) - var(--safe-right) - min(41vw,154px) - 22px)!important;min-width:138px!important;max-width:none!important}
+  body.ui-portrait .mini-nav{top:calc(62px + var(--safe-top))!important;right:calc(7px + var(--safe-right))!important;width:min(41vw,154px)!important;height:92px!important}
+  body.ui-portrait .quick-toggle{top:calc(160px + var(--safe-top))!important}
+  body.ui-portrait .camera-controls{top:calc(206px + var(--safe-top))!important}
+  body.ui-portrait .joystick{width:var(--joy)!important;height:var(--joy)!important}
+  body.ui-portrait .primary-actions{grid-template-columns:repeat(2,var(--action))!important;grid-template-rows:repeat(2,var(--action))!important}
+  body.ui-portrait .quick-bar,body.ui-portrait .secondary-actions{bottom:calc((var(--action) * 2) + var(--gap) + 18px + var(--safe-bottom))!important;max-height:calc(var(--vvh,100dvh) - var(--control-zone) - 80px)!important;overflow:auto!important}
+  body.ui-portrait .context-prompt{bottom:calc(var(--control-zone) + var(--safe-bottom) + 4px)!important}
+  body.ui-portrait .modal.fishing-modal{align-items:flex-end!important;justify-content:center!important}
+}
+@media (orientation:portrait) and (max-width:380px){
+  body.ui-portrait .identity-box{width:48vw!important}.hud-player-name{max-width:78px!important}
+  body.ui-portrait .mini-nav{width:38vw!important;height:82px!important}
+  body.ui-portrait .mission-card:not(.expanded){width:calc(var(--vvw,100vw) - var(--safe-left) - var(--safe-right) - 38vw - 22px)!important;height:50px!important;min-height:50px!important}
+  body.ui-portrait .quick-toggle{top:calc(150px + var(--safe-top))!important}
+  body.ui-portrait .camera-controls{top:calc(196px + var(--safe-top))!important}
+  body.ui-portrait .round b{font-size:21px!important}.round span{font-size:6px!important}
+}
+@media (orientation:portrait) and (max-height:680px){
+  body.ui-portrait .mini-nav{height:78px!important}.mini-nav-copy{display:none!important}
+  body.ui-portrait .quick-toggle{top:calc(146px + var(--safe-top))!important}
+  body.ui-portrait .camera-controls{top:calc(190px + var(--safe-top))!important}
+  body.ui-portrait .context-prompt{display:none!important}
+}
+
+/* Paisagem: cada grupo usa uma zona própria, inclusive em telas baixas. */
+@media (orientation:landscape){
+  body.ui-landscape .game-hud{height:48px!important;overflow:visible!important}
+  body.ui-landscape .identity-box{max-width:min(31vw,210px)!important}
+  body.ui-landscape .currency-box{max-width:min(18vw,130px)!important}
+  body.ui-landscape .mission-card:not(.expanded){left:calc(7px + var(--safe-left))!important;right:auto!important;top:calc(54px + var(--safe-top))!important;width:min(34vw,300px)!important;max-height:50px!important}
+  body.ui-landscape .mini-nav{top:calc(4px + var(--safe-top))!important;right:calc(6px + var(--safe-right))!important;width:min(23vw,154px)!important;height:min(84px,22vh)!important}
+  body.ui-landscape .quick-toggle{top:calc(94px + var(--safe-top))!important;right:calc(7px + var(--safe-right))!important}
+  body.ui-landscape .quick-bar{top:calc(94px + var(--safe-top))!important;right:calc(54px + var(--safe-right))!important;max-height:calc(var(--vvh,100dvh) - 102px - var(--safe-top) - var(--safe-bottom))!important;overflow:auto!important}
+  body.ui-landscape .camera-controls{top:calc(142px + var(--safe-top))!important}
+  body.ui-landscape .secondary-actions{bottom:calc(56px + var(--safe-bottom))!important;max-width:calc(var(--vvw,100vw) - var(--joy) - (var(--action) * 2) - 70px)!important;overflow-x:auto!important}
+  body.ui-landscape .context-prompt{bottom:calc(7px + var(--safe-bottom))!important;max-width:30vw!important}
+  body.ui-landscape .modal.fishing-modal{align-items:flex-end!important;justify-content:flex-start!important;padding:6px 6px max(6px,var(--safe-bottom)) max(8px,var(--safe-left))!important}
+  body.ui-landscape .modal.fishing-modal .modal-card{width:min(360px,42vw)!important;height:auto!important;max-height:min(156px,calc(var(--vvh,100dvh) - 12px))!important}
+  body.ui-landscape .modal.fishing-modal .modal-body{max-height:150px!important;padding:8px 40px 8px 8px!important}
+  body.ui-landscape .modal.fishing-modal .fishing-compact-status{font-size:12px!important}
+  body.ui-landscape .modal.fishing-modal .btn.xl{min-height:36px!important}
+}
+@media (orientation:landscape) and (max-height:430px){
+  body.ui-landscape .needs-summary,body.ui-landscape .needs-box{display:none!important}
+  body.ui-landscape .mission-card:not(.expanded){top:calc(4px + var(--safe-top))!important;left:34vw!important;width:min(36vw,280px)!important}
+  body.ui-landscape .mini-nav{height:68px!important;width:min(21vw,132px)!important}.mini-nav-copy{display:none!important}
+  body.ui-landscape .quick-toggle{top:calc(76px + var(--safe-top))!important}
+  body.ui-landscape .quick-bar{top:calc(76px + var(--safe-top))!important;grid-template-columns:repeat(4,42px)!important}
+  body.ui-landscape .camera-controls{top:calc(122px + var(--safe-top))!important}
+  body.ui-landscape .context-prompt{display:none!important}
+  body.ui-landscape .modal.fishing-modal .modal-card{width:min(330px,40vw)!important;height:auto!important;max-height:132px!important}
+  body.ui-landscape .modal.fishing-modal .modal-body{max-height:128px!important;padding-top:6px!important;padding-bottom:6px!important}
+  body.ui-landscape .modal.fishing-modal .fishing-compact-status{min-height:20px!important}.modal.fishing-modal .activity-meter{margin:4px 0!important;height:6px!important}.modal.fishing-modal .btn.xl{min-height:32px!important;padding:4px 8px!important;font-size:11px!important}
+}
+
+/* V637.1 — neutraliza escalas antigas que deslocavam o HUD para fora da tela. */
+body.ui-portrait .mission-card:not(.expanded){transform:none!important}
+body.ui-landscape .game-hud{transform:none!important;width:auto!important;max-width:none!important;box-sizing:border-box!important}
+body.ui-landscape .mission-card:not(.expanded){transform:none!important}
+

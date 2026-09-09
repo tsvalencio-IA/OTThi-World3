@@ -1,0 +1,147 @@
+/**
+ * OTTHI World Edu V642 — módulo CSS
+ * Arquivo: 01-legacy-v607-v613.css
+ * Escopo: Camadas V607 a V613 e integração inicial
+ * Linhas de origem V642: 76-215
+ */
+/* @otthi-style-body */
+/* =========================================================
+   V601 — ROLEPLAY LIFE SIM / HUD LIMPO / MEU OTTHOS
+   ========================================================= */
+.needs-summary{pointer-events:auto;justify-self:center;width:48px;height:48px;border-radius:16px;background:linear-gradient(180deg,rgba(16,39,65,.96),rgba(7,20,37,.96));border:2px solid rgba(255,255,255,.2);box-shadow:var(--shadow);font-size:23px}.needs-summary.warning{animation:needsWarn .8s infinite alternate}@keyframes needsWarn{to{transform:scale(1.08);filter:brightness(1.2)}}
+.game .needs-box{display:none}.game.needs-expanded .needs-box{display:flex;position:absolute;top:56px;left:50%;transform:translateX(-50%);animation:panelIn .18s ease-out}.game.needs-expanded .needs-summary{display:none}@keyframes panelIn{from{opacity:0;transform:translate(-50%,-8px)}to{opacity:1;transform:translate(-50%,0)}}
+.quick-toggle{position:absolute;z-index:48;right:calc(8px + var(--safe-right));top:calc(78px + var(--safe-top));width:52px;height:50px;border-radius:16px;background:linear-gradient(180deg,#315779,#142b47);border:2px solid rgba(255,255,255,.2);box-shadow:0 5px 0 rgba(0,0,0,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:21px}.quick-toggle span{font-size:9px;font-weight:900}.quick-toggle.active{background:linear-gradient(180deg,#41b8e8,#1b668c)}
+.quick-bar{top:calc(134px + var(--safe-top));padding:5px;border-radius:17px;background:rgba(5,15,29,.72);backdrop-filter:blur(8px)}
+.quick-bar[hidden]{display:none!important}
+.mission-card{cursor:pointer;top:calc(70px + var(--safe-top));width:min(430px,calc(100vw - 150px));grid-template-columns:42px 1fr;padding:8px 11px;border-radius:18px;opacity:.90}.mission-icon{width:34px;height:34px;border-radius:12px;font-size:20px}.mission-card small{font-size:8px}.mission-card strong{font-size:14px}.mission-card p{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:1px 0 3px}.mission-card.expanded{width:min(560px,calc(100vw - 28px));grid-template-columns:58px 1fr;padding:12px 16px;opacity:1}.mission-card.expanded .mission-icon{width:48px;height:48px;font-size:28px}.mission-card.expanded small{font-size:10px}.mission-card.expanded strong{font-size:17px}.mission-card.expanded p{font-size:13px;white-space:normal}
+.avatar-summary{display:flex;align-items:center;gap:14px;padding:14px;border-radius:18px;background:rgba(255,255,255,.07);margin-bottom:14px}.avatar-summary b,.avatar-summary span{display:block}.avatar-summary span{font-size:12px;color:#c7d8eb;margin-top:4px}.avatar-face{position:relative;width:62px;height:62px;flex:0 0 62px;border-radius:17px;background:#06080d;border:4px solid #ffc934}.avatar-face i{position:absolute;top:27px;width:8px;height:6px;background:#ff324a;box-shadow:0 0 8px #ff324a}.avatar-face i:first-child{left:15px}.avatar-face i:last-child{right:15px}.avatar-section h3{margin:14px 0 8px}.avatar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:9px}.avatar-option{padding:12px 8px;border-radius:15px;background:linear-gradient(180deg,#315779,#18344f);border:2px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:5px;align-items:center}.avatar-option b{font-size:27px}.avatar-option span{font-size:11px;font-weight:800}.avatar-option.selected{border-color:#6ee94b;box-shadow:0 0 0 3px rgba(110,233,75,.18)}
+.roleplay-card{padding:15px;border-radius:18px;background:linear-gradient(180deg,rgba(44,86,119,.75),rgba(16,41,68,.85));border:1px solid rgba(255,255,255,.13)}.roleplay-card small{color:#7eeaff;font-weight:900}.roleplay-card h3{margin:5px 0}.roleplay-card p{margin:0;color:#c7d8eb}.active-job{border-color:#ffd84d;margin-bottom:12px}.friend-list{display:grid;gap:7px}.friend-row{display:flex;align-items:center;justify-content:space-between;padding:9px 11px;border-radius:12px;background:rgba(255,255,255,.07)}.friend-meter{position:relative;margin:12px 0;padding:11px 12px 15px;border-radius:14px;background:rgba(255,255,255,.07);overflow:hidden}.friend-meter span,.friend-meter b{position:relative;z-index:2}.friend-meter b{float:right}.friend-meter i{position:absolute;left:0;bottom:0;height:6px;background:linear-gradient(90deg,#ff70c8,#ffd84d,#6ee94b)}.db-status{color:#7eff8b;font-weight:900}.btn.danger{background:#7f1d2d}
+.install-banner{max-width:680px;margin:auto}.menu-tile[hidden],.install-hint[hidden]{display:none!important}
+
+@media (orientation:landscape) and (max-height:650px){
+ .game-hud{grid-template-columns:auto 1fr auto}.needs-summary{width:42px;height:42px;font-size:20px}.mission-card{top:calc(48px + var(--safe-top));width:min(390px,43vw);left:48%;padding:6px 9px}.quick-toggle{top:calc(48px + var(--safe-top));width:44px;height:42px}.quick-bar{top:calc(96px + var(--safe-top))}.quick-bar button{width:42px;height:38px}.mission-card.expanded{width:min(500px,52vw)}
+}
+@media (orientation:portrait){
+ .game-hud{grid-template-columns:auto 1fr auto}.needs-summary{position:absolute;top:57px;left:50%;transform:translateX(-50%);width:44px;height:44px}.game.needs-expanded .needs-box{top:58px}.mission-card{top:calc(108px + var(--safe-top));width:calc(100vw - 22px);left:50%}.quick-toggle{top:calc(174px + var(--safe-top));right:calc(8px + var(--safe-right))}.quick-bar{top:calc(230px + var(--safe-top))}.mission-card.expanded{width:calc(100vw - 20px)}
+}
+
+/* =========================================================
+   V605 — CONTROLES COMPLETOS / AÇÃO CONTEXTUAL / MAPA REAL
+   ========================================================= */
+:root{--skill:46px;--skill-gap:6px}
+html.app-installed #installBtn,html.app-installed #installHint{display:none!important}
+.primary-actions{z-index:55;pointer-events:auto}
+.primary-actions .round{touch-action:none;user-select:none}
+.secondary-actions{position:absolute;z-index:54;right:calc(14px + var(--safe-right) + (var(--action) * 2) + var(--gap) + 14px);bottom:calc(14px + var(--safe-bottom));display:grid;grid-template-columns:repeat(2,var(--skill));grid-auto-rows:var(--skill);gap:var(--skill-gap);pointer-events:auto}
+.skill-btn{width:var(--skill);height:var(--skill);padding:0;border-radius:13px;background:linear-gradient(180deg,rgba(50,84,119,.98),rgba(15,35,58,.98));border:2px solid rgba(255,255,255,.72);box-shadow:0 5px 0 rgba(0,0,0,.32),0 8px 16px rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;touch-action:none;user-select:none}
+.skill-btn b{font-size:18px;line-height:1}.skill-btn span{font-size:7px;font-weight:900;margin-top:2px;white-space:nowrap}.skill-btn.active{background:linear-gradient(180deg,#6ee94b,#278f20);box-shadow:0 5px 0 #155e10,0 0 0 3px rgba(110,233,75,.22)}
+.skill-btn.crouch{background:linear-gradient(180deg,#d18a16,#8b5905)}.skill-btn.mini{background:linear-gradient(180deg,#25b7c9,#116779)}.skill-btn.normal{background:linear-gradient(180deg,#556478,#293546)}.skill-btn.giant{background:linear-gradient(180deg,#59b845,#276b20)}.skill-btn.spin{background:linear-gradient(180deg,#687382,#333c49)}
+.context-prompt{z-index:53}.quick-bar{z-index:49}.quick-toggle{z-index:49}
+.action.pulse{animation:actionPulse .72s infinite alternate}@keyframes actionPulse{to{transform:scale(1.08);filter:brightness(1.18)}}
+.race-badge{position:absolute;z-index:52;left:50%;top:calc(142px + var(--safe-top));transform:translateX(-50%);min-width:250px;max-width:70vw;padding:9px 14px;border-radius:16px;background:linear-gradient(180deg,rgba(92,32,150,.96),rgba(30,17,72,.96));border:2px solid #ffd84d;box-shadow:var(--shadow);text-align:center;pointer-events:none}.race-badge b,.race-badge span{display:block}.race-badge b{font-size:14px}.race-badge span{font-size:11px;color:#f8e9ff;margin-top:2px}
+.storage-list{display:grid;gap:8px}.storage-row{padding:11px;border-radius:14px;background:rgba(255,255,255,.07);display:grid;grid-template-columns:1fr auto;gap:5px 10px;align-items:center}.storage-row>span{font-weight:900}.storage-row>b{font-size:11px;color:#c7d8eb}.storage-row>div{grid-column:1/-1;display:flex;gap:7px}.storage-row button{flex:1;padding:9px;border-radius:11px;background:#294d70;font-weight:800}
+.world-map{position:relative;aspect-ratio:1.48;min-height:270px;border-radius:20px;overflow:hidden;border:3px solid rgba(255,255,255,.22);background:
+ radial-gradient(circle at 18% 30%,rgba(21,128,61,.92) 0 19%,transparent 20%),
+ radial-gradient(circle at 78% 70%,rgba(100,116,139,.75) 0 18%,transparent 19%),
+ linear-gradient(180deg,#5cc6ff 0 16%,#71cf63 16% 100%);box-shadow:inset 0 0 40px rgba(0,0,0,.18)}
+.map-road{position:absolute;background:#c99555;border:2px solid rgba(255,255,255,.18);border-radius:999px;opacity:.9}.map-road.horizontal{left:5%;right:5%;height:9%;top:48%}.map-road.vertical{top:17%;bottom:5%;width:7%;left:48%}.map-river{position:absolute;left:0;right:0;top:68%;height:8%;background:#31bde8;transform:rotate(-5deg);box-shadow:0 0 0 2px rgba(255,255,255,.22)}
+.map-region{position:absolute;font-size:10px;font-weight:900;letter-spacing:.08em;color:rgba(255,255,255,.72);pointer-events:none}.map-region.forest{left:9%;top:20%}.map-region.city{left:45%;top:41%}.map-region.adventure{right:7%;top:24%}
+.map-marker{position:absolute;transform:translate(-50%,-50%);min-width:58px;max-width:100px;padding:5px 7px;border-radius:12px;background:rgba(7,23,43,.92);border:2px solid rgba(255,255,255,.28);box-shadow:0 4px 0 rgba(0,0,0,.28);display:flex;flex-direction:column;align-items:center;gap:1px}.map-marker b{font-size:17px}.map-marker span{font-size:8px;font-weight:900;line-height:1.05}.map-marker:active{transform:translate(-50%,-50%) scale(.94)}
+.player-dot,.waypoint-dot{position:absolute;transform:translate(-50%,-50%);z-index:5;pointer-events:none}.player-dot{width:18px;height:18px;border-radius:50%;background:#1d7dff;border:4px solid #fff;box-shadow:0 0 0 4px rgba(29,125,255,.25),0 0 16px #1d7dff}.player-dot b{position:absolute;left:50%;top:18px;transform:translateX(-50%);padding:2px 5px;border-radius:7px;background:#06172b;font-size:7px;white-space:nowrap}.waypoint-dot{font-size:28px;color:#ffe14d;text-shadow:0 0 10px #ffb800}.map-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.map-legend span{padding:6px 8px;border-radius:999px;background:rgba(255,255,255,.08);font-size:10px}
+
+@media (orientation:landscape) and (max-height:700px){
+ :root{--skill:42px;--skill-gap:5px}
+ .secondary-actions{right:calc(10px + var(--safe-right) + (var(--action) * 2) + var(--gap) + 10px);bottom:calc(8px + var(--safe-bottom))}
+ .skill-btn span{font-size:6.5px}.race-badge{top:calc(96px + var(--safe-top));min-width:220px;padding:6px 10px}
+}
+@media (orientation:portrait){
+ :root{--skill:min(12vw,48px);--skill-gap:5px}
+ .secondary-actions{left:50%;right:auto;bottom:calc(18px + var(--safe-bottom) + (var(--action) * 2) + var(--gap));transform:translateX(-50%);grid-template-columns:repeat(5,var(--skill));grid-template-rows:var(--skill)}
+ .skill-btn{border-radius:12px}.skill-btn b{font-size:17px}.skill-btn span{font-size:6px}
+ .race-badge{top:calc(194px + var(--safe-top));max-width:92vw}
+ .world-map{aspect-ratio:1.05;min-height:330px}.map-marker{min-width:52px;padding:4px}.map-marker span{font-size:7px}
+}
+@media (max-width:390px) and (orientation:portrait){
+ :root{--skill:39px;--action:62px;--joy:112px}
+ .secondary-actions{bottom:calc(15px + var(--safe-bottom) + (var(--action) * 2) + var(--gap))}
+ .skill-btn span{display:none}.skill-btn b{font-size:18px}
+}
+
+
+/* =========================================================
+   V605 — REGRESSÃO ZERO: PÉS NO CHÃO, MAPA GPS E PAISAGEM
+   ========================================================= */
+body.modal-open .game-hud,
+body.modal-open .mission-card,
+body.modal-open .quick-toggle,
+body.modal-open .quick-bar,
+body.modal-open .context-prompt,
+body.modal-open .joystick,
+body.modal-open .primary-actions,
+body.modal-open .secondary-actions,
+body.modal-open .build-badge,
+body.modal-open .vehicle-badge,
+body.modal-open .race-badge{visibility:hidden!important;pointer-events:none!important}
+body.modal-open .stage{pointer-events:none!important}
+.secondary-actions.vehicle-hidden{opacity:.22;pointer-events:none;filter:grayscale(1)}
+#jumpBtn.vehicle-disabled{opacity:.3;pointer-events:none;filter:grayscale(1)}
+.modal.map-modal .modal-card{width:min(1180px,96vw);max-height:95dvh}
+.modal.map-modal .modal-body{max-height:calc(95dvh - 72px);padding:12px}
+.map-layout{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(220px,.75fr);gap:12px;align-items:start}
+.map-sidebar{display:flex;flex-direction:column;gap:8px;min-width:0}
+.map-sidebar h3{margin:2px 0 4px}
+.world-map{min-height:400px;aspect-ratio:1.55;background:
+ radial-gradient(circle at 17% 28%,rgba(18,122,55,.95) 0 20%,transparent 21%),
+ radial-gradient(circle at 78% 71%,rgba(99,111,126,.83) 0 18%,transparent 19%),
+ linear-gradient(180deg,#62c9ff 0 15%,#78d363 15% 100%)}
+.map-road.diagonal{left:20%;top:25%;width:64%;height:6%;transform:rotate(42deg);transform-origin:center}
+.map-route{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:visible}
+.map-route line,.map-route polyline{stroke:#fff237;stroke-width:1.35;stroke-dasharray:3 2;filter:drop-shadow(0 0 2px #000);vector-effect:non-scaling-stroke}
+.map-marker{z-index:4;min-width:64px;max-width:92px;padding:4px 6px}
+.map-marker small{font-size:7px;color:#9ee9ff;font-weight:900}
+.player-dot{z-index:8;width:22px;height:22px}
+.player-dot i{position:absolute;left:50%;top:-15px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:16px solid #fff;transform:translateX(-50%) rotate(var(--player-angle));transform-origin:50% 26px;filter:drop-shadow(0 1px 2px #000)}
+.waypoint-dot{z-index:7;animation:waypointPulse .8s infinite alternate}@keyframes waypointPulse{to{transform:translate(-50%,-50%) scale(1.18)}}
+.active-waypoint{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:9px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.08)}
+.active-waypoint>div,.active-waypoint.empty{display:flex;flex-direction:column}.active-waypoint small{color:#81e8ff;font-weight:900}.active-waypoint span{font-size:11px;color:#c7d8eb}.active-waypoint.empty{align-items:flex-start}
+.map-destinations{display:grid;gap:7px}.map-destination{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px;border-radius:13px;background:linear-gradient(180deg,#315779,#173149);border:1px solid rgba(255,255,255,.16);text-align:left}.map-destination b{font-size:12px}.map-destination span{font-size:9px;color:#bfe9ff;white-space:nowrap}
+.map-legend{margin-top:auto}.map-legend span{font-size:9px}
+
+/* Em paisagem, a missão ocupa a esquerda e o menu Vida ocupa a direita sem cruzamento. */
+@media (orientation:landscape){
+ .mission-card{left:calc(10px + var(--safe-left));transform:none;width:min(420px,46vw)}
+ .quick-toggle{right:calc(8px + var(--safe-right));top:calc(58px + var(--safe-top))}
+ .quick-bar{right:calc(62px + var(--safe-right));top:calc(58px + var(--safe-top));flex-direction:row;max-width:calc(54vw - 75px);overflow-x:auto;overflow-y:hidden}
+ .quick-bar button{flex:0 0 auto}
+ .secondary-actions{right:auto;left:calc(var(--joy) + 34px + var(--safe-left));bottom:calc(10px + var(--safe-bottom));grid-template-columns:repeat(5,var(--skill));grid-template-rows:var(--skill)}
+ .context-prompt{left:50%;right:auto;transform:translateX(-50%);max-width:38vw}
+}
+@media (orientation:landscape) and (max-height:520px){
+ :root{--skill:38px;--action:54px;--joy:98px}
+ .game-hud{transform:scale(.88);transform-origin:top left;width:113%}
+ .mission-card{top:calc(48px + var(--safe-top));width:min(350px,43vw)}
+ .mission-card p{display:none}
+ .quick-toggle{top:calc(48px + var(--safe-top));width:42px;height:40px}
+ .quick-bar{top:calc(48px + var(--safe-top));right:calc(54px + var(--safe-right));max-width:42vw}
+ .secondary-actions{left:calc(var(--joy) + 25px + var(--safe-left));bottom:calc(7px + var(--safe-bottom))}
+ .skill-btn span{display:none}
+ .world-map{min-height:300px}
+}
+@media (orientation:portrait){
+ .map-layout{grid-template-columns:1fr}.world-map{min-height:360px;aspect-ratio:1.03}.map-sidebar{max-height:none}.map-destinations{grid-template-columns:repeat(2,minmax(0,1fr))}.map-destination{align-items:flex-start;flex-direction:column}.modal.map-modal .modal-card{width:97vw}
+}
+@media (max-width:390px) and (orientation:portrait){.world-map{min-height:330px}.map-marker{min-width:48px}.map-marker span{display:none}.map-destinations{grid-template-columns:1fr 1fr}}
+
+
+/* V607 — integração segura de veículos: controles preservados, estados claros. */
+#specialBtn.vehicle-horn{filter:none;opacity:1}
+#specialBtn.vehicle-horn b{transform:scale(1.05)}
+.secondary-actions.vehicle-hidden .skill-btn,#jumpBtn.vehicle-disabled{cursor:not-allowed}
+.vehicle-badge{max-width:min(92vw,420px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+
+/* V612 — visualizador 3D/AR sob demanda, sem competir com o jogo no carregamento inicial. */
+.viewer-placeholder{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center;color:#071522;background:radial-gradient(circle at 50% 24%,rgba(255,255,255,.82),rgba(118,220,244,.72) 46%,rgba(45,124,140,.52));}
+.viewer-placeholder[hidden]{display:none!important}.viewer-placeholder-mark{display:grid;place-items:center;width:86px;height:86px;border-radius:28px;background:#071522;color:#fff;font-size:42px;box-shadow:0 16px 36px #07152244}.viewer-placeholder strong{font-size:clamp(18px,2vw,26px)}.viewer-placeholder span{max-width:340px;font-weight:700;color:#17344b}.viewer-placeholder button:disabled{opacity:.65;cursor:wait}.viewer-shell model-viewer[hidden]{display:none!important}.viewer-shell.viewer-ready model-viewer{display:block}
+
+

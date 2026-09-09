@@ -1,0 +1,46 @@
+/**
+ * OTTHI World Edu V642 — módulo CSS
+ * Arquivo: 10-foundation-rooms-learning-v641-v642.css
+ * Escopo: Fundação final, bairros, educação e desempenho
+ * Linhas de origem V642: 996-1034
+ */
+/* @otthi-style-body */
+/* ==================================================================
+   OTTHI WORLD EDU V642 — CAMADA FINAL DE RESPONSIVIDADE E MÓDULOS
+   ================================================================== */
+html,body{overscroll-behavior:none}
+.lobby{overflow-x:hidden!important;overflow-y:auto!important;height:100dvh!important;min-height:100dvh!important;align-content:start!important}
+.lobby .lobby-layout{width:min(1180px,calc(100% - 24px))!important;max-width:1180px!important;min-width:0!important;height:auto!important;min-height:0!important;margin:0 auto!important;padding-bottom:18px!important}
+.lobby .hero-panel,.lobby .menu-panel{min-width:0!important;max-width:100%!important;height:auto!important}
+.lobby footer{position:relative!important;margin-top:auto!important;padding-bottom:max(12px,var(--safe-bottom))!important}
+
+/* HUD ocupa somente o conteúdo real; missão e mapa usam uma segunda faixa. */
+.game-hud{height:auto!important;min-height:46px!important;max-height:58px!important;overflow:visible!important}
+body.ui-landscape .mission-card:not(.expanded),body.otthi-landscape .mission-card:not(.expanded){top:calc(58px + var(--safe-top))!important;left:calc(8px + var(--safe-left))!important;right:auto!important;transform:none!important;width:min(42vw,360px)!important;max-height:50px!important}
+body.ui-landscape .mini-nav,body.otthi-landscape .mini-nav{top:calc(58px + var(--safe-top))!important;right:calc(8px + var(--safe-right))!important;left:auto!important;width:min(24vw,156px)!important;height:min(76px,22vh)!important}
+body.ui-landscape .quick-toggle,body.otthi-landscape .quick-toggle{top:calc(140px + var(--safe-top))!important;right:calc(8px + var(--safe-right))!important}
+body.ui-landscape .quick-bar,body.otthi-landscape .quick-bar{top:calc(188px + var(--safe-top))!important;right:calc(8px + var(--safe-right))!important}
+body.ui-portrait .mission-card:not(.expanded),body.otthi-portrait .mission-card:not(.expanded){top:calc(64px + var(--safe-top))!important;left:calc(8px + var(--safe-left))!important;transform:none!important;width:calc(100vw - var(--safe-left) - var(--safe-right) - min(40vw,150px) - 24px)!important;min-width:132px!important}
+body.ui-portrait .mini-nav,body.otthi-portrait .mini-nav{top:calc(64px + var(--safe-top))!important;right:calc(8px + var(--safe-right))!important;width:min(40vw,150px)!important;height:86px!important}
+
+/* Menus proporcionais: preservam margem visual e nunca viram tela cheia sem necessidade. */
+.modal{padding:max(10px,var(--safe-top)) max(10px,var(--safe-right)) max(10px,var(--safe-bottom)) max(10px,var(--safe-left))!important}
+.modal-card{width:min(760px,90vw)!important;max-width:90vw!important;max-height:min(88dvh,760px)!important;border-radius:20px!important}
+.modal.map-modal .modal-card{width:min(1100px,96vw)!important;max-width:96vw!important;max-height:92dvh!important}
+.modal-card>header{padding:10px 14px!important}.modal-body{padding:12px 14px!important}
+@media(max-width:520px){
+  .lobby{padding:8px!important}.brand-card{width:calc(100% - 8px)!important;margin-inline:auto!important}.lobby .lobby-layout{width:calc(100% - 8px)!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:10px!important}.hero-panel{display:grid!important;grid-template-columns:1fr!important}.viewer-shell{min-height:190px!important}.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.menu-tile{min-width:0!important;min-height:72px!important}
+  .modal{align-items:center!important;padding:max(8px,var(--safe-top)) max(8px,var(--safe-right)) max(8px,var(--safe-bottom)) max(8px,var(--safe-left))!important}
+  .modal-card{width:94vw!important;max-width:94vw!important;max-height:86dvh!important;border-radius:18px!important}
+  .modal.map-modal .modal-card{width:96vw!important;max-width:96vw!important;max-height:90dvh!important}
+}
+@media(orientation:landscape) and (max-height:520px){
+  .lobby{display:block!important;padding:5px!important}.brand-card{margin:0 auto 6px!important;min-height:54px!important;padding:6px 10px!important}.brand-card h1{font-size:18px!important}.brand-card p:not(.eyebrow){display:none!important}.lobby .lobby-layout{width:calc(100% - 8px)!important;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr)!important;gap:8px!important}.hero-panel{grid-template-columns:minmax(180px,.8fr) minmax(180px,1fr)!important;padding:8px!important}.viewer-shell{min-height:180px!important}.menu-panel{padding:8px!important}.menu-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}.menu-tile{min-height:54px!important;padding:5px!important}.menu-tile small{display:none!important}.lobby footer{padding:4px!important;font-size:9px!important}
+  .modal-card{width:min(820px,92vw)!important;max-width:92vw!important;max-height:88dvh!important}
+}
+
+/* Novas trilhas educacionais e bairros. */
+.learning-path-tile,.neighborhood-tile{background:linear-gradient(180deg,rgba(51,92,128,.94),rgba(20,51,78,.94))!important}
+.learning-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.learning-summary>div{padding:10px;border-radius:14px;background:rgba(255,255,255,.08);text-align:center}.learning-summary small,.room-current small{display:block;color:#8ee8ff;font-size:9px;font-weight:900}.learning-summary b{display:block;font-size:22px}.learning-subjects,.room-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px}.learning-subjects button,.room-grid button{min-width:0;padding:12px;border-radius:15px;background:#173b5a;border:1px solid rgba(255,255,255,.14);text-align:left}.learning-subjects button>span,.room-grid button>span{font-size:25px}.learning-subjects button b,.learning-subjects button small,.room-grid button b,.room-grid button small{display:block}.learning-subjects button small,.room-grid button small{color:#c8d9e8;font-size:10px;margin-top:3px}.learning-subjects button i{display:block;height:8px;margin-top:8px;border-radius:99px;background:#082033;overflow:hidden}.learning-subjects button em{display:block;height:100%;background:#63e978}.room-grid button.selected{outline:2px solid #66e7ff;background:#245c7d}.room-current{display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;background:rgba(255,255,255,.08)}.room-current>span{font-size:36px}.room-current b{display:block;font-size:18px}.room-current p{margin:3px 0 0;color:#c9d8e6}.house-directory{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}.house-directory>div{padding:10px;border-radius:14px;background:rgba(255,255,255,.07)}.house-directory span,.house-directory b,.house-directory small{display:block}.house-directory span{font-size:24px}.house-directory small{color:#bdd0df}.adaptive-question{text-align:center}.adaptive-question h3{font-size:clamp(28px,8vw,54px);margin:22px 0}.adaptive-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.adaptive-options button{min-height:56px;border-radius:15px;background:#214d70;font-size:22px;font-weight:900}.adaptive-options button.correct{background:#238a36}.adaptive-options button.wrong{background:#9f2734}.learning-result{text-align:center}.learning-result>div{font-size:58px}.learning-result h3{font-size:42px;margin:4px}
+#otthiPerformanceBadge{position:fixed;z-index:9998;left:8px;top:50%;transform:translateY(-50%);padding:6px 9px;border-radius:10px;background:rgba(6,20,34,.88);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:10px;font-weight:900}#otthiPerformanceBadge[data-level="bad"]{border-color:#ff6470}#otthiPerformanceBadge[data-level="warn"]{border-color:#ffc857}#otthiPerformanceBadge[data-level="good"]{border-color:#57d36b}
+@media(max-width:420px){.learning-summary{grid-template-columns:1fr 1fr}.learning-summary>div:last-child{grid-column:1/-1}.learning-subjects,.room-grid,.house-directory{grid-template-columns:1fr}.adaptive-options{grid-template-columns:1fr 1fr}}

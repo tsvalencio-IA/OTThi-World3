@@ -1,0 +1,498 @@
+{
+  "version": 705,
+  "build": "705.16.7.16-multiplayer-core-v2-r1680",
+  "javascript": [
+    {
+      "file": "src/modules/00-runtime-foundation.js",
+      "startLine": 4,
+      "endLine": 49,
+      "description": "Runtime, utilitários, versão, storage e chaves de migração",
+      "sha256Body": "981cb4918f2f7ac6c0eee0af0d024391d78051c387e0bb116c8c9604fcfc8ec6"
+    },
+    {
+      "file": "src/modules/00a-visual-foundation-avatar-v2.js",
+      "startLine": 51,
+      "endLine": 367,
+      "description": "Registro central de assets, LOD gerenciado, orçamento visual e esquema de avatar V2",
+      "sha256Body": "66e94b2cd90c68e43a7455afa3045b6449799c9710b602558166d6e5f0e03d39"
+    },
+    {
+      "file": "src/modules/01-build-persistence.js",
+      "startLine": 369,
+      "endLine": 488,
+      "description": "Normalização, merge, tombstones e persistência das construções",
+      "sha256Body": "bdba1506500fcee093f1c1520f879b5edab60b615b5598edc1e13dd4bdd7ce01"
+    },
+    {
+      "file": "src/modules/02-state-save-cloud-account.js",
+      "startLine": 490,
+      "endLine": 756,
+      "description": "Estado, save local, IndexedDB, nuvem e conta",
+      "sha256Body": "67ac8284f0d4d3bb153549a54dfed90929745d77ae4c5a13f21e077eb31d25f4"
+    },
+    {
+      "file": "src/modules/03-ui-modal-install-pwa.js",
+      "startLine": 758,
+      "endLine": 1041,
+      "description": "Economia, flags, telas, modais, feedback, instalação e PWA",
+      "sha256Body": "d49232561be91aabe54e17ae6d1e18c9699c67ee5cf1848e731cbd811b8950ff"
+    },
+    {
+      "file": "src/modules/04-education-daily-quiz.js",
+      "startLine": 1043,
+      "endLine": 1171,
+      "description": "Desafios diários, educação, quiz e coleção",
+      "sha256Body": "0620b60bda20f133b6f380c9d65c5cf8fc5dd3ba909a296ca08606ef00283a2e"
+    },
+    {
+      "file": "src/modules/05-avatar-life-customization.js",
+      "startLine": 1173,
+      "endLine": 1314,
+      "description": "Avatar, roupas, uniformes, vida, moldes e ajuda",
+      "sha256Body": "48eee0d596cf07cfffb597d2b8c5b3a3a8423b77fa4dcee070740827f04ffdd1"
+    },
+    {
+      "file": "src/modules/05a-world-layout-v704.js",
+      "startLine": 0,
+      "endLine": 0,
+      "description": "Fonte central de verdade do layout mundial V704",
+      "sha256Body": "9c9237335d852a023e007f174f8c69b9c77188f3f080b3446e2c46731d109115"
+    },
+    {
+      "file": "src/modules/06-missions-profile-hud-inventory-tools.js",
+      "startLine": 1316,
+      "endLine": 1454,
+      "description": "Missões, objetivos, perfil, HUD, inventário e ferramentas",
+      "sha256Body": "73db927a29e186535b6e8f598f955694df99d92a58720a07d760a237c4c2cf19"
+    },
+    {
+      "file": "src/modules/07-navigation-traffic-routes.js",
+      "startLine": 1456,
+      "endLine": 1604,
+      "description": "Rotas, trânsito, grafo, GPS e minimapa",
+      "sha256Body": "dfb96d511b5291852607b4ea6b01c0388c0ea5cb235d07d268f290a5dc92588d"
+    },
+    {
+      "file": "src/modules/08-map-parent-settings.js",
+      "startLine": 1606,
+      "endLine": 1806,
+      "description": "Mapa, marcadores, waypoint, reset, ferramentas parentais e configurações",
+      "sha256Body": "13d0d5ab3feae3a16d8061d4364ee90850ea7b489e37451b6ca1987e3052de5b"
+    },
+    {
+      "file": "src/modules/09-responsive-ar-quality-diagnostics.js",
+      "startLine": 1808,
+      "endLine": 2074,
+      "description": "Responsividade, AR, modos, qualidade, LOD e diagnóstico",
+      "sha256Body": "025265be01bdf5b2d22e7930f6bb69412fd3a8d542b207d171e1ee1f7ab4adaf"
+    },
+    {
+      "file": "src/modules/10-player-skills.js",
+      "startLine": 2076,
+      "endLine": 2143,
+      "description": "Escala, Mini/Normal/Grande, abaixar, girar e domínio de skills",
+      "sha256Body": "aea3d85401c518ddf4cbfefffe2e0ad720ae4faf46d27310a886b4d966674715"
+    },
+    {
+      "file": "src/modules/11-render-materials-player-model.js",
+      "startLine": 2145,
+      "endLine": 2512,
+      "description": "Texturas, materiais, geometria, personagem e avatar 3D",
+      "sha256Body": "d53e970c172953994d022ae6ead2578a42ca629bd2e1a14541f32d74e114fbee"
+    },
+    {
+      "file": "src/modules/12-world-resources-nature.js",
+      "startLine": 2514,
+      "endLine": 2741,
+      "description": "Interações do mundo, árvores, rochas, mina, poço, ruas, água e móveis",
+      "sha256Body": "36f3eb4b6edbdf6cc1dc4a767d78af0a7ebdbc4cdd07cfd1493de37f94a1af6e"
+    },
+    {
+      "file": "src/modules/13-houses-npcs-vehicles-base.js",
+      "startLine": 2743,
+      "endLine": 2991,
+      "description": "Casas, interiores, NPCs, inimigos, cristais, veículos e academia",
+      "sha256Body": "4ceb05393dc878001db393a61dcd10a819e285437f3dce3f1979e5cc92bf19de"
+    },
+    {
+      "file": "src/modules/13a-sports-kart-v705.js",
+      "startLine": 0,
+      "endLine": 0,
+      "description": "Esportes jogáveis 3v3/2v2 e kartódromo de circuito técnico V705",
+      "sha256Body": "14e9264f0aa2fe79db17cd356a80f1a2d1543ba88270479e3548cb2ce990ed67"
+    },
+    {
+      "file": "src/modules/14-world-district-decoration.js",
+      "startLine": 2993,
+      "endLine": 3085,
+      "description": "Cogumelos, portais, praça, distrito e decoração urbana",
+      "sha256Body": "44559ad6efdc06725a2a80ca29edbffb91b8eacd80da18fc74ae5ca64c308ea0"
+    },
+    {
+      "file": "src/modules/14a-ottovias-highway-v7054.js",
+      "startLine": 0,
+      "endLine": 0,
+      "description": "Rodovia OTTOVIAS integrada: circuito, biomas, pedágios, Michelle e ronda guiada",
+      "sha256Body": "3f22ee8d806268fe1c5ee53d80ebaa32fcf903726dcac025fb60c1f81dc454f0"
+    },
+    {
+      "file": "src/modules/15-transit-bus-metro.js",
+      "startLine": 3087,
+      "endLine": 3308,
+      "description": "Ônibus, rotas viárias, paradas, metrô e painel de transporte",
+      "sha256Body": "704ddc6057dc7b7322c02094ad2363a97782c7a92d8b47ed5a1a2d370ef07e83"
+    },
+    {
+      "file": "src/modules/16-emergency-services.js",
+      "startLine": 3310,
+      "endLine": 3495,
+      "description": "Bombeiros, incêndios, polícia, ambulância, segurança e incidentes",
+      "sha256Body": "f36e97f0ed4caa78b9690948d8d0fe15d496d1434030854345e258a576ab903a"
+    },
+    {
+      "file": "src/modules/17-adventures-learning-world.js",
+      "startLine": 3497,
+      "endLine": 3557,
+      "description": "Castelo, aventuras, desafios e praça educacional",
+      "sha256Body": "920acbc3a50f2f33f4f4a4ec145f3a8e787697061c0893bbb96d746a9e7a19c7"
+    },
+    {
+      "file": "src/modules/18-water-fishing-boats.js",
+      "startLine": 3559,
+      "endLine": 3717,
+      "description": "Água, câmera e animação da pesca, barco e física náutica",
+      "sha256Body": "5b77704574fce311b1d053747df322d229319024a720469de1f94d60a09a25b6"
+    },
+    {
+      "file": "src/modules/19-campfire-hunting-house-extensions.js",
+      "startLine": 3719,
+      "endLine": 3803,
+      "description": "Fogueira, caça, animais e ampliações de casas",
+      "sha256Body": "acbf93200ed2398bec7e7825652b1bc670420943b40d30ebe659cd74914743ec"
+    },
+    {
+      "file": "src/modules/20-world-build-cloud-houses.js",
+      "startLine": 3805,
+      "endLine": 3948,
+      "description": "Construção do mundo, recursos, baús, casas em nuvem e interiores",
+      "sha256Body": "ba1627991c3712d36a99a640bcd95814930d4fb4a8fd4c0b8f35f6c48cb27bef"
+    },
+    {
+      "file": "src/modules/21-interactions-shop-social-races.js",
+      "startLine": 3950,
+      "endLine": 4126,
+      "description": "Atividades, mercado, oficina, amizades, NPCs e corridas",
+      "sha256Body": "da5d888e165ac437198bfd81108a3d1204fd0d58b420c94e0827f13031e4eed3"
+    },
+    {
+      "file": "src/modules/22-careers-jobs-uniforms.js",
+      "startLine": 4128,
+      "endLine": 4243,
+      "description": "Carreiras, estados de missão, uniformes, professor, bombeiro e entrega",
+      "sha256Body": "e5e68b3147df7d02829f8dec18b5f2297c407c46838840d213c099f1a0111602"
+    },
+    {
+      "file": "src/modules/23-vehicle-effects-driving.js",
+      "startLine": 4245,
+      "endLine": 4381,
+      "description": "Poeira, som, efeitos, controles, direção, passageiros e ponte",
+      "sha256Body": "32b0c739459c91666774f4097d6abdacd831dd28cfb5a1790f648cf18dd59b49"
+    },
+    {
+      "file": "src/modules/24-construction-system.js",
+      "startLine": 4383,
+      "endLine": 4493,
+      "description": "Custos, propriedade, preview, validação, colocação, remoção e reconciliação",
+      "sha256Body": "632c2a8b3679a9c792a91543f0680cfd9c71101c6c5c76531de1cecf76bd91bb"
+    },
+    {
+      "file": "src/modules/32-cooperative-missions.js",
+      "startLine": 5453,
+      "endLine": 5678,
+      "description": "Missões cooperativas infantis, equipes online/solo, pesca, escola e corridas",
+      "sha256Body": "5f40fd8163b2a83602f9f1ec154f06c11883b8415e89b3abd440e224fd069d01"
+    },
+    {
+      "file": "src/modules/25-render-init-resize-position-collision.js",
+      "startLine": 4495,
+      "endLine": 4635,
+      "description": "Three.js, qualidade, viewport, resize, posição segura e colisões",
+      "sha256Body": "a6e4a9adf54463f4483c934a1dc05b1480c12557dcff8ccf4e240849faf6d272"
+    },
+    {
+      "file": "src/modules/26-input-player-physics.js",
+      "startLine": 4637,
+      "endLine": 4765,
+      "description": "Entrada, corrida, pulo, física do jogador/veículo e animação",
+      "sha256Body": "1064a1b354eb5b1a74d12cd3f8c3a9f1f896a22f3edb476e44621b4bbc5e6f77"
+    },
+    {
+      "file": "src/modules/27-npc-enemies-combat-camera-action.js",
+      "startLine": 4767,
+      "endLine": 4928,
+      "description": "Sociedade NPC, inimigos, combate, câmera, contexto, ação e necessidades",
+      "sha256Body": "8a76c1d3f3e8aafb0ab38112cd639daafab93e556fa6843fd9dbc4db74a23d57"
+    },
+    {
+      "file": "src/modules/28b-multiplayer-core-v2.js",
+      "startLine": 0,
+      "endLine": 0,
+      "description": "Multiplayer Core V2: movimento interpolado, autoridade, eventos e partidas autoritativas",
+      "sha256Body": "46761409602779ed6a61f2fac0957b9929b7940c068fc47cd833dcb350cb4050"
+    },
+    {
+      "file": "src/modules/28-multiplayer-social-online.js",
+      "startLine": 4930,
+      "endLine": 5122,
+      "description": "Desafios online, social, chat, presença, fantasmas e sincronização",
+      "sha256Body": "fed7512d4303233c4c39db0a87701bda80bec6ee63ea06bca3cdcc948f033a82"
+    },
+    {
+      "file": "src/modules/28a-shared-world-multiplayer.js",
+      "startLine": 0,
+      "endLine": 0,
+      "description": "Autoridade compartilhada de NPCs e trânsito, oficina global e estado visual multiplayer",
+      "sha256Body": "cc25899aa8178cdb239f5623f34a187ff92edcaeeb3ab589b81ab8a065d14c21"
+    },
+    {
+      "file": "src/modules/29-game-loop-controls-gamepad.js",
+      "startLine": 5124,
+      "endLine": 5238,
+      "description": "Loop principal, controles, gamepad e início do jogo",
+      "sha256Body": "66d7432d4f12d36241a18abcc35651c67cdfe351758ceeded7ca8d144a678c95"
+    },
+    {
+      "file": "src/modules/30-pause-tests-public-api-bootstrap.js",
+      "startLine": 5240,
+      "endLine": 5422,
+      "description": "Pausa, testes de veículo, API pública de auditoria e bootstrap final",
+      "sha256Body": "d980b7af179e7a01ccc7da8f30fad1fe436b7ffbc2a5ff986a53847a0891c88e"
+    },
+    {
+      "file": "src/modules/31-neighborhood-world-controller.js",
+      "startLine": 5424,
+      "endLine": 5451,
+      "description": "Bairros reais, limite de vagas, transição, casas e mapa V644",
+      "sha256Body": "95a86af16f543634a06dc45be5ec121f7531b567e750ff0195b8795268969ce9"
+    },
+    {
+      "file": "src/modules/33-otthi-world-professional-core.js",
+      "startLine": 5680,
+      "endLine": 5801,
+      "description": "Fundação OTTHI World, PBR local, diagnóstico e painel das cinco etapas",
+      "sha256Body": "2ec572ff70b3506da65ad223c1d689d8154117ba1549eeaa4bc976c7453bed0d"
+    },
+    {
+      "file": "src/modules/34-avatar-studio-professional-v3.js",
+      "startLine": 5803,
+      "endLine": 5897,
+      "description": "Avatar modular V3 sobre o rig procedural preservado",
+      "sha256Body": "1fd036b85f405036bcd5101fdd559d056de2e8583a859562c0e58b7eccf064f4"
+    },
+    {
+      "file": "src/modules/35-world-render-pbr-environment.js",
+      "startLine": 5899,
+      "endLine": 5956,
+      "description": "Mundo profissional, materiais PBR, vegetação, atmosfera e detalhes",
+      "sha256Body": "9738993dc27cc6b48be41fb05e2e5e036a1495559a8b02470ec3b3fbe0c25e68"
+    },
+    {
+      "file": "src/modules/36-modular-build-machines.js",
+      "startLine": 5958,
+      "endLine": 6056,
+      "description": "Construção modular, oficina e veículos montáveis",
+      "sha256Body": "6c008e9dd3c65715562a00c807c27a6c6aa0ccd5ca7380efeccac937f66b87cd"
+    },
+    {
+      "file": "src/modules/36a-vehicle-damage-repair-v704.js",
+      "startLine": 0,
+      "endLine": 0,
+      "description": "Dano, quebra, reboque e reparo real de veículos V704",
+      "sha256Body": "74f3f6bb582766121bc4e10a11f9b0f37f6697e05b2e6547603584ebfbbafc4a"
+    },
+    {
+      "file": "src/modules/37-hero-platform-gameplay.js",
+      "startLine": 6058,
+      "endLine": 6122,
+      "description": "Poderes originais, circuito de plataforma e aventura",
+      "sha256Body": "a4e83de8cef4f4be7e4467c6c56446feb2fb3edc75246fb2bc296556db60402a"
+    },
+    {
+      "file": "src/modules/38-otthi-world-integration-bootstrap.js",
+      "startLine": 6124,
+      "endLine": 6152,
+      "description": "Integração, fallbacks e bootstrap das cinco etapas",
+      "sha256Body": "c6d88cf1e1c3e66a16a9c1185ce1a06816bb6969b26e81dfd2b5f9024e1a8373"
+    },
+    {
+      "file": "src/modules/39-gm-admin-panel.js",
+      "startLine": 0,
+      "endLine": 0,
+      "description": "Painel GM oculto, concessões positivas, usuários e aplicação idempotente",
+      "sha256Body": "8a35871ef0e58740860fd0bff6cd3c7bc5ab19705748cd05a5c573d31c43910d"
+    },
+    {
+      "file": "src/modules/40-world-evolution-v702.js",
+      "startLine": 0,
+      "endLine": 0,
+      "description": "Evolução integral V702: HUD, câmera, terreno, água, natação, fazenda, escavação e cidadãos temáticos",
+      "sha256Body": "e1a8c7deefc42586a23f77d830ea098ba9081c3c6c9e0ef010d8b6e233a61e98"
+    }
+  ],
+  "styles": [
+    {
+      "file": "src/styles/00-foundation-lobby-game-modal.css",
+      "startLine": 2,
+      "endLine": 77,
+      "description": "Fundação, lobby, jogo e modais",
+      "sha256Body": "ff7d8c3bf3169c75f4299c794fa9e874665a16a220ee1c4e6dbba19ee41759b8"
+    },
+    {
+      "file": "src/styles/01-legacy-v607-v613.css",
+      "startLine": 79,
+      "endLine": 219,
+      "description": "Camadas V607 a V613 e integração inicial",
+      "sha256Body": "4bcd18c1b61afa8822aca9c4ba3e7a5d77165544d4bd49faa06ba3650d35815e"
+    },
+    {
+      "file": "src/styles/02-art-direction-v614-v617.css",
+      "startLine": 221,
+      "endLine": 330,
+      "description": "Direção de arte, render e GPS",
+      "sha256Body": "c0f3710d71a87fb0d9f4b9e9cb0c9bac130a7522eb76bfa3a65634616236d666"
+    },
+    {
+      "file": "src/styles/03-responsive-social-v618-v623.css",
+      "startLine": 332,
+      "endLine": 413,
+      "description": "Responsividade, social, online e Academia",
+      "sha256Body": "9bcad1abea60e6fbfa8aae53b4fcb579bc86b2c03f4d49ed65115f2c5c6bc10c"
+    },
+    {
+      "file": "src/styles/04-map-v624-v627.css",
+      "startLine": 415,
+      "endLine": 593,
+      "description": "Mapa, grupos, rótulos e navegação",
+      "sha256Body": "aa03c40f2feb1022e26a87f8f796a1dba7c94d3d9b63569aaec9edf6b5fa94bb"
+    },
+    {
+      "file": "src/styles/05-world-ui-v628-v631.css",
+      "startLine": 595,
+      "endLine": 669,
+      "description": "Mundo, modais, oficina e responsividade",
+      "sha256Body": "d86fd4ed14be0a50f354aab3abc7b95673aeeab32faae3cba9f3f4dde1dd814b"
+    },
+    {
+      "file": "src/styles/06-install-build-v633-v636.css",
+      "startLine": 671,
+      "endLine": 742,
+      "description": "Instalador, construção e camadas intermediárias",
+      "sha256Body": "fc9ec2784b052bfe5cae58cf29409a65e1d653c9b5c222156299648a580417b0"
+    },
+    {
+      "file": "src/styles/07-display-fishing-v637.css",
+      "startLine": 744,
+      "endLine": 841,
+      "description": "Exibição, HUD e pesca",
+      "sha256Body": "bbbdccf84a35f2dc43606dfdf2e8921433c646c88ee4ca081d6f5941709b7a4f"
+    },
+    {
+      "file": "src/styles/08-construction-v638.css",
+      "startLine": 843,
+      "endLine": 929,
+      "description": "Construção persistente e controles contextuais",
+      "sha256Body": "862e2964d6181b5f75f1e49d64216ff335a2ebcba1e0596ead6400061431fd30"
+    },
+    {
+      "file": "src/styles/09-gameplay-layout-camera-v640.css",
+      "startLine": 931,
+      "endLine": 1015,
+      "description": "Modais, câmera de pesca e painéis contextuais",
+      "sha256Body": "d16c924b27e60a067d022437b46154f635e678de6052662e22f28a5ec77c1b5c"
+    },
+    {
+      "file": "src/styles/10-foundation-rooms-learning-v641-v642.css",
+      "startLine": 1017,
+      "endLine": 1056,
+      "description": "Fundação final, bairros, educação e desempenho",
+      "sha256Body": "f71f620f0e2e25835cc7f196627e8f2bdc35680fe16356e32dde598b6484f0f7"
+    },
+    {
+      "file": "src/styles/11-mobility-traffic-fishing-v643.css",
+      "startLine": 1058,
+      "endLine": 1073,
+      "description": "Controles Acelerar/Freio-Ré, mobilidade responsiva e precisão V643",
+      "sha256Body": "387201cfc25ccbc5df444932ac206d7c3e285c321da48f72007cbc09db40051e"
+    },
+    {
+      "file": "src/styles/12-fullscreen-responsive-hotfix-v6431.css",
+      "startLine": 1075,
+      "endLine": 1209,
+      "description": "Hotfix V643.1: WebGL em tela inteira e zonas sem sobreposição",
+      "sha256Body": "36407f245dfd26972ef43b1c92dcf1f91d4f66f945e2946c627a36bd80fac7fd"
+    },
+    {
+      "file": "src/styles/13-neighborhood-world-map-v644.css",
+      "startLine": 1211,
+      "endLine": 1220,
+      "description": "Bairros, vagas e mapa responsivo V644",
+      "sha256Body": "b9b6f6d86986f46d2be48800eec8b34375a96d1305a5a4ee99f5799c0b7d3262"
+    },
+    {
+      "file": "src/styles/14-commercial-responsive-map-missions-furniture.css",
+      "startLine": 1222,
+      "endLine": 1248,
+      "description": "Acabamento comercial: mapa/GPS responsivo, missões explicáveis, móveis e uniformes",
+      "sha256Body": "01dc21a785a5a037029c6ed631524dbb01ad520fc3e2ca93d114345386551835"
+    },
+    {
+      "file": "src/styles/15-coop-map-responsive-v6463.css",
+      "startLine": 1250,
+      "endLine": 1280,
+      "description": "Mapa final responsivo, agrupamento de marcadores e missões cooperativas",
+      "sha256Body": "4e81741e689020453cb0cdd6d0740184a9a7804d6e5d8b7f0226a9cf9b0a722b"
+    },
+    {
+      "file": "src/styles/16-otthi-world-professional-v700.css",
+      "startLine": 1282,
+      "endLine": 1284,
+      "description": "Interface OTTHI World para avatar, garagem, poderes e centro profissional",
+      "sha256Body": "5a61b5fba611631b0839e2a76ab84e34398705b46d079000a85a101751758466"
+    },
+    {
+      "file": "src/styles/17-gm-admin-panel-v701.css",
+      "startLine": 0,
+      "endLine": 0,
+      "description": "Interface responsiva e isolada do painel administrativo GM",
+      "sha256Body": "1f9c9385a2d1a058454b98d4f459259acb0377081dc7fc43b08e48e75630025f"
+    },
+    {
+      "file": "src/styles/18-world-evolution-v702.css",
+      "startLine": 0,
+      "endLine": 0,
+      "description": "HUD paisagem e interface de mundo evoluído V702",
+      "sha256Body": "ea2595137c241f91b896cba1d62b4e63ce94c78c69193f5ff74f968f194f7526"
+    },
+    {
+      "file": "src/styles/19-mobile-landscape-authority-v7051.css",
+      "startLine": 1,
+      "endLine": 36,
+      "description": "Autoridade final de HUD mobile em paisagem e UX da central de esportes",
+      "sha256Body": "8228aae9763241b72dfe44b025418aa9688b0081fae21184bb25e6c177d4994d"
+    },
+    {
+      "file": "src/styles/19z-global-microtype-floor-r14.css",
+      "startLine": 0,
+      "endLine": 0,
+      "description": "R14 piso automático de legibilidade: elimina microtipografia abaixo de 11 px nos mesmos contextos originais",
+      "sha256Body": "f518ef47175aeb1cda157beb9d8d533cb7ce83e04f1b1fd416d47e340bb301f7"
+    },
+    {
+      "file": "src/styles/20-global-readability-responsive-r14.css",
+      "startLine": 0,
+      "endLine": 0,
+      "description": "Autoridade final R14: legibilidade, contraste, escala e responsividade global",
+      "sha256Body": "ae51deace3c0bd48fa4589058bff5085d93e43524711a5e3de1c284d590d32a9"
+    }
+  ]
+}

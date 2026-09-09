@@ -1,0 +1,19 @@
+/*
+ * OTTHI World Edu V643 — controles de mobilidade e precisão visual
+ */
+/* @otthi-style-body */
+body.mode-mobility-driver #runBtn,body.mode-mobility-driver #jumpBtn{opacity:1!important;visibility:visible!important;pointer-events:auto!important;filter:none!important}
+body.mode-mobility-driver #runBtn{background:linear-gradient(180deg,rgba(38,196,99,.98),rgba(12,112,60,.98))!important;border-color:rgba(185,255,210,.96)!important}
+body.mode-mobility-driver #jumpBtn{background:linear-gradient(180deg,rgba(246,156,50,.98),rgba(170,72,24,.98))!important;border-color:rgba(255,225,177,.96)!important}
+body.mode-mobility-driver #runBtn.active,body.mode-mobility-driver #jumpBtn.active{transform:scale(.94)!important;box-shadow:0 0 0 4px rgba(255,255,255,.2),0 7px 18px rgba(0,0,0,.38)!important}
+body.mode-mobility-driver #runBtn b,body.mode-mobility-driver #jumpBtn b{font-size:clamp(20px,5vw,30px)!important}
+body.mode-mobility-driver #runBtn span,body.mode-mobility-driver #jumpBtn span{font-size:clamp(7px,1.8vw,10px)!important;display:block!important}body.mode-mobility-driver #runBtn span::after{content:none!important;display:none!important}
+body.mode-mobility-driver .secondary-actions,body.mode-mobility-driver .skills-toggle{opacity:.1!important;pointer-events:none!important;filter:grayscale(1)!important}
+body.mode-boat #specialBtn,body.mode-vehicle #specialBtn{opacity:1!important;pointer-events:auto!important}
+@media (orientation:portrait){body.mode-mobility-driver .primary-actions{grid-template-columns:repeat(2,var(--action))!important;grid-template-rows:repeat(2,var(--action))!important}body.mode-mobility-driver #runBtn{grid-column:1;grid-row:1}body.mode-mobility-driver #jumpBtn{grid-column:2;grid-row:1}body.mode-mobility-driver #specialBtn{grid-column:1;grid-row:2}body.mode-mobility-driver #actionBtn{grid-column:2;grid-row:2}}
+@media (orientation:landscape) and (max-height:460px){body.mode-mobility-driver .primary-actions{grid-template-columns:repeat(4,var(--action))!important;grid-template-rows:var(--action)!important;right:calc(7px + var(--safe-right))!important;bottom:calc(7px + var(--safe-bottom))!important}body.mode-mobility-driver .round{width:var(--action)!important;height:var(--action)!important}body.mode-mobility-driver .joystick{width:var(--joy)!important;height:var(--joy)!important}}
+.boat-activity-panel{z-index:32}
+body.mode-mobility-driver .vehicle-badge{max-width:min(58vw,390px);font-size:clamp(10px,2.4vw,14px)}
+
+body.mode-mobility-driver #actionBtn,body.mode-mobility-driver #specialBtn{opacity:1!important;pointer-events:auto!important;filter:none!important}
+body.mode-passenger #runBtn,body.mode-passenger #jumpBtn{opacity:.15!important;pointer-events:none!important}
