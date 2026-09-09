@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pt-BR" data-otthi-build="705.16.7.16-multiplayer-core-v2-r1680" data-otthi-revision="7fcb090ced99bc8d">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#0c1b33" />
+  <meta name="description" content="Otthos Life World — mundo aberto infantil com casas, vizinhos, construção, Academia Kids, jogos educativos e multiplayer." />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>OTTHI World V705</title>
+  <link rel="manifest" href="./manifest.webmanifest?v=70614" />
+  <link rel="icon" href="./icons/favicon.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./style.css?v=70614" />
+  <script src="./assets/vendor/three-r128.min.js?v=70614"></script>
+  <script>
+    // Visualizador/AR verdadeiramente sob demanda: não baixa model-viewer nem athos.glb no boot.
+    window.loadModelViewerLib = function loadModelViewerLib(){
+      if (customElements.get('model-viewer')) return Promise.resolve(true);
+      if (window.__mvPromise) return window.__mvPromise;
+      window.__mvPromise = new Promise((resolve, reject) => {
+        const previous = document.querySelector('script[data-otthos-model-viewer]');
+        if (previous) previous.remove();
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.dataset.otthosModelViewer = '1';
+        script.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js';
+        const timer = setTimeout(() => fail(new Error('Tempo esgotado carregando model-viewer')), 15000);
+        const reset = () => { clearTimeout(timer); window.__mvPromise = null; };
+        const fail = error => { reset(); script.remove(); reject(error); };
+        script.onerror = () => fail(new Error('Falha de rede carregando model-viewer'));
+        script.onload = () => customElements.whenDefined('model-viewer').then(() => { clearTimeout(timer); resolve(true); }).catch(fail);
+        document.head.appendChild(script);
+      });
+      return window.__mvPromise;
+    };
+  </script>
+</head>
+<body>
+  <div id="app" class="app">
+    <section id="lobby" class="screen lobby active" aria-label="Menu principal">
+      <div class="lobby-backdrop"></div>
+      <header class="brand-card">
+        <div class="brand-avatar" aria-hidden="true"><span></span><span></span></div>
+        <div>
+          <p class="eyebrow">AVENTURA • AMIGOS • CRIAÇÃO</p>
+          <h1>OTTHI WORLD</h1>
+          <p>Explore, aprenda, jogue e crie seu próprio mundo.</p>
+        </div>
+      </header>
+
+      <main class="lobby-layout">
+        <section class="panel hero-panel">
+          <div id="viewerShell" class="viewer-shell">
+            <div id="viewerPlaceholder" class="viewer-placeholder">
+              <div class="viewer-placeholder-mark" aria-hidden="true">🔥</div>
+              <strong>Otthos em 3D</strong>
+              <span id="viewerStatus">Abra somente quando quiser.</span>
+              <button id="viewerLoadBtn" class="btn primary" type="button">Abrir 3D / AR</button>
+            </div>
+            <model-viewer id="nativeViewer" src="./athos.glb" alt="Otthos 3D" camera-controls interaction-prompt="none" ar ar-modes="scene-viewer webxr quick-look" ar-placement="floor" ar-scale="fixed" shadow-intensity="1.2" exposure="1.05" environment-image="neutral" hidden>
+              <button id="insideArBtn" slot="ar-button" class="floating-ar-btn" type="button">📱 Ver em AR</button>
+            </model-viewer>
+          </div>
+          <div class="hero-copy">
+            <span class="badge">MUNDO ABERTO</span>
+            <h2>Vila do Sol</h2>
+            <p>Explore, aprenda e jogue com seus amigos.</p>
+            <div class="hero-actions">
+              <button id="playBtn" class="btn primary xl" type="button">▶ JOGAR</button>
+              <button id="continueBtn" class="btn xl" type="button">CONTINUAR</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel menu-panel">
+          <button id="profileNameBtn" class="profile-name-card" type="button">
+            <b>👤</b><span><small>JOGADOR</small><strong id="lobbyPlayerName">Escolher nome</strong></span><i id="accountStatusLabel">Conta local</i>
+          </button>
+          <div class="profile-strip">
+            <div class="profile-level"><small>NÍVEL</small><strong id="lobbyLevel">1</strong></div>
+            <div><small>MOEDAS</small><strong id="lobbyCoins">500</strong></div>
+            <div><small>REPUTAÇÃO</small><strong id="lobbyRep">0</strong></div>
+            <div><small>MEDALHAS</small><strong id="lobbyMedals">0</strong></div>
+          </div>
+          <div class="menu-grid">
+            <button id="installBtn" class="menu-tile install app-install-tile" type="button"><img src="./icons/icon-192.png" alt="" aria-hidden="true"><span><strong>Instalar aplicativo</strong><small>Ícone OTTHI World no celular</small></span></button>
+            <button id="arBtn" class="menu-tile" type="button"><b>📱</b><span>3D / AR</span></button>
+            <button id="quizBtn" class="menu-tile academy-tile" type="button"><b>🎓</b><span>Academia</span><small>Matemática • Português • Inglês</small></button>
+            <button id="learningPathBtn" class="menu-tile learning-path-tile" type="button"><b>🧠</b><span>Trilha adaptativa</span><small>Aprende com os acertos e erros</small></button>
+            <button id="neighborhoodBtn" class="menu-tile neighborhood-tile" type="button"><b>🏘️</b><span>Bairros online</span><small>Casas e amigos por região</small></button>
+            <button id="collectionBtn" class="menu-tile" type="button"><b>🏅</b><span>Coleção</span></button>
+            <button id="avatarBtn" class="menu-tile" type="button"><b>👕</b><span>Personagem</span></button>
+            <button id="accountBtn" class="menu-tile account-tile" type="button"><b>🔐</b><span>Minha conta</span><small>Salvar em outros aparelhos</small></button>
+            <button id="moldsBtn" class="menu-tile" type="button"><b>🧩</b><span>Moldes 3D</span></button>
+            <button id="howBtn" class="menu-tile" type="button"><b>❓</b><span>Ajuda</span></button>
+            <button id="settingsBtn" class="menu-tile" type="button"><b>⚙</b><span>Config.</span></button>
+          </div>
+          <p id="installHint" class="install-hint">Instale para jogar em tela cheia.</p>
+        </aside>
+      </main>
+      <footer id="gmSignature" class="gm-signature" role="button" tabindex="0" aria-label="Assinatura thIAguinho Soluções Digitais">Powered by thIAguinho Soluções Digitais</footer>
+    </section>
+
+    <section id="game" class="screen game" aria-label="Otthos Life World">
+      <div id="stage" class="stage"></div>
+      <div id="screenTint" class="screen-tint"></div>
+
+      <header class="game-hud">
+        <div class="identity-box">
+          <div class="mini-avatar"><i></i><i></i><span id="hudLevel">1</span></div>
+          <div class="xp-block"><small id="hudPlayerName" class="hud-player-name">Jogador</small><b>XP</b><div><span id="xpFill"></span></div><small id="xpText">0 / 1000</small></div>
+        </div>
+        <button id="needsToggleBtn" class="needs-summary" type="button" aria-label="Mostrar necessidades">❤️</button>
+        <div class="needs-box" aria-label="Necessidades">
+          <div title="Fome">🍎<span><i id="needHunger"></i></span></div>
+          <div title="Energia">⚡<span><i id="needEnergy"></i></span></div>
+          <div title="Diversão">🎮<span><i id="needFun"></i></span></div>
+          <div title="Higiene">💧<span><i id="needHygiene"></i></span></div>
+        </div>
+        <div class="currency-box"><span>🪙</span><strong id="hudCoins">500</strong></div>
+        <button id="multiplayerBadge" class="multiplayer-badge offline" type="button" aria-label="Status multiplayer"><i></i><span>Solo</span></button>
+      </header>
+
+      <section id="missionCard" class="mission-card" role="button" tabindex="0" aria-label="Expandir missão">
+        <div class="mission-icon">◆</div>
+        <div><small id="missionChapter">MISSÃO PRINCIPAL</small><strong id="missionTitle">Arrume sua casa</strong><p id="missionStep">Entre na sua casa.</p><div class="mission-progress"><i id="missionFill"></i></div></div>
+      </section>
+
+      <button id="quickToggleBtn" class="quick-toggle" type="button" aria-label="Abrir menu de vida">☰<span>Vida</span></button>
+      <nav id="quickBar" class="quick-bar" aria-label="Atalhos" hidden>
+        <button id="avatarGameBtn" type="button">👕<span>Personagem</span></button>
+        <button id="inventoryBtn" type="button">🎒<span>Itens</span></button>
+        <button id="buildBtn" type="button">🧱<span>Construir</span></button>
+        <button id="toolsBtn" type="button">🪓<span>Ferramentas</span></button>
+        <button id="mapBtn" type="button">🗺<span>Mapa</span></button>
+        <button id="dailyBtn" class="academy-quick" type="button">🎓<span>Jogos Kids</span></button>
+        <button id="onlineBtn" type="button">🌐<span>Online</span></button>
+        <button id="newsQuickBtn" type="button">📰<span>Notícias</span></button>
+        <button id="neighborhoodQuickBtn" type="button">🏘️<span>Bairros</span></button>
+        <button id="gameSettingsBtn" type="button">⚙<span>Menu</span></button>
+      </nav>
+
+      <button id="miniNav" class="mini-nav" type="button" aria-label="Abrir mapa e navegação">
+        <canvas id="miniMapCanvas" width="220" height="138"></canvas>
+        <span class="mini-nav-copy"><b id="miniNavName">Mapa da Vila</b><small id="miniNavDistance">Toque para escolher um destino</small></span>
+        <i id="miniNavArrow">▲</i>
+      </button>
+
+      <div id="cameraControls" class="camera-controls" aria-label="Controles da câmera">
+        <button id="cameraNearBtn" type="button" aria-label="Aproximar câmera">＋</button>
+        <button id="cameraResetBtn" type="button" aria-label="Centralizar câmera">◎</button>
+        <button id="cameraFarBtn" type="button" aria-label="Afastar câmera">－</button>
+      </div>
+
+      <div id="contextPrompt" class="context-prompt" hidden><span id="contextIcon">✋</span><div><b id="contextLabel">Interagir</b><small id="contextHint">Toque em AÇÃO</small></div></div>
+
+      <div id="joystick" class="joystick" aria-label="Joystick"><div class="joystick-ring"><i id="joystickKnob"></i></div></div>
+
+      <button id="skillsToggleBtn" class="skills-toggle" type="button" aria-label="Abrir habilidades"><b>⚡</b><span>Habilidades</span></button>
+      <div class="secondary-actions" aria-label="Habilidades do personagem">
+        <button id="crouchBtn" class="skill-btn crouch" type="button"><b>▼</b><span>Abaixar</span></button>
+        <button id="miniBtn" class="skill-btn mini" type="button"><b>◱</b><span>Mini</span></button>
+        <button id="normalBtn" class="skill-btn normal" type="button"><b>N</b><span>Normal</span></button>
+        <button id="giantBtn" class="skill-btn giant" type="button"><b>⬡</b><span>Grande</span></button>
+        <button id="spinBtn" class="skill-btn spin" type="button"><b>↻</b><span>Girar</span></button>
+      </div>
+
+      <div class="primary-actions" aria-label="Ações principais">
+        <button id="runBtn" class="round run" type="button"><b>🏃</b><span>Correr</span></button>
+        <button id="specialBtn" class="round special" type="button"><b>🔥</b><span>Poder</span></button>
+        <button id="actionBtn" class="round action" type="button"><b>✋</b><span>Ação</span></button>
+        <button id="jumpBtn" class="round jump" type="button"><b>⬆</b><span>Pular</span></button>
+        <button id="vehicleActionBtn" class="vehicle-context-action" type="button" hidden><b>🎫</b><span>Ação veicular</span></button>
+      </div>
+
+      <div id="raceBadge" class="race-badge" hidden><b id="raceTitle">Desafio</b><span id="raceStatus">Prepare-se!</span></div>
+      <div id="buildBadge" class="build-badge" hidden>CONSTRUÇÃO: <b id="buildTypeLabel">Bloco</b> — toque em AÇÃO para colocar</div>
+      <div id="vehicleBadge" class="vehicle-badge" hidden>🚗 Carrinho ativo — SAIR permanece disponível</div>
+      <div id="safetyPanel" class="safety-panel" hidden>
+        <span>🚓</span><div><b>Patrulha de segurança</b><small id="safetyStatus">Encoste com calma.</small></div>
+      </div>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </section>
+
+    <aside id="challengePrompt" class="challenge-prompt" hidden aria-live="assertive">
+      <div class="challenge-prompt-icon">⚔️</div>
+      <div class="challenge-prompt-copy"><small id="challengePromptKicker">NOVO DESAFIO</small><b id="challengePromptTitle">Convite recebido</b><span id="challengePromptText">Toque para responder.</span></div>
+      <div class="challenge-prompt-actions">
+        <button id="challengePromptDecline" type="button">Recusar</button>
+        <button id="challengePromptAccept" class="accept" type="button">Aceitar e jogar</button>
+      </div>
+    </aside>
+
+    <div id="modal" class="modal" hidden>
+      <div class="modal-card">
+        <header><h2 id="modalTitle">Janela</h2><button id="modalClose" type="button" aria-label="Fechar">✕</button></header>
+        <div id="modalBody" class="modal-body"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="./assets/js/core/runtime-config.js?v=70614"></script>
+  <script src="./assets/js/core/safe-pointer.js?v=70614"></script>
+  <script src="./assets/js/core/viewport-manager.js?v=70614"></script>
+  <script src="./assets/js/save-db.js?v=70614"></script>
+  <script src="./firebase-config.js?v=70614"></script>
+  <script src="./assets/js/game-account.js?v=70614"></script>
+  <script type="module" src="./assets/js/multiplayer-rtdb.js?v=70614"></script>
+  <script src="./app.js?v=70614"></script>
+  <script src="./assets/js/ui/shared-modal.js?v=70614"></script>
+  <script src="./assets/js/core/performance-guardian.js?v=70614"></script>
+  <script src="./assets/js/multiplayer/room-manager.js?v=70614"></script>
+  <script src="./assets/js/education/adaptive-learning.js?v=70614"></script>
+  <script src="./assets/js/safety/child-safety.js?v=70614"></script>
+</body>
+</html>

@@ -1,0 +1,565 @@
+{
+  "rules": {
+    "otthosWorld": {
+      "users": {
+        "$uid": {
+          "profile": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && auth.uid === $uid"
+          },
+          "progress": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && auth.uid === $uid"
+          },
+          "inbox": {
+            "$giftId": {
+              ".read": "auth != null && auth.uid === $uid",
+              "senderUid": {},
+              "senderName": {},
+              "type": {},
+              "amount": {},
+              "createdAt": {},
+              "$other": {},
+              ".write": "auth != null && ((auth.uid === $uid) || (!data.exists() && newData.child('senderUid').val() === auth.uid))"
+            },
+            ".read": "auth != null && auth.uid === $uid"
+          },
+          "interactions": {
+            "$eventId": {
+              ".read": "auth != null && auth.uid === $uid",
+              "senderUid": {},
+              "senderName": {},
+              "type": {},
+              "requestId": {},
+              "actionType": {},
+              "status": {},
+              "createdAt": {},
+              "$other": {},
+              ".write": "auth != null && ((auth.uid === $uid) || (!data.exists() && newData.child('senderUid').val() === auth.uid))"
+            },
+            ".read": "auth != null && auth.uid === $uid"
+          },
+          "challenges": {
+            ".read": "auth != null && auth.uid === $uid",
+            "$challengeId": {
+              "fromUid": {},
+              "fromName": {},
+              "toUid": {},
+              "toName": {},
+              "type": {},
+              "level": {},
+              "seed": {},
+              "rounds": {},
+              "status": {},
+              "createdAt": {},
+              "respondedAt": {},
+              "$other": {},
+              ".write": "auth != null && (auth.uid === $uid || (!data.exists() && newData.child('fromUid').val() === auth.uid && newData.child('toUid').val() === $uid))"
+            }
+          },
+          "socialRequests": {
+            "$requestId": {
+              ".read": "auth != null && auth.uid === $uid",
+              "fromUid": {},
+              "fromName": {},
+              "toUid": {},
+              "toName": {},
+              "actionType": {},
+              "room": {},
+              "status": {},
+              "createdAt": {},
+              "createdAtClient": {},
+              "expiresAt": {},
+              "respondedAt": {},
+              "respondedAtClient": {},
+              "completedAt": {},
+              "$other": {},
+              "extra": {
+                "boatId": {},
+                "vehicleId": {},
+                "campfireId": {},
+                "fromX": {},
+                "fromZ": {},
+                "$other": {}
+              },
+              ".write": "auth != null && (auth.uid === $uid || (!data.exists() && newData.child('fromUid').val() === auth.uid && newData.child('toUid').val() === $uid) || (data.exists() && data.child('fromUid').val() === auth.uid && newData.child('fromUid').val() === data.child('fromUid').val() && newData.child('toUid').val() === data.child('toUid').val()))"
+            },
+            ".read": "auth != null && auth.uid === $uid"
+          },
+          "guardianSettings": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && auth.uid === $uid && auth.token.email != null && auth.token.auth_time != null && auth.token.auth_time * 1000 >= now - 300000",
+            ".validate": "!newData.exists() || (newData.hasChildren(['multiplayerEnabled','communicationEnabled','chatEnabled','sessionLimitMinutes','updatedAt','updatedByUid']) && newData.child('multiplayerEnabled').isBoolean() && newData.child('communicationEnabled').isBoolean() && newData.child('chatEnabled').isBoolean() && (newData.child('multiplayerEnabled').val() === true || (newData.child('communicationEnabled').val() === false && newData.child('chatEnabled').val() === false)) && (newData.child('communicationEnabled').val() === true || newData.child('chatEnabled').val() === false) && (newData.child('sessionLimitMinutes').val() === 0 || newData.child('sessionLimitMinutes').val() === 15 || newData.child('sessionLimitMinutes').val() === 30 || newData.child('sessionLimitMinutes').val() === 45 || newData.child('sessionLimitMinutes').val() === 60) && newData.child('updatedAt').isNumber() && newData.child('updatedAt').val() <= now && newData.child('updatedAt').val() >= now - 10000 && newData.child('updatedByUid').val() === $uid)"
+          },
+          "blocks": {
+            ".read": "auth != null && auth.uid === $uid",
+            "$blockedUid": {
+              ".write": "auth != null && auth.uid === $uid && $blockedUid !== auth.uid"
+            }
+          },
+          "learning": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && auth.uid === $uid"
+          },
+          "activityAudit": {
+            ".read": "auth != null && auth.uid === $uid",
+            "$eventId": {
+              ".write": "auth != null && auth.uid === $uid",
+              "actorUid": {},
+              "direction": {},
+              "category": {},
+              "action": {},
+              "peerUid": {},
+              "peerName": {},
+              "room": {},
+              "text": {},
+              "createdAt": {},
+              "createdAtClient": {},
+              "$other": {}
+            },
+            ".indexOn": [
+              "createdAtClient",
+              "category"
+            ]
+          },
+          ".write": "auth != null && root.child('otthosWorld').child('admins').child(auth.uid).val() === true"
+        },
+        ".read": "auth != null && root.child('otthosWorld').child('admins').child(auth.uid).val() === true"
+      },
+      "admins": {
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || root.child('otthosWorld').child('admins').child(auth.uid).val() === true)",
+          ".write": false,
+          ".validate": "newData.val() === true"
+        }
+      },
+      "gmGrants": {
+        ".read": "auth != null && root.child('otthosWorld').child('admins').child(auth.uid).val() === true",
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || root.child('otthosWorld').child('admins').child(auth.uid).val() === true)",
+          "$grantId": {
+            ".write": "auth != null && root.child('otthosWorld').child('admins').child(auth.uid).val() === true && !data.exists()",
+            ".validate": "newData.hasChildren(['schema', 'grantId', 'targetUid', 'targetName', 'coins', 'totalUnits', 'reason', 'createdBy', 'createdByName', 'createdAt', 'createdAtClient']) && newData.child('schema').val() === 1 && newData.child('grantId').val() === $grantId && newData.child('targetUid').val() === $uid && newData.child('targetName').isString() && newData.child('targetName').val().length >= 3 && newData.child('targetName').val().length <= 24 && newData.child('coins').isNumber() && newData.child('coins').val() >= 0 && newData.child('coins').val() <= 1000000 && (newData.child('coins').val() > 0 || newData.child('items').hasChildren()) && newData.child('totalUnits').isNumber() && newData.child('totalUnits').val() > 0 && newData.child('totalUnits').val() <= 41000000 && newData.child('reason').isString() && newData.child('reason').val().length <= 160 && newData.child('createdBy').val() === auth.uid && newData.child('createdByName').isString() && newData.child('createdByName').val().length >= 1 && newData.child('createdByName').val().length <= 24 && newData.child('createdAt').isNumber() && newData.child('createdAt').val() <= now && newData.child('createdAt').val() >= now - 10000 && newData.child('createdAtClient').isNumber() && newData.child('createdAtClient').val() <= now + 300000 && newData.child('createdAtClient').val() >= now - 300000",
+            "schema": {},
+            "grantId": {},
+            "targetUid": {},
+            "targetName": {},
+            "coins": {},
+            "items": {
+              "$itemKey": {
+                ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= 1000000"
+              },
+              ".validate": "newData.hasChildren()"
+            },
+            "totalUnits": {},
+            "reason": {},
+            "createdBy": {},
+            "createdByName": {},
+            "createdAt": {},
+            "createdAtClient": {},
+            "$other": {
+              ".validate": false
+            }
+          }
+        }
+      },
+      "gmGrantReceipts": {
+        ".read": "auth != null && root.child('otthosWorld').child('admins').child(auth.uid).val() === true",
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || root.child('otthosWorld').child('admins').child(auth.uid).val() === true)",
+          "$grantId": {
+            ".write": "auth != null && auth.uid === $uid && root.child('otthosWorld').child('gmGrants').child($uid).child($grantId).exists() && data.child('state').val() !== 'applied' && ((!data.exists() && newData.child('state').val() === 'processing') || (data.child('state').val() === 'processing' && newData.child('state').val() === 'applied' && newData.child('deviceId').val() === data.child('deviceId').val()) || (data.child('state').val() === 'processing' && newData.child('state').val() === 'processing' && (newData.child('deviceId').val() === data.child('deviceId').val() || data.child('updatedAtClient').val() < now - 600000)))",
+            ".validate": "newData.hasChildren(['schema','grantId','uid','state','deviceId','updatedAt','updatedAtClient']) && newData.child('schema').val() === 1 && newData.child('grantId').val() === $grantId && newData.child('uid').val() === $uid && (newData.child('state').val() === 'processing' || newData.child('state').val() === 'applied') && newData.child('deviceId').isString() && newData.child('deviceId').val().length >= 1 && newData.child('deviceId').val().length <= 96 && newData.child('updatedAt').isNumber() && newData.child('updatedAt').val() <= now && newData.child('updatedAt').val() >= now - 10000 && newData.child('updatedAtClient').isNumber() && newData.child('updatedAtClient').val() <= now + 300000 && newData.child('updatedAtClient').val() >= now - 300000 && (!newData.child('appliedAt').exists() || newData.child('appliedAt').isNumber()) && (!newData.child('appliedAtClient').exists() || newData.child('appliedAtClient').isNumber())",
+            "schema": {},
+            "grantId": {},
+            "uid": {},
+            "state": {},
+            "deviceId": {},
+            "updatedAt": {},
+            "updatedAtClient": {},
+            "appliedAt": {},
+            "appliedAtClient": {},
+            "$other": {
+              ".validate": false
+            }
+          }
+        }
+      },
+      "gmAudit": {
+        ".read": "auth != null && root.child('otthosWorld').child('admins').child(auth.uid).val() === true",
+        ".indexOn": [
+          "createdAtClient",
+          "targetUid",
+          "createdBy"
+        ],
+        "$grantId": {
+          ".write": "auth != null && root.child('otthosWorld').child('admins').child(auth.uid).val() === true && !data.exists()",
+          ".validate": "newData.hasChildren(['schema', 'grantId', 'targetUid', 'targetName', 'coins', 'totalUnits', 'reason', 'createdBy', 'createdByName', 'createdAt', 'createdAtClient']) && newData.child('schema').val() === 1 && newData.child('grantId').val() === $grantId && newData.child('targetUid').isString() && newData.child('targetUid').val().matches(/^[A-Za-z0-9_-]{6,128}$/) && newData.child('targetName').isString() && newData.child('targetName').val().length >= 3 && newData.child('targetName').val().length <= 24 && newData.child('coins').isNumber() && newData.child('coins').val() >= 0 && newData.child('coins').val() <= 1000000 && (newData.child('coins').val() > 0 || newData.child('items').hasChildren()) && newData.child('totalUnits').isNumber() && newData.child('totalUnits').val() > 0 && newData.child('totalUnits').val() <= 41000000 && newData.child('reason').isString() && newData.child('reason').val().length <= 160 && newData.child('createdBy').val() === auth.uid && newData.child('createdByName').isString() && newData.child('createdByName').val().length >= 1 && newData.child('createdByName').val().length <= 24 && newData.child('createdAt').isNumber() && newData.child('createdAt').val() <= now && newData.child('createdAt').val() >= now - 10000 && newData.child('createdAtClient').isNumber() && newData.child('createdAtClient').val() <= now + 300000 && newData.child('createdAtClient').val() >= now - 300000",
+          "schema": {},
+          "grantId": {},
+          "targetUid": {},
+          "targetName": {},
+          "coins": {},
+          "items": {
+            "$itemKey": {
+              ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= 1000000"
+            },
+            ".validate": "newData.hasChildren()"
+          },
+          "totalUnits": {},
+          "reason": {},
+          "createdBy": {},
+          "createdByName": {},
+          "createdAt": {},
+          "createdAtClient": {},
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "gameAccounts": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && (auth.uid === $uid || root.child('otthosWorld').child('admins').child(auth.uid).val() === true)",
+          ".validate": "!newData.exists() || (newData.hasChildren(['schema','ownerUid','accountId','username','iv','ciphertext','updatedAt','updatedAtClient']) && newData.child('schema').val() === 2 && newData.child('ownerUid').val() === $uid && newData.child('accountId').isString() && newData.child('accountId').val().matches(/^[a-f0-9]{64}$/) && newData.child('username').isString() && newData.child('username').val().length >= 3 && newData.child('username').val().length <= 20 && newData.child('iv').isString() && newData.child('iv').val().length >= 16 && newData.child('iv').val().length <= 64 && newData.child('ciphertext').isString() && newData.child('ciphertext').val().length >= 32 && newData.child('ciphertext').val().length <= 450000 && newData.child('updatedAt').isNumber() && newData.child('updatedAtClient').isNumber())"
+        }
+      },
+      "reports": {
+        ".read": false,
+        "$reportId": {
+          "reporterUid": {},
+          "targetUid": {},
+          "reason": {},
+          "room": {},
+          "createdAt": {},
+          "$other": {},
+          ".write": "auth != null && !data.exists() && newData.child('reporterUid').val() === auth.uid && newData.child('targetUid').isString() && newData.child('targetUid').val() !== auth.uid"
+        }
+      },
+      "rooms": {
+        "$roomId": {
+          ".read": false,
+          ".validate": "$roomId === 'bairro-central' || $roomId === 'bairro-floresta' || $roomId === 'bairro-lago' || $roomId === 'bairro-montanha' || $roomId === 'bairro-escola'",
+          "presence": {
+            ".read": "auth != null",
+            "$uid": {
+              "name": {},
+              "room": {},
+              "x": {},
+              "y": {},
+              "z": {},
+              "r": {},
+              "updatedAt": {},
+              "type": {},
+              "id": {},
+              "color": {},
+              "vehicle": {},
+              "vehicleId": {},
+              "vehicleRole": {},
+              "vehiclePassengerOf": {},
+              "vehiclePassengerUid": {},
+              "vehiclePassengerBotId": {},
+              "boating": {},
+              "boatId": {},
+              "boatRole": {},
+              "passengerOf": {},
+              "boatPassengerUid": {},
+              "boatPassengerBotId": {},
+              "transitMode": {},
+              "scaleMode": {},
+              "crouched": {},
+              "emoteType": {},
+              "emoteSeq": {},
+              "$other": {},
+              ".write": "auth != null && (auth.uid === $uid || root.child('otthosWorld').child('admins').child(auth.uid).val() === true)"
+            },
+            ".indexOn": [
+              "updatedAt",
+              "room"
+            ]
+          },
+          "chat": {
+            ".read": "auth != null",
+            "$messageId": {
+              "senderUid": {},
+              "name": {},
+              "text": {},
+              "createdAt": {},
+              "$other": {},
+              ".write": "auth != null && ((!data.exists() && newData.child('senderUid').val() === auth.uid) || (data.exists() && data.child('senderUid').val() === auth.uid && !newData.exists()))"
+            },
+            ".indexOn": [
+              "senderUid",
+              "createdAt"
+            ]
+          },
+          "houses": {
+            ".read": "auth != null",
+            "$houseId": {
+              "houseId": {},
+              "ownerUid": {},
+              "ownerName": {},
+              "name": {},
+              "price": {},
+              "x": {},
+              "z": {},
+              "locked": {},
+              "updatedAt": {},
+              "$other": {},
+              ".write": "auth != null && ((!data.exists() && newData.child('ownerUid').val() === auth.uid) || (data.exists() && data.child('ownerUid').val() === auth.uid && (!newData.exists() || newData.child('ownerUid').val() === auth.uid)))"
+            },
+            ".indexOn": [
+              "ownerUid",
+              "updatedAt"
+            ]
+          },
+          "gameSessions": {
+            ".read": "auth != null",
+            "$sessionId": {
+              ".read": "auth != null && (data.child('fromUid').val() === auth.uid || data.child('toUid').val() === auth.uid)",
+              "players": {
+                "$playerUid": {
+                  "name": {},
+                  "score": {},
+                  "total": {},
+                  "elapsed": {},
+                  "finished": {},
+                  "updatedAt": {},
+                  "$other": {}
+                }
+              },
+              "result": {
+                "finalized": {},
+                "draw": {},
+                "winnerUid": {},
+                "winnerName": {},
+                "loserUid": {},
+                "loserName": {},
+                "winnerScore": {},
+                "loserScore": {},
+                "winnerElapsed": {},
+                "loserElapsed": {},
+                "type": {},
+                "completedAt": {},
+                "$other": {}
+              },
+              "$other": {},
+              ".write": "auth != null && ((!data.exists() && newData.child('fromUid').val() === auth.uid && newData.child('toUid').isString()) || (data.exists() && (data.child('fromUid').val() === auth.uid || data.child('toUid').val() === auth.uid) && newData.child('fromUid').val() === data.child('fromUid').val() && newData.child('toUid').val() === data.child('toUid').val()))"
+            },
+            ".indexOn": [
+              "fromUid",
+              "toUid",
+              "createdAt"
+            ]
+          },
+          "boats": {
+            ".read": "auth != null",
+            "$boatId": {
+              "boatId": {},
+              "driverUid": {},
+              "driverName": {},
+              "room": {},
+              "claimedAt": {},
+              "updatedAt": {},
+              "updatedAtClient": {},
+              "$other": {},
+              ".write": "auth != null && ((!newData.exists() && data.child('driverUid').val() === auth.uid) || (newData.exists() && newData.child('driverUid').val() === auth.uid && (!data.exists() || data.child('driverUid').val() === auth.uid || data.child('updatedAtClient').val() < now - 20000)))"
+            }
+          },
+          "campfires": {
+            ".read": "auth != null",
+            "$ownerUid": {
+              "$campfireId": {
+                ".write": "auth != null && auth.uid === $ownerUid"
+              },
+              ".write": "auth != null && auth.uid === $ownerUid"
+            }
+          },
+          "houseExtensions": {
+            ".read": "auth != null",
+            "$ownerUid": {
+              "$extensionId": {
+                ".write": "auth != null && auth.uid === $ownerUid"
+              },
+              ".write": "auth != null && auth.uid === $ownerUid"
+            }
+          },
+          "slots": {
+            ".read": "auth != null",
+            "$slotId": {
+              "slot": {},
+              "uid": {},
+              "name": {},
+              "room": {},
+              "joinedAt": {},
+              "joinedAtClient": {},
+              "updatedAt": {},
+              "updatedAtClient": {},
+              "$other": {},
+              ".write": "auth != null && ((!newData.exists() && data.child('uid').val() === auth.uid) || (newData.exists() && newData.child('uid').val() === auth.uid && (!data.exists() || data.child('uid').val() === auth.uid || data.child('updatedAt').val() < now - 25000)))"
+            }
+          },
+          "coopMissions": {
+            ".read": "auth != null",
+            ".indexOn": [
+              "updatedAtClient",
+              "status",
+              "type"
+            ],
+            "$missionId": {
+              "participants": {
+                "$participantUid": {
+                  "uid": {},
+                  "name": {},
+                  "role": {},
+                  "ready": {},
+                  "joinedAt": {},
+                  "joinedAtClient": {},
+                  "updatedAtClient": {},
+                  "$other": {},
+                  ".write": "auth != null && (auth.uid === $participantUid || data.parent().parent().child('hostUid').val() === auth.uid)"
+                }
+              },
+              "progress": {
+                "phase": {},
+                "counter": {},
+                "target": {},
+                "updatedAt": {},
+                "updatedAtClient": {},
+                "events": {
+                  "$eventId": {}
+                },
+                ".write": "auth != null && (data.parent().child('hostUid').val() === auth.uid || data.parent().child('participants').child(auth.uid).exists())"
+              },
+              "id": {},
+              "type": {},
+              "title": {},
+              "icon": {},
+              "hostUid": {},
+              "room": {},
+              "status": {},
+              "mode": {},
+              "minPlayers": {},
+              "maxPlayers": {},
+              "createdAt": {},
+              "createdAtClient": {},
+              "updatedAt": {},
+              "updatedAtClient": {},
+              "startedAt": {},
+              "completedAt": {},
+              "$other": {},
+              ".write": "auth != null && ((!data.exists() && newData.child('hostUid').val() === auth.uid) || (data.exists() && data.child('hostUid').val() === auth.uid) || (data.exists() && data.child('status').val() === 'lobby' && newData.child('status').val() === data.child('status').val() && newData.child('hostUid').val() === data.child('hostUid').val() && newData.child('type').val() === data.child('type').val() && newData.child('room').val() === data.child('room').val() && newData.child('mode').val() === data.child('mode').val() && newData.child('maxPlayers').val() === data.child('maxPlayers').val() && newData.child('minPlayers').val() === data.child('minPlayers').val() && newData.child('progress').val() === data.child('progress').val() && newData.child('participants').child(auth.uid).child('uid').val() === auth.uid))"
+            }
+          },
+          "motionV2": {
+            ".read": "auth != null",
+            "$uid": {
+              ".write": "auth != null && auth.uid === $uid",
+              ".validate": "!newData.exists() || (newData.child('uid').val() === $uid && newData.child('v').val() === 2 && newData.child('seq').isNumber() && newData.child('x').isNumber() && newData.child('z').isNumber() && newData.child('updatedAtClient').isNumber())",
+              "$other": {}
+            },
+            ".indexOn": [
+              "updatedAtClient"
+            ]
+          },
+          "worldV2": {
+            ".read": "auth != null",
+            "authority": {
+              ".write": "auth != null && (!newData.exists() ? data.child('uid').val() === auth.uid : (newData.child('uid').val() === auth.uid && (!data.exists() || data.child('uid').val() === auth.uid || data.child('leaseUntilClient').val() < now)))",
+              ".validate": "!newData.exists() || (newData.child('v').val() === 2 && newData.child('uid').val() === auth.uid && newData.child('epoch').isNumber() && newData.child('leaseUntilClient').isNumber() && newData.child('leaseUntilClient').val() > now && newData.child('leaseUntilClient').val() <= now + 10000)"
+            },
+            "state": {
+              ".write": "auth != null && data.parent().child('authority').child('uid').val() === auth.uid && data.parent().child('authority').child('leaseUntilClient').val() >= now - 1000",
+              ".validate": "!newData.exists() || (newData.child('v').val() === 2 && newData.child('authorityUid').val() === auth.uid && newData.child('seq').isNumber())",
+              "$other": {}
+            }
+          },
+          "eventsV2": {
+            ".read": "auth != null",
+            "$eventId": {
+              ".write": "auth != null && ((!data.exists() && newData.child('actorUid').val() === auth.uid) || (data.exists() && data.child('actorUid').val() === auth.uid && !newData.exists()))",
+              ".validate": "!newData.exists() || (newData.child('v').val() === 2 && newData.child('seq').isNumber() && newData.child('kind').isString() && newData.child('createdAtClient').isNumber())",
+              "$other": {}
+            },
+            ".indexOn": [
+              "createdAtClient",
+              "actorUid"
+            ]
+          },
+          "matchesV2": {
+            ".read": "auth != null",
+            "$type": {
+              ".validate": "$type === 'football' || $type === 'volley' || $type === 'footvolley' || $type === 'kart'",
+              "authority": {
+                ".write": "auth != null && (!newData.exists() ? data.child('uid').val() === auth.uid : (newData.child('uid').val() === auth.uid && (!data.exists() || data.child('uid').val() === auth.uid || data.child('leaseUntilClient').val() < now)))",
+                ".validate": "!newData.exists() || (newData.child('v').val() === 2 && newData.child('uid').val() === auth.uid && newData.child('epoch').isNumber() && newData.child('leaseUntilClient').isNumber() && newData.child('leaseUntilClient').val() > now && newData.child('leaseUntilClient').val() <= now + 12000)"
+              },
+              "participants": {
+                "$uid": {
+                  ".write": "auth != null && auth.uid === $uid",
+                  ".validate": "!newData.exists() || (newData.child('uid').val() === $uid && newData.child('joinedAtClient').isNumber())",
+                  "$other": {}
+                }
+              },
+              "inputs": {
+                "$uid": {
+                  ".write": "auth != null && auth.uid === $uid",
+                  ".validate": "!newData.exists() || (newData.child('v').val() === 2 && newData.child('uid').val() === $uid && newData.child('seq').isNumber() && newData.child('action').isString())",
+                  "$other": {}
+                }
+              },
+              "state": {
+                ".write": "auth != null && data.parent().child('authority').child('uid').val() === auth.uid && data.parent().child('authority').child('leaseUntilClient').val() >= now - 1000",
+                ".validate": "!newData.exists() || (newData.child('v').val() === 2 && newData.child('hostUid').val() === auth.uid && newData.child('type').val() === $type && newData.child('seq').isNumber())",
+                "$other": {}
+              },
+              "$other": {}
+            }
+          }
+        }
+      },
+      "userModeration": {
+        ".read": "auth != null && root.child('otthosWorld').child('admins').child(auth.uid).val() === true",
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || root.child('otthosWorld').child('admins').child(auth.uid).val() === true)",
+          ".write": "auth != null && root.child('otthosWorld').child('admins').child(auth.uid).val() === true && auth.uid !== $uid && root.child('otthosWorld').child('admins').child($uid).val() !== true",
+          ".validate": "!newData.exists() || (newData.hasChildren(['state','reason','updatedBy','updatedByName','updatedAt','updatedAtClient']) && (newData.child('state').val() === 'blocked' || newData.child('state').val() === 'deleted') && newData.child('reason').isString() && newData.child('reason').val().length <= 160 && newData.child('updatedBy').val() === auth.uid && newData.child('updatedByName').isString() && newData.child('updatedByName').val().length >= 1 && newData.child('updatedByName').val().length <= 24 && newData.child('updatedAt').isNumber() && newData.child('updatedAt').val() <= now && newData.child('updatedAt').val() >= now - 10000 && newData.child('updatedAtClient').isNumber() && newData.child('updatedAtClient').val() <= now + 300000 && newData.child('updatedAtClient').val() >= now - 300000)",
+          "state": {},
+          "reason": {},
+          "updatedBy": {},
+          "updatedByName": {},
+          "updatedAt": {},
+          "updatedAtClient": {},
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "gmModerationAudit": {
+        ".read": "auth != null && root.child('otthosWorld').child('admins').child(auth.uid).val() === true",
+        ".indexOn": [
+          "createdAtClient",
+          "targetUid",
+          "createdBy",
+          "action"
+        ],
+        "$eventId": {
+          ".write": "auth != null && root.child('otthosWorld').child('admins').child(auth.uid).val() === true && !data.exists()",
+          ".validate": "newData.hasChildren(['schema','id','action','targetUid','reason','createdBy','createdByName','createdAt','createdAtClient']) && newData.child('schema').val() === 1 && newData.child('id').val() === $eventId && (newData.child('action').val() === 'block' || newData.child('action').val() === 'unblock' || newData.child('action').val() === 'delete-data') && newData.child('targetUid').isString() && newData.child('targetUid').val().matches(/^[A-Za-z0-9_-]{6,128}$/) && newData.child('reason').isString() && newData.child('reason').val().length <= 160 && newData.child('createdBy').val() === auth.uid && newData.child('createdByName').isString() && newData.child('createdByName').val().length >= 1 && newData.child('createdByName').val().length <= 24 && newData.child('createdAt').isNumber() && newData.child('createdAt').val() <= now && newData.child('createdAt').val() >= now - 10000 && newData.child('createdAtClient').isNumber() && newData.child('createdAtClient').val() <= now + 300000 && newData.child('createdAtClient').val() >= now - 300000",
+          "schema": {},
+          "id": {},
+          "action": {},
+          "targetUid": {},
+          "reason": {},
+          "createdBy": {},
+          "createdByName": {},
+          "createdAt": {},
+          "createdAtClient": {},
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    }
+  }
+}

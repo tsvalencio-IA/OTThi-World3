@@ -1,0 +1,32 @@
+{
+  "name": "OTTHI World",
+  "short_name": "OTTHI World",
+  "description": "Mundo aberto infantil original com vida social, construção modular, veículos montáveis, poderes, plataforma, profissões e aprendizado adaptativo.",
+  "start_url": "./?v=70614",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#07101e",
+  "theme_color": "#0c1b33",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "games",
+    "kids",
+    "education",
+    "entertainment"
+  ],
+  "id": "./?v=70614"
+}
