@@ -42,6 +42,8 @@
     }
   },
   "changes": [
+    "Hotfix R16.8.0 registra automaticamente como GM principal somente o UID Firebase autorizado iGbFN76LLURq5W3lCOXkQvUx5kz1, preservando o código *177 e todas as verificações GM existentes.",
+    "Hotfix R16.8.0 restaura assets PBR ainda referenciados pelo manifesto que haviam sido removidos na limpeza do repositório, preservando render e testes de integridade visual.",
     "R16.8.0 cria o Multiplayer Core V2 sem remover o Presence V1: movimento compacto usa canal próprio, buffer de snapshots, Hermite e render remoto em todo frame, desacoplado dos ticks de IA.",
     "R16.8.0 prende passageiro e garupa ao transform interpolado do veículo hospedeiro no caminho V2, preservando a suavização R16.7.15 como fallback e todos os contratos legados de multiassento.",
     "R16.8.0 separa autoridade de mundo, eventos e partidas do Presence: NPCs, trânsito e ocorrências usam worldV2 com lease/epoch; ações compartilhadas usam eventsV2.",
@@ -266,8 +268,8 @@
     "Firebase, regras, contas e multiplayer permanecem preservados."
   ],
   "hotfix": "705.7",
-  "assetVersion": 70614,
-  "revisionLabel": "R16.8.0-multiplayer-core-v2-mundo-esportes",
+  "assetVersion": 70615,
+  "revisionLabel": "R16.8.0-hotfix-gm-auto-firebase-novo",
   "consolidationBase": {
     "repository": "tsvalencio-IA/OTTHI-World",
     "branch": "main",

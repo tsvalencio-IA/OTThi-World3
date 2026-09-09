@@ -2,7 +2,7 @@
   "name": "OTTHI World",
   "short_name": "OTTHI World",
   "description": "Mundo aberto infantil original com vida social, construção modular, veículos montáveis, poderes, plataforma, profissões e aprendizado adaptativo.",
-  "start_url": "./?v=70614",
+  "start_url": "./?v=70615",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
@@ -28,5 +28,5 @@
     "education",
     "entertainment"
   ],
-  "id": "./?v=70614"
+  "id": "./?v=70615"
 }

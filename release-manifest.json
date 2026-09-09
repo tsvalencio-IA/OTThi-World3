@@ -1,28 +1,28 @@
 {
   "version": 705,
   "build": "705.16.7.16-multiplayer-core-v2-r1680",
-  "revision": "7fcb090ced99bc8d",
+  "revision": "6a8ca173f2dcabe5",
   "algorithm": "SHA-256",
   "files": {
-    "index.html": "f5f812f17644250d055dd71c3638a9fb8ec51d70bd290d87a10525e82c80b72d",
+    "index.html": "060ebe7cc39cf2a42de05c66425a82bfb0e6266b034a8db9c69e2c2925fb2af0",
     "style.css": "4c4085d1a08e956fd2c0b35705b2a1b9fd9e28399ec76416d0c89820e97328f4",
     "assets/vendor/three-r128.min.js": "9274bbcec8d96168626c732b5d31c775aa8cfb7eaa0599bec0c175908a2c1ce2",
     "assets/js/core/runtime-config.js": "60a33d901cbf88cf8636170acc9ed7db1f90451583cd1385e0c059683085ddcc",
     "assets/js/core/safe-pointer.js": "4f11579e213b1d6704e9b03f3a15dcb4b0738900cc8eadb46a415224045aedb4",
     "assets/js/core/viewport-manager.js": "b098277b9df4ad0c3f4265d35dcf44a4c9d8d5742a0212fbd5dec1ec21f949f1",
     "assets/js/save-db.js": "a8d20a89451eb15571754118814d286b1b00de664e14639b1ee4d5264eb6ff0d",
-    "firebase-config.js": "72d2fc80efc82b6df856c5b43fd9cc37990cf3fe6ea27c4d90060b4c960e56fd",
+    "firebase-config.js": "ec5ce13a71981c62e5a0db2c3137d9dc742ffaa02b779469939e3204fc868144",
     "assets/js/game-account.js": "1a67a8c4d209e2bec1f91512d655d05698d369ab14ed602385b51f6ae8db9be5",
-    "assets/js/multiplayer-rtdb.js": "a4cb00bfeef183229088748b90e09b381d44f6d1c56f51ee99b249565c9c0e95",
+    "assets/js/multiplayer-rtdb.js": "4c576c8c0dba79bc033eb23b68956bbeb2c56c4762e8e216c1aa66f6a1270e92",
     "app.js": "f72870a3b948ef6b13f21cbab9cd65f103bc5263164690b50375e7a065f73ec6",
     "assets/js/ui/shared-modal.js": "39b82cae4ae7346b0540ca990e71c874e8d1b8e09d42ab1be6d3fa15031b2b5a",
     "assets/js/core/performance-guardian.js": "68ec11c953fa49cb4d7022316b9399ac53e9b02472cd9c898ddc3a0a83ffc412",
     "assets/js/multiplayer/room-manager.js": "ac0b2081c295dd5bde91d81f64aaf810814a4eaa99b2db04d6e0bec7fc1013b4",
     "assets/js/education/adaptive-learning.js": "e50e8610d9dfeaf38cda5930708c1f369175a50e0f9e7a934dc98f5aba384701",
     "assets/js/safety/child-safety.js": "efe67c414ea5b80f0e4b1de7ee0e84266f88c47a2020305931d24cf66a7a70d6",
-    "manifest.webmanifest": "64f887097abd5b4d11d44e26002d211ba13c84edcbc2794f099ba31a4c3afd56",
+    "manifest.webmanifest": "f6260ea34db8a1b04837e145830a64f79356e25897d4db9b1dcdfbfe9122a075",
     "404.html": "fa1b7eeb67a2364a67a2c0ea7d2e4ebb58a2a50d8d8f1c05de48931498b36ae8",
-    "VERSION.json": "d146f7e0095cfe988907048a6acf33a3192841d21ffda9f07c5922972701b05e",
-    "sw.js": "fb080dc0d32bfe7296b6825355f6edb5d0773ee15ec4158ceaea1ff073dc0d91"
+    "VERSION.json": "02c7b2d9f4db280f73e4fe16b9f323cd58add56001e4851c60ef9e99cf0ae883",
+    "sw.js": "73107af1174396206cb8f2f90330281b91e28ba2abe18b01aabd0379be33264d"
   }
 }

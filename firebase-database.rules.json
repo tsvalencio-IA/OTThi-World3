@@ -129,7 +129,7 @@
       "admins": {
         "$uid": {
           ".read": "auth != null && (auth.uid === $uid || root.child('otthosWorld').child('admins').child(auth.uid).val() === true)",
-          ".write": false,
+          ".write": "auth != null && auth.uid === $uid && $uid === 'iGbFN76LLURq5W3lCOXkQvUx5kz1' && newData.val() === true",
           ".validate": "newData.val() === true"
         }
       },
