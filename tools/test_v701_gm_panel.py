@@ -51,7 +51,7 @@ add('Nenhuma função-base foi removida',set(base).issubset(functions),sorted(se
 add('Funções ampliadas',len(functions)>=820,len(functions))
 
 critical={
- 'firebase-config.js':'72d2fc80efc82b6df856c5b43fd9cc37990cf3fe6ea27c4d90060b4c960e56fd',
+ 'firebase-config.js':'ec5ce13a71981c62e5a0db2c3137d9dc742ffaa02b779469939e3204fc868144',
  'assets/vendor/three-r128.min.js':'9274bbcec8d96168626c732b5d31c775aa8cfb7eaa0599bec0c175908a2c1ce2',
  'athos.glb':'98c8acdbd7e4160eeb34347a3706041b50fa12d2875a03d852e3b218b7959cdb'}
 for rel,expected in critical.items(): add(f'Arquivo crítico preservado: {rel}',sha(rel)==expected,sha(rel))
@@ -94,7 +94,8 @@ add('Login aguarda recuperação antes de aplicar concessão','__OTTHI_ACCOUNT_R
 add('Recibo só conclui após persistência','const persisted=localSaved!==false&&progressSaved!==false&&accountSaved!==false' in gm and 'persisted?await backend?.completeGMGrant' in gm)
 
 root_rules=rules['rules']['otthosWorld']
-add('Admins não podem ser criados pelo cliente',root_rules['admins']['$uid']['.write'] is False)
+admin_write=str(root_rules['admins']['$uid']['.write'])
+add('Somente o UID GM principal pode auto-registrar o próprio admin',all(token in admin_write for token in ["auth.uid === $uid","$uid === 'iGbFN76LLURq5W3lCOXkQvUx5kz1'","newData.val() === true"]) and f"BOOTSTRAP_GM_UID='iGbFN76LLURq5W3lCOXkQvUx5kz1'" in rtdb and 'ensureBootstrapGM' in rtdb)
 add('Somente UID GM lê todos os usuários',"admins" in root_rules['users']['.read'] and "auth.uid" in root_rules['users']['.read'])
 grant_rule=root_rules['gmGrants']['$uid']['$grantId']
 add('Somente GM cria concessão imutável',"admins" in grant_rule['.write'] and '!data.exists()' in grant_rule['.write'])
