@@ -36,10 +36,13 @@
     if (data.fps < cfg.downgradeFps) { lowCount += 1; highCount = 0; }
     else if (data.fps > cfg.recoveryFps) { highCount += 1; lowCount = Math.max(0, lowCount - 1); }
     else { lowCount = Math.max(0, lowCount - 1); highCount = Math.max(0, highCount - 1); }
-    if (lowCount >= 2 && data.requested === 'auto' && data.tier !== 'low') {
-      window.OTTHOS_TEST_API?.setQuality?.('low');
+    if (lowCount >= 2 && data.requested === 'auto') {
+      const governor = window.OTTHOS_TEST_API?.protectPerformance?.('guardian-low-fps', data.fps < cfg.downgradeFps * .72 ? 1.5 : 1);
       lowCount = 0;
-      window.dispatchEvent(new CustomEvent('otthi:performance-protected', { detail:data }));
+      window.dispatchEvent(new CustomEvent('otthi:performance-protected', { detail:{...data, governor} }));
+    } else if (highCount >= 6 && data.requested === 'auto') {
+      window.OTTHOS_TEST_API?.recoverPerformance?.('guardian-stable-fps');
+      highCount = 0;
     }
   }
   function start() {

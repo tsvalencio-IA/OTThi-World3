@@ -11,7 +11,7 @@
   })();
   window.OTTHI_CONFIG = {
     version: 705,
-    build: '705.16.7.16-multiplayer-core-v2-r1680',
+    build: '705.16.7.17-visual-performance-governor',
     repository: repo,
     baseUrl,
     firebaseRoot: 'otthosWorld',
@@ -31,9 +31,9 @@
       interpolationMs: 180
     },
     performance: {
-      targetFps: 30,
-      downgradeFps: 24,
-      recoveryFps: 48,
+      targetFps: 45,
+      downgradeFps: 34,
+      recoveryFps: 43,
       sampleIntervalMs: 3000
     },
     childSafety: {
