@@ -1,10 +1,10 @@
 {
   "version": 705,
   "build": "705.16.7.17-visual-performance-governor",
-  "revision": "d77de6a7e541f380",
+  "revision": "23b438434d19f439",
   "algorithm": "SHA-256",
   "files": {
-    "index.html": "a8e72bbab133367e45b86a700d8b02390587ce59324902d5553f62f8afcbfb73",
+    "index.html": "2d5f2bf6741a1f30bca6276f17bd4338d167eac2e1f81d0796d72f11475451ae",
     "style.css": "4c4085d1a08e956fd2c0b35705b2a1b9fd9e28399ec76416d0c89820e97328f4",
     "assets/vendor/three-r128.min.js": "9274bbcec8d96168626c732b5d31c775aa8cfb7eaa0599bec0c175908a2c1ce2",
     "assets/js/core/runtime-config.js": "a8090a19300e9c2f60253259b6f64bda75c77bfcdc35777859d81e7c2a211491",
@@ -13,7 +13,7 @@
     "assets/js/save-db.js": "a8d20a89451eb15571754118814d286b1b00de664e14639b1ee4d5264eb6ff0d",
     "firebase-config.js": "ec5ce13a71981c62e5a0db2c3137d9dc742ffaa02b779469939e3204fc868144",
     "assets/js/game-account.js": "1a67a8c4d209e2bec1f91512d655d05698d369ab14ed602385b51f6ae8db9be5",
-    "assets/js/multiplayer-rtdb.js": "a4cb00bfeef183229088748b90e09b381d44f6d1c56f51ee99b249565c9c0e95",
+    "assets/js/multiplayer-rtdb.js": "4c576c8c0dba79bc033eb23b68956bbeb2c56c4762e8e216c1aa66f6a1270e92",
     "app.js": "1d7d1f6992767ccc78732edbf51ecd1665b314a3041a112e401e8aca49dfb797",
     "assets/js/ui/shared-modal.js": "39b82cae4ae7346b0540ca990e71c874e8d1b8e09d42ab1be6d3fa15031b2b5a",
     "assets/js/core/performance-guardian.js": "2405134db875a019bd50996efd2f908c0082583005f9d3a9f6a7d9811b52ee1f",
@@ -23,6 +23,6 @@
     "manifest.webmanifest": "f6260ea34db8a1b04837e145830a64f79356e25897d4db9b1dcdfbfe9122a075",
     "404.html": "fa1b7eeb67a2364a67a2c0ea7d2e4ebb58a2a50d8d8f1c05de48931498b36ae8",
     "VERSION.json": "5a4df7bd2e78ea449e5cf6d31e9dd8295020e0dc3ff01502f8783e7424692821",
-    "sw.js": "87ddf62f8d9dfe5557316fefd803c0d37950cb1e564ec3eea7178b3b8bdc5726"
+    "sw.js": "db73320cb5747b80cc7c496b4dd462252b16ed40cb19da825010fcde5b6f1886"
   }
 }
