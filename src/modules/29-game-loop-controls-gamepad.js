@@ -41,8 +41,15 @@
     });
   }
   function targetRenderFrameRate(){return perf.mobile?(qualityTier()==='low'?30:qualityTier()==='balanced'?45:60):60;}
+  function targetSimulationFrameRate(){return paused?15:60;}
+  function sampleRafCadence(rawDt){
+    perf.rafSampleAcc+=rawDt;perf.rafFrames++;if(perf.rafSampleAcc>=1.5){perf.rafHz=perf.rafFrames/Math.max(.001,perf.rafSampleAcc);perf.rafSampleAcc=0;perf.rafFrames=0;}
+  }
   function gameLoop(){
-    if(!running)return;raf=requestAnimationFrame(gameLoop);const dt=Math.min(.033,clock.getDelta());samplePerformance(dt);
+    if(!running)return;raf=requestAnimationFrame(gameLoop);
+    const rawDt=Math.min(.05,clock.getDelta());sampleRafCadence(rawDt);perf.loopAcc=Math.min(.12,perf.loopAcc+rawDt);
+    const simulationInterval=1/targetSimulationFrameRate();if(perf.loopAcc<simulationInterval*.92)return;
+    const dt=Math.min(.033,perf.loopAcc);perf.loopAcc=Math.max(0,perf.loopAcc-simulationInterval);samplePerformance(dt);
     updatePlayUsage();
     if(!paused){
       const tier=qualityTier();pollGamepad();
