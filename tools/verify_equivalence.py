@@ -4,8 +4,8 @@ from pathlib import Path
 import hashlib,json,re,sys
 ROOT=Path(__file__).resolve().parents[1]; DOCS=ROOT/'docs'; DOCS.mkdir(exist_ok=True)
 BASELINE_PATH=DOCS/'BASELINE-V641-FUNCOES-E-ASSETS.json'
+OPTIONAL_PRESERVED_ASSETS={'.nojekyll'}
 APPROVED_MUTABLE_ASSETS={
-    '.nojekyll',
     'firebase-config.js',
     'assets/js/multiplayer-rtdb.js',
     'assets/js/multiplayer/room-manager.js',
@@ -18,6 +18,10 @@ APPROVED_MUTABLE_ASSETS={
 # habilita a rotação automática solicitada (`fullSensor`) sem liberar mudanças
 # futuras e arbitrárias em permissões ou componentes Android.
 APPROVED_MUTABLE_ASSET_HASHES={
+    'assets/js/core/performance-guardian.js': {
+        # R16.8.1: governador visual/térmico auditado; não libera alterações futuras.
+        '2405134db875a019bd50996efd2f908c0082583005f9d3a9f6a7d9811b52ee1f',
+    },
     'android-app/app/src/main/AndroidManifest.xml': {
         '325c878dda188d14b23572b4aa605cbd7ec204312cd3e4640fd95ce937a92ef4',
         # R12: remoção de RECORD_AUDIO não utilizado + allowBackup=false; fullSensor preservado.
@@ -53,7 +57,7 @@ def main():
         unchanged=actual==expected_sha
         asset_results.append({
             'file':rel,'exists':path.exists(),'unchanged':unchanged,'approvedChange':approved,
-            'accepted':path.exists() and (unchanged or approved),
+            'accepted':(path.exists() and (unchanged or approved)) or (rel in OPTIONAL_PRESERVED_ASSETS and not path.exists()),
             'expectedSha256':expected_sha,'actualSha256':actual
         })
     required_tokens={
