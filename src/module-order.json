@@ -1,13 +1,13 @@
 {
   "version": 705,
-  "build": "705.16.7.16-multiplayer-core-v2-r1680",
+  "build": "705.16.7.17-visual-performance-governor",
   "javascript": [
     {
       "file": "src/modules/00-runtime-foundation.js",
       "startLine": 4,
       "endLine": 49,
       "description": "Runtime, utilitários, versão, storage e chaves de migração",
-      "sha256Body": "981cb4918f2f7ac6c0eee0af0d024391d78051c387e0bb116c8c9604fcfc8ec6"
+      "sha256Body": "c9341b185aec519212ad80a34828ce507f78656289d7c81d9d5e0c271812cbb4"
     },
     {
       "file": "src/modules/00a-visual-foundation-avatar-v2.js",
@@ -84,7 +84,7 @@
       "startLine": 1808,
       "endLine": 2074,
       "description": "Responsividade, AR, modos, qualidade, LOD e diagnóstico",
-      "sha256Body": "025265be01bdf5b2d22e7930f6bb69412fd3a8d542b207d171e1ee1f7ab4adaf"
+      "sha256Body": "a8b0886bcecdb1ff44aa9adc1c2837867d9a538fcbe32628c9491c61d9098f00"
     },
     {
       "file": "src/modules/10-player-skills.js",
@@ -217,7 +217,7 @@
       "startLine": 4495,
       "endLine": 4635,
       "description": "Three.js, qualidade, viewport, resize, posição segura e colisões",
-      "sha256Body": "a6e4a9adf54463f4483c934a1dc05b1480c12557dcff8ccf4e240849faf6d272"
+      "sha256Body": "ae40f679aa827423ec1311bfbaa01178c0752f7d1717aaa72c9dcb563b002199"
     },
     {
       "file": "src/modules/26-input-player-physics.js",
@@ -259,14 +259,14 @@
       "startLine": 5124,
       "endLine": 5238,
       "description": "Loop principal, controles, gamepad e início do jogo",
-      "sha256Body": "66d7432d4f12d36241a18abcc35651c67cdfe351758ceeded7ca8d144a678c95"
+      "sha256Body": "d6669e7e0f1840595e87e013cc9c5a8ab1867ab3f98047cfce01d88c358c4b3f"
     },
     {
       "file": "src/modules/30-pause-tests-public-api-bootstrap.js",
       "startLine": 5240,
       "endLine": 5422,
       "description": "Pausa, testes de veículo, API pública de auditoria e bootstrap final",
-      "sha256Body": "d980b7af179e7a01ccc7da8f30fad1fe436b7ffbc2a5ff986a53847a0891c88e"
+      "sha256Body": "6efa85c837fe23582c529fbf6a916d758c4e2626a89959de331bbe3203c83428"
     },
     {
       "file": "src/modules/31-neighborhood-world-controller.js",
