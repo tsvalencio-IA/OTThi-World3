@@ -1,6 +1,6 @@
 {
   "version": 705,
-  "build": "705.16.7.16-multiplayer-core-v2-r1680",
+  "build": "705.16.7.17-visual-performance-governor",
   "name": "OTTHI World",
   "sourceArchitecture": "modular-source-with-generated-runtime-bundle",
   "runtimeBundle": "app.js",
@@ -42,8 +42,10 @@
     }
   },
   "changes": [
-    "Hotfix R16.8.0 registra automaticamente como GM principal somente o UID Firebase autorizado iGbFN76LLURq5W3lCOXkQvUx5kz1, preservando o código *177 e todas as verificações GM existentes.",
-    "Hotfix R16.8.0 restaura assets PBR ainda referenciados pelo manifesto que haviam sido removidos na limpeza do repositório, preservando render e testes de integridade visual.",
+    "R16.8.1 corrige a qualidade automática móvel: RAM/núcleos reportados pelo navegador deixam de rebaixar a identidade visual; o modo automático inicia equilibrado e reduz primeiro apenas o custo de renderização.",
+    "R16.8.1 substitui o antigo performance-guardian que gravava qualidade LOW por um governor de DPR: quedas de FPS reduzem resolução interna gradualmente sem persistir um mundo visualmente simplificado.",
+    "R16.8.1 limita a simulação principal a no máximo 60 Hz mesmo em telas 90/120 Hz e usa powerPreference padrão no mobile, reduzindo trabalho redundante de CPU/GPU e aquecimento sem remover gameplay.",
+    "R16.8.1 migra uma única vez celulares presos em LOW pela lógica automática antiga para Automática/Equilibrada, preservando conta, save e progresso.",
     "R16.8.0 cria o Multiplayer Core V2 sem remover o Presence V1: movimento compacto usa canal próprio, buffer de snapshots, Hermite e render remoto em todo frame, desacoplado dos ticks de IA.",
     "R16.8.0 prende passageiro e garupa ao transform interpolado do veículo hospedeiro no caminho V2, preservando a suavização R16.7.15 como fallback e todos os contratos legados de multiassento.",
     "R16.8.0 separa autoridade de mundo, eventos e partidas do Presence: NPCs, trânsito e ocorrências usam worldV2 com lease/epoch; ações compartilhadas usam eventsV2.",
@@ -227,8 +229,9 @@
     "authoritativeSportsV2StaticApproved": true,
     "firebaseV2RulesStaticApproved": true
   },
-  "release": "705.7-r16.8.0-multiplayer-core-v2-r11-lineage",
+  "release": "705.7-r16.8.1-visual-performance-governor-r11-lineage",
   "notes": [
+    "R16.8.1 altera somente qualidade/render/performance; Multiplayer Core V2, Firebase, mapa, oficina, esportes, veículos e assets permanecem preservados.",
     "R16.8.0 é uma integração completa sobre a R16.7.15 recebida: mantém Presence V1 e contratos antigos como fallback, mas separa movimento, mundo, eventos e partidas em canais V2.",
     "As Firebase Rules passam a incluir motionV2, worldV2, eventsV2 e matchesV2. No novo repositório, as regras precisam ser publicadas no Realtime Database para o Core V2 funcionar.",
     "A homologação física multiplayer entre dois ou mais aparelhos permanece pendente até teste real publicado; validações locais não substituem latência/jitter reais.",
@@ -269,7 +272,7 @@
   ],
   "hotfix": "705.7",
   "assetVersion": 70615,
-  "revisionLabel": "R16.8.0-hotfix-gm-auto-firebase-novo",
+  "revisionLabel": "R16.8.0-multiplayer-core-v2-r16.8.1-visual-performance-governor",
   "consolidationBase": {
     "repository": "tsvalencio-IA/OTTHI-World",
     "branch": "main",

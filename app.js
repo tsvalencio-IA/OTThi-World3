@@ -4,7 +4,7 @@
   'use strict';
 
   const OTTHI_GAME_LIVE_BASE = new URL('./', window.location.href).href;
-  const OTTHI_GAME_WEB_BUILD = '705.16.7.16-multiplayer-core-v2-r1680';
+  const OTTHI_GAME_WEB_BUILD = '705.16.7.17-visual-performance-governor';
   window.OTTHI_GAME_VERSION = 705;
   window.OTTHI_GAME_BUILD = OTTHI_GAME_WEB_BUILD;
   const OTTHI_INDEX_BUILD = document.documentElement?.dataset?.otthiBuild || '';
@@ -2546,18 +2546,42 @@
   const materials = {};
 
 
+  const OTTHI_VISUAL_GOVERNOR_MIGRATION='otthi_visual_governor_r1681';
+  function migrateLegacyAutoForcedQuality(){
+    // R16.8.1: versões anteriores podiam gravar LOW automaticamente via performance-guardian.
+    // Só desfazemos o caso inequivocamente automático (quality=low + autoTier=low), uma única vez.
+    let migrated=false;try{migrated=localStorage.getItem(OTTHI_VISUAL_GOVERNOR_MIGRATION)==='1';}catch{}
+    if(migrated)return false;
+    const mobile=matchMedia('(pointer:coarse)').matches;
+    if(mobile&&state.settings?.quality==='low')state.settings.quality='auto';
+    if(mobile&&state.settings?.autoTier==='low')state.settings.autoTier='balanced';
+    try{localStorage.setItem(OTTHI_VISUAL_GOVERNOR_MIGRATION,'1');}catch{}
+    try{saveState();}catch{}
+    return true;
+  }
+  migrateLegacyAutoForcedQuality();
   function detectStableAutoTier(){
     const memory=Number(navigator.deviceMemory||4),cores=Number(navigator.hardwareConcurrency||4),mobile=matchMedia('(pointer:coarse)').matches;
-    if(memory<=4||cores<=4)return 'low';
-    if(!mobile&&memory>=8&&cores>=8)return 'high';
+    // HardwareHint é apenas diagnóstico. No celular, a identidade visual automática começa sempre equilibrada;
+    // RAM/núcleos reportados pelo navegador não podem decidir que um aparelho verá um mundo "mais pobre".
+    if(mobile)return 'balanced';
+    if(memory>=8&&cores>=8)return 'high';
     return 'balanced';
   }
-  function resolvedStableAutoTier(saved=state.settings?.autoTier){const detected=detectStableAutoTier(),mobile=matchMedia('(pointer:coarse)').matches;if(!['low','balanced','high'].includes(saved))return detected;if(mobile&&saved==='high')return detected==='low'?'low':'balanced';return saved;}
+  function resolvedStableAutoTier(saved=state.settings?.autoTier){
+    const detected=detectStableAutoTier(),mobile=matchMedia('(pointer:coarse)').matches;
+    if(mobile&&saved==='high')return 'balanced';
+    if(mobile)return 'balanced';
+    if(!['low','balanced','high'].includes(saved))return detected;
+    return saved==='low'?'balanced':saved;
+  }
   const initialAutoTier=resolvedStableAutoTier();
   const perf = {
     tier:initialAutoTier, sessionTier:initialAutoTier, fps:60, frameAcc:0, frameCount:0, sampleMs:0, lastNow:performance.now(),
     lowSamples:0, highSamples:0, recommendationSamples:0, aiAcc:0, trafficAcc:0, cloudAcc:0, lodAcc:0, uiAcc:0, panelAcc:0, modeAuditAcc:0, renderAcc:0, renderedFrames:0, aiTicks:0, trafficTicks:0, mobile:matchMedia('(pointer:coarse)').matches,
-    appliedTier:'',appliedDpr:0,recommendation:initialAutoTier,lastRecommendationSaved:0,lastRenderW:0,lastRenderH:0,resizeTimer:0,cullingEnabled:0,cullingBypassed:0,criticalVisible:0,criticalHidden:0,dynamicVisible:0,dynamicHidden:0
+    appliedTier:'',appliedDpr:0,recommendation:initialAutoTier,lastRecommendationSaved:0,lastRenderW:0,lastRenderH:0,resizeTimer:0,cullingEnabled:0,cullingBypassed:0,criticalVisible:0,criticalHidden:0,dynamicVisible:0,dynamicHidden:0,
+    renderScale:1,renderScaleMin:matchMedia('(pointer:coarse)').matches?.72:.82,renderScaleMax:1,governorPressure:0,governorRecoveries:0,governorProtections:0,governorReason:'boot',
+    loopAcc:0,rafHz:60,rafSampleAcc:0,rafFrames:0,simulationHz:0,simulationFrames:0,simulationSampleAcc:0
   };
   const distanceCullPosition=new THREE.Vector3(),distanceCullScale=new THREE.Vector3();
   const PLAYER_MODES=Object.freeze({
@@ -2622,41 +2646,67 @@
     return{x,z,moveX:worldVector.x,moveZ:worldVector.z,steer:0,throttle:0,disabled:false,mode};
   }
   function requestedQuality(){return ['high','low','auto'].includes(state.settings.quality)?state.settings.quality:'auto';}
-  function qualityLabel(){return requestedQuality()==='high'?'Alta':requestedQuality()==='low'?'Econômica':`Automática fixa nesta partida • ${qualityTier()==='high'?'Alta':qualityTier()==='low'?'Econômica':'Equilibrada'}`;}
+  function qualityLabel(){return requestedQuality()==='high'?'Alta':requestedQuality()==='low'?'Econômica':`Automática inteligente • ${qualityTier()==='high'?'Alta':qualityTier()==='low'?'Proteção':'Equilibrada'}`;}
   function qualityTier(){const requested=requestedQuality();return requested==='high'?'high':requested==='low'?'low':perf.sessionTier;}
+  function performanceGovernorState(){return{mode:requestedQuality(),tier:qualityTier(),renderScale:+Number(perf.renderScale||1).toFixed(3),pressure:Number(perf.governorPressure||0),protections:Number(perf.governorProtections||0),recoveries:Number(perf.governorRecoveries||0),reason:String(perf.governorReason||''),rafHz:+Number(perf.rafHz||0).toFixed(1),simulationHz:+Number(perf.simulationHz||0).toFixed(1)};}
+  function performanceGovernorProtect(reason='runtime-pressure',strength=1){
+    if(requestedQuality()!=='auto')return performanceGovernorState();
+    const step=clamp(Number(strength||1),.5,2)*.055,before=perf.renderScale;
+    perf.renderScale=clamp(perf.renderScale-step,perf.renderScaleMin,perf.renderScaleMax);perf.governorPressure=Math.min(100,Number(perf.governorPressure||0)+Math.round(12*strength));perf.governorReason=reason;
+    if(Math.abs(before-perf.renderScale)>.015){perf.governorProtections++;applyAdaptiveRenderSettings(true);}
+    return performanceGovernorState();
+  }
+  function performanceGovernorRecover(reason='stable-runtime'){
+    if(requestedQuality()!=='auto')return performanceGovernorState();
+    const before=perf.renderScale;perf.renderScale=clamp(perf.renderScale+.025,perf.renderScaleMin,perf.renderScaleMax);perf.governorPressure=Math.max(0,Number(perf.governorPressure||0)-8);perf.governorReason=reason;
+    if(Math.abs(before-perf.renderScale)>.01){perf.governorRecoveries++;applyAdaptiveRenderSettings(true);}
+    return performanceGovernorState();
+  }
   function targetDpr(){
-    const tier=qualityTier(), mobile=perf.mobile;
-    if(tier==='high') return mobile?1.0:1.35;
-    // R11.3: reduz fill-rate no celular sem remover conteúdo do mundo.
-    if(tier==='low') return mobile?.62:.95;
-    return mobile?.72:1.08;
+    const tier=qualityTier(),mobile=perf.mobile;
+    // Perfis manuais legados permanecem disponíveis exatamente como antes.
+    if(requestedQuality()!=='auto'){
+      if(tier==='high')return mobile?1.0:1.35;
+      if(tier==='low') return mobile?.62:.95;
+      return mobile?.72:1.08;
+    }
+    // Automático R16.8.1 preserva o perfil visual equilibrado e regula somente a resolução interna.
+    const autoScale=clamp(Number(perf.renderScale||1),perf.renderScaleMin,perf.renderScaleMax),base=mobile?.80:1.08;
+    return base*autoScale;
   }
   function applyAdaptiveRenderSettings(force=false){
     if(!renderer)return;
     const tier=qualityTier(),dpr=Math.min(devicePixelRatio||1,targetDpr());
-    if(force||!running||Math.abs(perf.appliedDpr-dpr)>.08){renderer.setPixelRatio(dpr);perf.appliedDpr=dpr;}
+    if(force||!running||Math.abs(perf.appliedDpr-dpr)>.035){renderer.setPixelRatio(dpr);perf.appliedDpr=dpr;}
     renderer.shadowMap.enabled=tier==='high'&&!perf.mobile;
-    renderer.toneMappingExposure=tier==='high'?.98:tier==='balanced'?.94:.9;
+    // No automático móvel a iluminação-base não muda: o governor reduz custo por resolução, não por "empobrecer" a cena.
+    renderer.toneMappingExposure=requestedQuality()==='auto'&&perf.mobile?.94:tier==='high'?.98:tier==='balanced'?.94:.92;
     if(sunLight){if(!perf.appliedTier){const size=tier==='high'?(perf.mobile?1024:1536):tier==='balanced'?768:512;sunLight.shadow.mapSize.set(size,size);}sunLight.castShadow=tier==='high'&&!perf.mobile;}
     applyVisualQualityBudget(tier);
-    perf.appliedTier=tier;document.body.dataset.renderTier=tier;scheduleStableResize(80,true);
+    perf.appliedTier=tier;document.body.dataset.renderTier=tier;document.body.dataset.renderGovernor=String(Math.round((perf.renderScale||1)*100));scheduleStableResize(80,true);
   }
   function samplePerformance(dt){
-    perf.frameAcc+=dt;perf.frameCount++;perf.sampleMs+=dt;
+    if(paused||document.hidden){perf.frameAcc=0;perf.frameCount=0;perf.sampleMs=0;return;}
+    perf.frameAcc+=dt;perf.frameCount++;perf.sampleMs+=dt;perf.simulationSampleAcc+=dt;perf.simulationFrames++;
+    if(perf.simulationSampleAcc>=1.5){perf.simulationHz=perf.simulationFrames/Math.max(.001,perf.simulationSampleAcc);perf.simulationSampleAcc=0;perf.simulationFrames=0;}
     if(perf.sampleMs<(perf.mobile?2:3))return;
     perf.fps=perf.frameCount/Math.max(.001,perf.frameAcc);perf.frameAcc=0;perf.frameCount=0;perf.sampleMs=0;
     if(requestedQuality()!=='auto')return;
     const lowRecommendationFps=perf.mobile?34:28,lowProtectionFps=perf.mobile?31:26;
-    const recommendation=perf.fps<lowRecommendationFps?'low':perf.fps>55&&!perf.mobile?'high':'balanced';
+    const target=perf.mobile?45:60,protectFps=Math.max(lowProtectionFps,perf.mobile?36:48),severeFps=perf.mobile?20:24;
+    const recommendation=perf.mobile?'balanced':perf.fps<lowRecommendationFps?'balanced':perf.fps>55?'high':'balanced';
     if(recommendation===perf.recommendation)perf.recommendationSamples++;else{perf.recommendation=recommendation;perf.recommendationSamples=1;}
-    perf.lowSamples=perf.fps<lowProtectionFps?perf.lowSamples+1:Math.max(0,perf.lowSamples-1);
-    perf.highSamples=perf.fps>54?perf.highSamples+1:Math.max(0,perf.highSamples-1);
-    // V641: a qualidade automática reage durante a partida sem reiniciar o jogo.
-    if(perf.lowSamples>=(perf.mobile?1:2)&&perf.sessionTier!=='low'){
-      perf.sessionTier=perf.mobile?'low':perf.sessionTier==='high'?'balanced':'low';perf.lowSamples=0;applyAdaptiveRenderSettings(true);lockStableSceneVisibility();
-      toast(`Desempenho protegido: qualidade ${perf.sessionTier==='low'?'econômica':'equilibrada'}.`,'good',1800);
-    }else if(!perf.mobile&&perf.highSamples>=7&&perf.sessionTier!=='high'){
-      perf.sessionTier=perf.sessionTier==='low'?'balanced':'high';perf.highSamples=0;applyAdaptiveRenderSettings(true);lockStableSceneVisibility();
+    perf.lowSamples=perf.fps<protectFps?perf.lowSamples+1:Math.max(0,perf.lowSamples-1);
+    perf.highSamples=perf.fps>=target*.96?perf.highSamples+1:Math.max(0,perf.highSamples-1);
+    if(perf.lowSamples>=(perf.mobile?1:2)){
+      // Proteção normal atua na resolução interna. LOW visual fica reservado para colapso real de desempenho.
+      performanceGovernorProtect('fps-pressure',perf.fps<target*.7?1.5:1);perf.lowSamples=0;
+      if(perf.fps<severeFps&&perf.renderScale<=perf.renderScaleMin+.01&&perf.sessionTier!=='low'){
+        perf.sessionTier=perf.mobile?'low':perf.sessionTier==='high'?'balanced':'low';applyAdaptiveRenderSettings(true);lockStableSceneVisibility();
+      }
+    }else if(perf.highSamples>=7){
+      if(perf.sessionTier==='low')perf.sessionTier='balanced';
+      performanceGovernorRecover('fps-stable');perf.highSamples=0;lockStableSceneVisibility();
     }
     if(perf.recommendationSamples>=5&&recommendation!==state.settings.autoTier&&performance.now()-perf.lastRecommendationSaved>30000){
       perf.lastRecommendationSaved=performance.now();state.settings.autoTier=recommendation;saveState();
@@ -2736,12 +2786,12 @@
   function activeVehicleCount(){return world.vehicles.filter(v=>v?.group?.visible!==false).length+world.buses.filter(v=>v?.group?.visible!==false).length+world.policeCars.filter(v=>v?.group?.visible!==false).length+world.fireTrucks.filter(v=>v?.group?.visible!==false).length+world.ambulances.filter(v=>v?.group?.visible!==false).length;}
   function runtimeDiagnostics(){
     const mode=auditPlayerMode('diagnostics'),render=renderer?.info?.render||{},memory=renderer?.info?.memory||{};
-    return{version:APP_VERSION,running,paused,mode:mode.state,modeValid:mode.valid,modeConflicts:mode.conflicts,fps:+perf.fps.toFixed(1),frameMs:+(1000/Math.max(1,perf.fps)).toFixed(1),drawCalls:Number(render.calls||0),triangles:Number(render.triangles||0),geometries:Number(memory.geometries||0),textures:Number(memory.textures||0),npcs:world.npcs.length,vehicles:activeVehicleCount(),aiTicks:perf.aiTicks,trafficTicks:perf.trafficTicks,culling:{enabled:perf.cullingEnabled,bypassed:perf.cullingBypassed,total:world.staticRenderObjects||0,criticalVisible:perf.criticalVisible,criticalHidden:perf.criticalHidden,dynamicVisible:perf.dynamicVisible,dynamicHidden:perf.dynamicHidden},visual:visualFoundationDiagnostics(),avatar:avatarFoundationDiagnostics(),pwaInstalled:pwaInstalled(),online:navigator.onLine,browser:navigator.userAgent,save:{version:state.version,lastSaved:Number(state.lastSaved||0),database:window.OTTHOS_DB?.name||'',schema:window.OTTHOS_DB?.schema||0},multiplayer:window.OTTHOS_RTDB?.status?.()||{configured:false,connected:false}};
+    return{version:APP_VERSION,running,paused,mode:mode.state,modeValid:mode.valid,modeConflicts:mode.conflicts,fps:+perf.fps.toFixed(1),frameMs:+(1000/Math.max(1,perf.fps)).toFixed(1),drawCalls:Number(render.calls||0),triangles:Number(render.triangles||0),geometries:Number(memory.geometries||0),textures:Number(memory.textures||0),npcs:world.npcs.length,vehicles:activeVehicleCount(),aiTicks:perf.aiTicks,trafficTicks:perf.trafficTicks,governor:performanceGovernorState(),culling:{enabled:perf.cullingEnabled,bypassed:perf.cullingBypassed,total:world.staticRenderObjects||0,criticalVisible:perf.criticalVisible,criticalHidden:perf.criticalHidden,dynamicVisible:perf.dynamicVisible,dynamicHidden:perf.dynamicHidden},visual:visualFoundationDiagnostics(),avatar:avatarFoundationDiagnostics(),pwaInstalled:pwaInstalled(),online:navigator.onLine,browser:navigator.userAgent,save:{version:state.version,lastSaved:Number(state.lastSaved||0),database:window.OTTHOS_DB?.name||'',schema:window.OTTHOS_DB?.schema||0},multiplayer:window.OTTHOS_RTDB?.status?.()||{configured:false,connected:false}};
   }
   function ensureTechnicalPanel(){
     if(technicalPanel)return technicalPanel;const style=document.createElement('style');style.id='otthosTechnicalPanelStyle';style.textContent='.otthos-tech-panel{position:fixed;z-index:100000;right:max(8px,env(safe-area-inset-right));top:max(8px,env(safe-area-inset-top));width:min(330px,calc(100vw - 16px));max-height:calc(100vh - 16px);overflow:auto;padding:12px;border:1px solid rgba(116,220,255,.65);border-radius:14px;background:rgba(4,13,25,.94);color:#eaf8ff;font:700 12px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;box-shadow:0 16px 45px rgba(0,0,0,.45);backdrop-filter:blur(10px)}.otthos-tech-panel[hidden]{display:none!important}.otthos-tech-panel header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.otthos-tech-panel h2{font:900 14px/1.2 system-ui,sans-serif;margin:0}.otthos-tech-panel button{border:0;border-radius:8px;background:#dff7ff;color:#082032;padding:5px 9px;font-weight:900}.otthos-tech-panel pre{white-space:pre-wrap;word-break:break-word;margin:0;color:#c9edff}';document.head.appendChild(style);technicalPanel=document.createElement('aside');technicalPanel.className='otthos-tech-panel';technicalPanel.hidden=true;technicalPanel.setAttribute('aria-label','Painel técnico OTTHOS');technicalPanel.innerHTML='<header><h2>OTTHI • diagnóstico V702</h2><button type="button" data-tech-close>Fechar</button></header><pre data-tech-data></pre>';document.body.appendChild(technicalPanel);technicalPanel.querySelector('[data-tech-close]').onclick=()=>toggleTechnicalPanel(false);return technicalPanel;
   }
-  function refreshTechnicalPanel(){if(!technicalPanelVisible)return;const panel=ensureTechnicalPanel(),d=runtimeDiagnostics(),mp=typeof multiplayerV2Diagnostics==='function'?multiplayerV2Diagnostics():null;panel.querySelector('[data-tech-data]').textContent=[`FPS: ${d.fps} • frame: ${d.frameMs} ms`,`Draw calls: ${d.drawCalls} • triângulos: ${d.triangles}`,`Geometrias: ${d.geometries} • texturas: ${d.textures}`,`Materiais cache: ${d.visual.materials.immutable} • acertos: ${d.visual.materials.hits}`,`LOD: ${d.visual.lod.registered} • perto: ${d.visual.lod.near} • longe: ${d.visual.lod.far}`,`Contornos: ${d.visual.outlines.visible} visíveis • ${d.visual.outlines.hidden} distantes`,`NPCs: ${d.npcs} • veículos ativos: ${d.vehicles}`,`IA: ${d.aiTicks} ticks • trânsito: ${d.trafficTicks} ticks`,`Culling: ${d.culling.enabled} ativo • ${d.culling.bypassed} protegido • superfícies ${d.culling.criticalVisible}/${d.culling.criticalHidden} • dinâmicos ${d.culling.dynamicVisible}/${d.culling.dynamicHidden}`,`Avatar: schema V${d.avatar.stateVersion} • fallback ${d.avatar.fallbackActive?'ativo':'inativo'}`,`Modo: ${d.mode}${d.modeValid?'':' • CONFLITO '+d.modeConflicts.join(', ')}`,`Qualidade: ${qualityTier()} • DPR: ${renderer?.getPixelRatio?.().toFixed?.(2)||0}`,`PWA instalada: ${d.pwaInstalled?'sim':'não'} • online: ${d.online?'sim':'não'}`,`Save: schema ${d.save.schema||'n/d'} • V${d.save.version}`,`Multiplayer: ${d.multiplayer.connected?'conectado':d.multiplayer.configured?'configurado/offline':'não configurado'}`,mp?`MP Core V2: protocolo ${mp.protocol} • peers ${mp.motionPeers} • buffer ${mp.bufferAvg.toFixed(1)}/${mp.bufferMax}`:'MP Core V2: indisponível',mp?`Rede V2: snapshot ${mp.snapshotMs} ms • jitter ${mp.jitterMs} ms • extrapolações ${mp.extrapolated} • correções ${mp.corrections}`:'',mp?`Autoridade: ${mp.isAuthority?'este aparelho':mp.authority||'aguardando'} • esporte ${mp.sport||'nenhum'} • host ${mp.sportHost||'-'}`:'',mp?`Dados estimados V2: ↑ ${(mp.bytesUp/1024).toFixed(1)} KB • ↓ ${(mp.bytesDown/1024).toFixed(1)} KB • writes ${mp.writes}`:'',`Navegador: ${navigator.userAgent}`].filter(Boolean).join('\n');}
+  function refreshTechnicalPanel(){if(!technicalPanelVisible)return;const panel=ensureTechnicalPanel(),d=runtimeDiagnostics(),mp=typeof multiplayerV2Diagnostics==='function'?multiplayerV2Diagnostics():null;panel.querySelector('[data-tech-data]').textContent=[`FPS: ${d.fps} • frame: ${d.frameMs} ms`,`Draw calls: ${d.drawCalls} • triângulos: ${d.triangles}`,`Geometrias: ${d.geometries} • texturas: ${d.textures}`,`Materiais cache: ${d.visual.materials.immutable} • acertos: ${d.visual.materials.hits}`,`LOD: ${d.visual.lod.registered} • perto: ${d.visual.lod.near} • longe: ${d.visual.lod.far}`,`Contornos: ${d.visual.outlines.visible} visíveis • ${d.visual.outlines.hidden} distantes`,`NPCs: ${d.npcs} • veículos ativos: ${d.vehicles}`,`IA: ${d.aiTicks} ticks • trânsito: ${d.trafficTicks} ticks`,`Culling: ${d.culling.enabled} ativo • ${d.culling.bypassed} protegido • superfícies ${d.culling.criticalVisible}/${d.culling.criticalHidden} • dinâmicos ${d.culling.dynamicVisible}/${d.culling.dynamicHidden}`,`Avatar: schema V${d.avatar.stateVersion} • fallback ${d.avatar.fallbackActive?'ativo':'inativo'}`,`Modo: ${d.mode}${d.modeValid?'':' • CONFLITO '+d.modeConflicts.join(', ')}`,`Qualidade: ${qualityTier()} • DPR: ${renderer?.getPixelRatio?.().toFixed?.(2)||0}`,`Governor: escala ${d.governor.renderScale} • pressão ${d.governor.pressure}% • RAF ${d.governor.rafHz} Hz • sim ${d.governor.simulationHz} Hz`,`PWA instalada: ${d.pwaInstalled?'sim':'não'} • online: ${d.online?'sim':'não'}`,`Save: schema ${d.save.schema||'n/d'} • V${d.save.version}`,`Multiplayer: ${d.multiplayer.connected?'conectado':d.multiplayer.configured?'configurado/offline':'não configurado'}`,mp?`MP Core V2: protocolo ${mp.protocol} • peers ${mp.motionPeers} • buffer ${mp.bufferAvg.toFixed(1)}/${mp.bufferMax}`:'MP Core V2: indisponível',mp?`Rede V2: snapshot ${mp.snapshotMs} ms • jitter ${mp.jitterMs} ms • extrapolações ${mp.extrapolated} • correções ${mp.corrections}`:'',mp?`Autoridade: ${mp.isAuthority?'este aparelho':mp.authority||'aguardando'} • esporte ${mp.sport||'nenhum'} • host ${mp.sportHost||'-'}`:'',mp?`Dados estimados V2: ↑ ${(mp.bytesUp/1024).toFixed(1)} KB • ↓ ${(mp.bytesDown/1024).toFixed(1)} KB • writes ${mp.writes}`:'',`Navegador: ${navigator.userAgent}`].filter(Boolean).join('\n');}
   function toggleTechnicalPanel(force){technicalPanelVisible=typeof force==='boolean'?force:!technicalPanelVisible;const panel=ensureTechnicalPanel();panel.hidden=!technicalPanelVisible;if(technicalPanelVisible)refreshTechnicalPanel();}
   function initTechnicalPanel(){
     window.addEventListener('keydown',event=>{if(event.code==='F3'){event.preventDefault();toggleTechnicalPanel();}});
@@ -6439,7 +6489,7 @@
   function initThree(){
     if(!window.THREE){openModal('Erro ao carregar 3D','<p>A biblioteca Three.js não carregou. Verifique a internet e recarregue a página.</p>');return false;}
     scene=new THREE.Scene();clock=new THREE.Clock();const initialViewport=viewportMetrics();camera=new THREE.PerspectiveCamera(58,initialViewport.w/initialViewport.h,.05,1200);
-    renderer=new THREE.WebGLRenderer({antialias:qualityTier()==='high'&&!perf.mobile,alpha:false,powerPreference:'high-performance',precision:'highp',depth:true,stencil:false});renderer.setPixelRatio(Math.min(devicePixelRatio||1,targetDpr()));renderer.setSize(initialViewport.w,initialViewport.h,false);renderer.shadowMap.enabled=qualityTier()==='high'&&!perf.mobile;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.94;els.stage.innerHTML='';els.stage.appendChild(renderer.domElement);renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();paused=true;toast('A placa gráfica reiniciou. Toque no menu para recarregar o jogo.','bad',5000);});renderer.domElement.addEventListener('webglcontextrestored',()=>{toast('Render restaurado.','good',1800);paused=false;});
+    renderer=new THREE.WebGLRenderer({antialias:qualityTier()==='high'&&!perf.mobile,alpha:false,powerPreference:perf.mobile?'default':'high-performance',precision:'highp',depth:true,stencil:false});renderer.setPixelRatio(Math.min(devicePixelRatio||1,targetDpr()));renderer.setSize(initialViewport.w,initialViewport.h,false);renderer.shadowMap.enabled=qualityTier()==='high'&&!perf.mobile;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.94;els.stage.innerHTML='';els.stage.appendChild(renderer.domElement);renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();paused=true;toast('A placa gráfica reiniciou. Toque no menu para recarregar o jogo.','bad',5000);});renderer.domElement.addEventListener('webglcontextrestored',()=>{toast('Render restaurado.','good',1800);paused=false;});
     initMaterials();
     scene.add(new THREE.HemisphereLight(0xdff4ff,0x28401f,.72));sunLight=new THREE.DirectionalLight(0xffdf9a,1.28);sunLight.position.set(32,46,24);sunLight.castShadow=qualityTier()==='high'&&!perf.mobile;sunLight.shadow.mapSize.set(qualityTier()==='high'?1024:768,qualityTier()==='high'?1024:768);sunLight.shadow.camera.left=-80;sunLight.shadow.camera.right=80;sunLight.shadow.camera.top=80;sunLight.shadow.camera.bottom=-80;sunLight.shadow.camera.far=160;sunLight.shadow.bias=-.0015;scene.add(sunLight);
     const fill=new THREE.DirectionalLight(0xb9ddff,.16);fill.position.set(-28,20,-18);scene.add(fill); // preenchimento barato (sem sombra) para suavizar o lado escuro dos objetos
@@ -7373,8 +7423,15 @@
     });
   }
   function targetRenderFrameRate(){return perf.mobile?(qualityTier()==='low'?30:qualityTier()==='balanced'?45:60):60;}
+  function targetSimulationFrameRate(){return paused?15:60;}
+  function sampleRafCadence(rawDt){
+    perf.rafSampleAcc+=rawDt;perf.rafFrames++;if(perf.rafSampleAcc>=1.5){perf.rafHz=perf.rafFrames/Math.max(.001,perf.rafSampleAcc);perf.rafSampleAcc=0;perf.rafFrames=0;}
+  }
   function gameLoop(){
-    if(!running)return;raf=requestAnimationFrame(gameLoop);const dt=Math.min(.033,clock.getDelta());samplePerformance(dt);
+    if(!running)return;raf=requestAnimationFrame(gameLoop);
+    const rawDt=Math.min(.05,clock.getDelta());sampleRafCadence(rawDt);perf.loopAcc=Math.min(.12,perf.loopAcc+rawDt);
+    const simulationInterval=1/targetSimulationFrameRate();if(perf.loopAcc<simulationInterval*.92)return;
+    const dt=Math.min(.033,perf.loopAcc);perf.loopAcc=Math.max(0,perf.loopAcc-simulationInterval);samplePerformance(dt);
     updatePlayUsage();
     if(!paused){
       const tier=qualityTier();pollGamepad();
@@ -7535,8 +7592,10 @@
     construction:()=>({mode:buildMode,placement:buildPlacement?{...buildPlacement}:null,stateBuilds:JSON.parse(JSON.stringify(state.builds)),tombstones:JSON.parse(JSON.stringify(state.buildTombstones||[])),worldBuilds:world.builds.map(item=>({id:item.data.id,type:item.data.type,x:item.data.x,z:item.data.z,groundY:item.data.groundY,ownerId:item.data.ownerId}))}),
     reconcileBuilds:()=>reconcileWorldBuilds(),
     saveNow:()=>{savePlayerPosition(true);return JSON.parse(JSON.stringify(state.position));},
-    performance:()=>({fps:+perf.fps.toFixed(1),targetRenderFps:targetRenderFrameRate(),renderedFrames:perf.renderedFrames,tier:qualityTier(),requested:requestedQuality(),dpr:renderer?.getPixelRatio?.()||0,drawCalls:renderer?.info?.render?.calls||0,triangles:renderer?.info?.render?.triangles||0,culling:{criticalVisible:Number(perf.criticalVisible||0),criticalHidden:Number(perf.criticalHidden||0),dynamicVisible:Number(perf.dynamicVisible||0),dynamicHidden:Number(perf.dynamicHidden||0)},textures:Object.fromEntries(Object.entries(textures).map(([id,t])=>[id,{name:t?.name||'',status:t?.userData?.status||'generated',width:t?.image?.naturalWidth||t?.image?.width||0,height:t?.image?.naturalHeight||t?.image?.height||0}]))}),
-    setQuality:(quality='auto')=>{const value=['auto','low','high'].includes(quality)?quality:'auto';state.settings.quality=value;if(value==='auto')perf.sessionTier=resolvedStableAutoTier();applyAdaptiveRenderSettings(true);lockStableSceneVisibility();saveState(true);return{requested:requestedQuality(),tier:qualityTier(),dpr:renderer?.getPixelRatio?.()||0};},
+    performance:()=>({fps:+perf.fps.toFixed(1),targetRenderFps:targetRenderFrameRate(),targetSimulationFps:typeof targetSimulationFrameRate==='function'?targetSimulationFrameRate():60,renderedFrames:perf.renderedFrames,tier:qualityTier(),requested:requestedQuality(),dpr:renderer?.getPixelRatio?.()||0,governor:performanceGovernorState(),drawCalls:renderer?.info?.render?.calls||0,triangles:renderer?.info?.render?.triangles||0,culling:{criticalVisible:Number(perf.criticalVisible||0),criticalHidden:Number(perf.criticalHidden||0),dynamicVisible:Number(perf.dynamicVisible||0),dynamicHidden:Number(perf.dynamicHidden||0)},textures:Object.fromEntries(Object.entries(textures).map(([id,t])=>[id,{name:t?.name||'',status:t?.userData?.status||'generated',width:t?.image?.naturalWidth||t?.image?.width||0,height:t?.image?.naturalHeight||t?.image?.height||0}]))}),
+    setQuality:(quality='auto')=>{const value=['auto','low','high'].includes(quality)?quality:'auto';state.settings.quality=value;if(value==='auto'){perf.sessionTier=resolvedStableAutoTier();perf.renderScale=1;perf.governorPressure=0;perf.governorReason='quality-auto-reset';}applyAdaptiveRenderSettings(true);lockStableSceneVisibility();saveState(true);return{requested:requestedQuality(),tier:qualityTier(),dpr:renderer?.getPixelRatio?.()||0,governor:performanceGovernorState()};},
+    protectPerformance:(reason='guardian',strength=1)=>performanceGovernorProtect(String(reason||'guardian'),Number(strength||1)),
+    recoverPerformance:(reason='guardian-stable')=>performanceGovernorRecover(String(reason||'guardian-stable')),
     getState:()=>JSON.parse(JSON.stringify(state)),
     getGame:()=>({running,paused,currentHouse:currentHouse?.id||null,cameraMode,player:{...player},objects:{houses:world.houses.length,npcs:world.npcs.length,enemies:world.enemies.length,interactables:world.interactables.length,builds:world.builds.length,vehicles:world.vehicles.length,buses:world.buses.length,metroStations:world.metroStations.length,policeCars:world.policeCars.length,resources:world.resources.length,school:!!world.school,policeStation:!!world.policeStation,mine:!!world.mine,well:!!world.well}}),
     getVisual:()=>{const parts=playerModel?.userData?.parts||{};const modelY=playerModel?.position?.y||0;const minFootY=playerModel?.userData?.minFootY??0;const scaleY=playerGroup?.scale?.y||1;const rootY=playerGroup?.position?.y||0;return {procedural:!!playerModel?.userData?.proceduralOtthos,rendered:playerModel?.visible!==false,ownNameLabelVisible:playerGroup?.userData?.nameLabel?.visible!==false,rootY,modelY,minFootY,scaleY,visualBottom:rootY+(modelY+minFootY)*scaleY,limbs:{leftArm:parts.leftArm?.rotation?.x||0,rightArm:parts.rightArm?.rotation?.x||0,leftLeg:parts.leftLeg?.rotation?.x||0,rightLeg:parts.rightLeg?.rotation?.x||0}};},

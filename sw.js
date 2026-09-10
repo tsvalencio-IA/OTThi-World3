@@ -1,7 +1,7 @@
-const REVISION = '6a8ca173f2dcabe5';
+const REVISION = 'd77de6a7e541f380';
 const CACHE = `otthi-v70615-${REVISION}`;
 const CACHE_PREFIXES = ['otthi-','otthi-game-web-','otthos-life-world-main-'];
-const BUILD = '705.16.7.16-multiplayer-core-v2-r1680';
+const BUILD = '705.16.7.17-visual-performance-governor';
 const VERSION = '705';
 const RELEASE_MANIFEST = './release-manifest.json?v=70615';
 
